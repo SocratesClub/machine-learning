@@ -21,7 +21,7 @@ https://github.com/computational-class/machine-learning
 ### Table of content
 
 - [What Is Machine Learning?](http://nbviewer.jupyter.org/github/computational-class/machine-learning/blob/master/09.01-What-Is-Machine-Learning.ipynb)
-- [Introducing Scikit-Learn](http://nbviewer.jupyter.org/github/computational-class/machine-learning/blob/master/09.02-Introducing-Scikit-Learn.ipynb)
+- [Introducing Scikit-Learn](http://nbviewer.jupyter.org/github/computational-class/machine-learning/blob/master/09.02-machine-learning-with-sklearn.ipynb)
 - [Hyperparameters and Model Validation](http://nbviewer.jupyter.org/github/computational-class/machine-learning/blob/master/09.03-Hyperparameters-and-Model-Validation.ipynb)
 - [Feature Engineering](http://nbviewer.jupyter.org/github/computational-class/machine-learning/blob/master/09.04-Feature-Engineering.ipynb)
 - [In Depth: Naive Bayes Classification](http://nbviewer.jupyter.org/github/computational-class/machine-learning/blob/master/09.05-Naive-Bayes.ipynb)
