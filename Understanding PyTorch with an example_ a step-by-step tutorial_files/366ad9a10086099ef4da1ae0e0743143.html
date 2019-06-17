@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<!-- saved from url=(0089)https://towardsdatascience.com/media/366ad9a10086099ef4da1ae0e0743143?postId=81fc5f8c4e8e -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>torch101_optimizer.py – Medium</title><meta name="description" content="GitHub Gist: instantly share code, notes, and snippets."><meta name="twitter:widgets:csp" content="on"><meta name="robots" content="noindex"><!--<base target="_blank">--><base href="." target="_blank"><style>body {text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; font-family: "ff-tisa-web-pro", Georgia, Cambria, "Times New Roman", Times, serif; font-weight: 400; color: #333332; font-size: 18px; line-height: 1.4; margin: 0; background-color: white; overflow: hidden;}iframe {max-width: 100%;}</style></head><body><style>.gist .gist-file { margin-bottom: 0 !important; }.gist { text-rendering: auto; }</style><script src="./106a3207aa18df45d02742ca38e0ddce.js" charset="utf-8"></script><link rel="stylesheet" href="./gist-embed-a9a1cf2ca01efd362bfa52312712ae94.css"><div id="gist95929136" class="gist">
+    <div class="gist-file">
+      <div class="gist-data">
+        <div class="js-gist-file-update-container js-task-list-container file-box">
+  <div id="file-torch101_optimizer-py" class="file">
+    
+
+  <div itemprop="text" class="Box-body p-0 blob-wrapper data type-python ">
+      
+<table class="highlight tab-size js-file-line-container" data-tab-size="8">
+      <tbody><tr>
+        <td id="file-torch101_optimizer-py-L1" class="blob-num js-line-number" data-line-number="1"></td>
+        <td id="file-torch101_optimizer-py-LC1" class="blob-code blob-code-inner js-file-line">torch.manual_seed(<span class="pl-c1">42</span>)</td>
+      </tr>
+      <tr>
+        <td id="file-torch101_optimizer-py-L2" class="blob-num js-line-number" data-line-number="2"></td>
+        <td id="file-torch101_optimizer-py-LC2" class="blob-code blob-code-inner js-file-line">a <span class="pl-k">=</span> torch.randn(<span class="pl-c1">1</span>, <span class="pl-v">requires_grad</span><span class="pl-k">=</span><span class="pl-c1">True</span>, <span class="pl-v">dtype</span><span class="pl-k">=</span>torch.float, <span class="pl-v">device</span><span class="pl-k">=</span>device)</td>
+      </tr>
+      <tr>
+        <td id="file-torch101_optimizer-py-L3" class="blob-num js-line-number" data-line-number="3"></td>
+        <td id="file-torch101_optimizer-py-LC3" class="blob-code blob-code-inner js-file-line">b <span class="pl-k">=</span> torch.randn(<span class="pl-c1">1</span>, <span class="pl-v">requires_grad</span><span class="pl-k">=</span><span class="pl-c1">True</span>, <span class="pl-v">dtype</span><span class="pl-k">=</span>torch.float, <span class="pl-v">device</span><span class="pl-k">=</span>device)</td>
+      </tr>
+      <tr>
+        <td id="file-torch101_optimizer-py-L4" class="blob-num js-line-number" data-line-number="4"></td>
+        <td id="file-torch101_optimizer-py-LC4" class="blob-code blob-code-inner js-file-line"><span class="pl-c1">print</span>(a, b)</td>
+      </tr>
+      <tr>
+        <td id="file-torch101_optimizer-py-L5" class="blob-num js-line-number" data-line-number="5"></td>
+        <td id="file-torch101_optimizer-py-LC5" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="file-torch101_optimizer-py-L6" class="blob-num js-line-number" data-line-number="6"></td>
+        <td id="file-torch101_optimizer-py-LC6" class="blob-code blob-code-inner js-file-line">lr <span class="pl-k">=</span> <span class="pl-c1">1e-1</span></td>
+      </tr>
+      <tr>
+        <td id="file-torch101_optimizer-py-L7" class="blob-num js-line-number" data-line-number="7"></td>
+        <td id="file-torch101_optimizer-py-LC7" class="blob-code blob-code-inner js-file-line">n_epochs <span class="pl-k">=</span> <span class="pl-c1">1000</span></td>
+      </tr>
+      <tr>
+        <td id="file-torch101_optimizer-py-L8" class="blob-num js-line-number" data-line-number="8"></td>
+        <td id="file-torch101_optimizer-py-LC8" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="file-torch101_optimizer-py-L9" class="blob-num js-line-number" data-line-number="9"></td>
+        <td id="file-torch101_optimizer-py-LC9" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span> Defines a SGD optimizer to update the parameters</span></td>
+      </tr>
+      <tr>
+        <td id="file-torch101_optimizer-py-L10" class="blob-num js-line-number" data-line-number="10"></td>
+        <td id="file-torch101_optimizer-py-LC10" class="blob-code blob-code-inner js-file-line">optimizer <span class="pl-k">=</span> optim.SGD([a, b], <span class="pl-v">lr</span><span class="pl-k">=</span>lr)</td>
+      </tr>
+      <tr>
+        <td id="file-torch101_optimizer-py-L11" class="blob-num js-line-number" data-line-number="11"></td>
+        <td id="file-torch101_optimizer-py-LC11" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="file-torch101_optimizer-py-L12" class="blob-num js-line-number" data-line-number="12"></td>
+        <td id="file-torch101_optimizer-py-LC12" class="blob-code blob-code-inner js-file-line"><span class="pl-k">for</span> epoch <span class="pl-k">in</span> <span class="pl-c1">range</span>(n_epochs):</td>
+      </tr>
+      <tr>
+        <td id="file-torch101_optimizer-py-L13" class="blob-num js-line-number" data-line-number="13"></td>
+        <td id="file-torch101_optimizer-py-LC13" class="blob-code blob-code-inner js-file-line">    yhat <span class="pl-k">=</span> a <span class="pl-k">+</span> b <span class="pl-k">*</span> x_train_tensor</td>
+      </tr>
+      <tr>
+        <td id="file-torch101_optimizer-py-L14" class="blob-num js-line-number" data-line-number="14"></td>
+        <td id="file-torch101_optimizer-py-LC14" class="blob-code blob-code-inner js-file-line">    error <span class="pl-k">=</span> y_train_tensor <span class="pl-k">-</span> yhat</td>
+      </tr>
+      <tr>
+        <td id="file-torch101_optimizer-py-L15" class="blob-num js-line-number" data-line-number="15"></td>
+        <td id="file-torch101_optimizer-py-LC15" class="blob-code blob-code-inner js-file-line">    loss <span class="pl-k">=</span> (error <span class="pl-k">**</span> <span class="pl-c1">2</span>).mean()</td>
+      </tr>
+      <tr>
+        <td id="file-torch101_optimizer-py-L16" class="blob-num js-line-number" data-line-number="16"></td>
+        <td id="file-torch101_optimizer-py-LC16" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="file-torch101_optimizer-py-L17" class="blob-num js-line-number" data-line-number="17"></td>
+        <td id="file-torch101_optimizer-py-LC17" class="blob-code blob-code-inner js-file-line">    loss.backward()    </td>
+      </tr>
+      <tr>
+        <td id="file-torch101_optimizer-py-L18" class="blob-num js-line-number" data-line-number="18"></td>
+        <td id="file-torch101_optimizer-py-LC18" class="blob-code blob-code-inner js-file-line">    </td>
+      </tr>
+      <tr>
+        <td id="file-torch101_optimizer-py-L19" class="blob-num js-line-number" data-line-number="19"></td>
+        <td id="file-torch101_optimizer-py-LC19" class="blob-code blob-code-inner js-file-line">    <span class="pl-c"><span class="pl-c">#</span> No more manual update!</span></td>
+      </tr>
+      <tr>
+        <td id="file-torch101_optimizer-py-L20" class="blob-num js-line-number" data-line-number="20"></td>
+        <td id="file-torch101_optimizer-py-LC20" class="blob-code blob-code-inner js-file-line">    <span class="pl-c"><span class="pl-c">#</span> with torch.no_grad():</span></td>
+      </tr>
+      <tr>
+        <td id="file-torch101_optimizer-py-L21" class="blob-num js-line-number" data-line-number="21"></td>
+        <td id="file-torch101_optimizer-py-LC21" class="blob-code blob-code-inner js-file-line">    <span class="pl-c"><span class="pl-c">#</span>     a -= lr * a.grad</span></td>
+      </tr>
+      <tr>
+        <td id="file-torch101_optimizer-py-L22" class="blob-num js-line-number" data-line-number="22"></td>
+        <td id="file-torch101_optimizer-py-LC22" class="blob-code blob-code-inner js-file-line">    <span class="pl-c"><span class="pl-c">#</span>     b -= lr * b.grad</span></td>
+      </tr>
+      <tr>
+        <td id="file-torch101_optimizer-py-L23" class="blob-num js-line-number" data-line-number="23"></td>
+        <td id="file-torch101_optimizer-py-LC23" class="blob-code blob-code-inner js-file-line">    optimizer.step()</td>
+      </tr>
+      <tr>
+        <td id="file-torch101_optimizer-py-L24" class="blob-num js-line-number" data-line-number="24"></td>
+        <td id="file-torch101_optimizer-py-LC24" class="blob-code blob-code-inner js-file-line">    </td>
+      </tr>
+      <tr>
+        <td id="file-torch101_optimizer-py-L25" class="blob-num js-line-number" data-line-number="25"></td>
+        <td id="file-torch101_optimizer-py-LC25" class="blob-code blob-code-inner js-file-line">    <span class="pl-c"><span class="pl-c">#</span> No more telling PyTorch to let gradients go!</span></td>
+      </tr>
+      <tr>
+        <td id="file-torch101_optimizer-py-L26" class="blob-num js-line-number" data-line-number="26"></td>
+        <td id="file-torch101_optimizer-py-LC26" class="blob-code blob-code-inner js-file-line">    <span class="pl-c"><span class="pl-c">#</span> a.grad.zero_()</span></td>
+      </tr>
+      <tr>
+        <td id="file-torch101_optimizer-py-L27" class="blob-num js-line-number" data-line-number="27"></td>
+        <td id="file-torch101_optimizer-py-LC27" class="blob-code blob-code-inner js-file-line">    <span class="pl-c"><span class="pl-c">#</span> b.grad.zero_()</span></td>
+      </tr>
+      <tr>
+        <td id="file-torch101_optimizer-py-L28" class="blob-num js-line-number" data-line-number="28"></td>
+        <td id="file-torch101_optimizer-py-LC28" class="blob-code blob-code-inner js-file-line">    optimizer.zero_grad()</td>
+      </tr>
+      <tr>
+        <td id="file-torch101_optimizer-py-L29" class="blob-num js-line-number" data-line-number="29"></td>
+        <td id="file-torch101_optimizer-py-LC29" class="blob-code blob-code-inner js-file-line">    </td>
+      </tr>
+      <tr>
+        <td id="file-torch101_optimizer-py-L30" class="blob-num js-line-number" data-line-number="30"></td>
+        <td id="file-torch101_optimizer-py-LC30" class="blob-code blob-code-inner js-file-line"><span class="pl-c1">print</span>(a, b)</td>
+      </tr>
+</tbody></table>
+
+
+  </div>
+
+  </div>
+</div>
+
+      </div>
+      <div class="gist-meta">
+        <a href="https://gist.github.com/dvgodoy/106a3207aa18df45d02742ca38e0ddce/raw/e725d9f33bd56da5b38af6e7fbc100577050e546/torch101_optimizer.py" style="float:right">view raw</a>
+        <a href="https://gist.github.com/dvgodoy/106a3207aa18df45d02742ca38e0ddce#file-torch101_optimizer-py">torch101_optimizer.py</a>
+        hosted with ❤ by <a href="https://github.com/">GitHub</a>
+      </div>
+    </div>
+</div>
+<script>var height = -1; var delayMs = 200;function notifyResize(height) {height = height ? height : document.documentElement.offsetHeight; var resized = false; if (window.donkey && donkey.resize) {donkey.resize(height); resized = true;}if (parent && parent._resizeIframe) {var obj = {iframe: window.frameElement, height: height}; parent._resizeIframe(obj); resized = true;}if (window.location && window.location.hash === "#amp=1" && window.parent && window.parent.postMessage) {window.parent.postMessage({sentinel: "amp", type: "embed-size", height: height}, "*");}if (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.resize) {window.webkit.messageHandlers.resize.postMessage(height); resized = true;}return resized;}function maybeResize() {if (document.documentElement.offsetHeight != height && notifyResize()) {height = document.documentElement.offsetHeight;}delayMs = Math.min(delayMs * 2, 1000000); setTimeout(maybeResize, delayMs);}maybeResize();</script></body></html>

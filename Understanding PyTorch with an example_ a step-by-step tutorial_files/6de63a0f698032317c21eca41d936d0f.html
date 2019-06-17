@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<!-- saved from url=(0089)https://towardsdatascience.com/media/6de63a0f698032317c21eca41d936d0f?postId=81fc5f8c4e8e -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>torch101_train_step.py – Medium</title><meta name="description" content="GitHub Gist: instantly share code, notes, and snippets."><meta name="twitter:widgets:csp" content="on"><meta name="robots" content="noindex"><!--<base target="_blank">--><base href="." target="_blank"><style>body {text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; font-family: "ff-tisa-web-pro", Georgia, Cambria, "Times New Roman", Times, serif; font-weight: 400; color: #333332; font-size: 18px; line-height: 1.4; margin: 0; background-color: white; overflow: hidden;}iframe {max-width: 100%;}</style></head><body><style>.gist .gist-file { margin-bottom: 0 !important; }.gist { text-rendering: auto; }</style><script src="./69b703868a862fdf4fc9d05dccad5476.js" charset="utf-8"></script><link rel="stylesheet" href="./gist-embed-a9a1cf2ca01efd362bfa52312712ae94.css"><div id="gist95929874" class="gist">
+    <div class="gist-file">
+      <div class="gist-data">
+        <div class="js-gist-file-update-container js-task-list-container file-box">
+  <div id="file-torch101_train_step-py" class="file">
+    
+
+  <div itemprop="text" class="Box-body p-0 blob-wrapper data type-python ">
+      
+<table class="highlight tab-size js-file-line-container" data-tab-size="8">
+      <tbody><tr>
+        <td id="file-torch101_train_step-py-L1" class="blob-num js-line-number" data-line-number="1"></td>
+        <td id="file-torch101_train_step-py-LC1" class="blob-code blob-code-inner js-file-line"><span class="pl-k">def</span> <span class="pl-en">make_train_step</span>(<span class="pl-smi">model</span>, <span class="pl-smi">loss_fn</span>, <span class="pl-smi">optimizer</span>):</td>
+      </tr>
+      <tr>
+        <td id="file-torch101_train_step-py-L2" class="blob-num js-line-number" data-line-number="2"></td>
+        <td id="file-torch101_train_step-py-LC2" class="blob-code blob-code-inner js-file-line">    <span class="pl-c"><span class="pl-c">#</span> Builds function that performs a step in the train loop</span></td>
+      </tr>
+      <tr>
+        <td id="file-torch101_train_step-py-L3" class="blob-num js-line-number" data-line-number="3"></td>
+        <td id="file-torch101_train_step-py-LC3" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">def</span> <span class="pl-en">train_step</span>(<span class="pl-smi">x</span>, <span class="pl-smi">y</span>):</td>
+      </tr>
+      <tr>
+        <td id="file-torch101_train_step-py-L4" class="blob-num js-line-number" data-line-number="4"></td>
+        <td id="file-torch101_train_step-py-LC4" class="blob-code blob-code-inner js-file-line">        <span class="pl-c"><span class="pl-c">#</span> Sets model to TRAIN mode</span></td>
+      </tr>
+      <tr>
+        <td id="file-torch101_train_step-py-L5" class="blob-num js-line-number" data-line-number="5"></td>
+        <td id="file-torch101_train_step-py-LC5" class="blob-code blob-code-inner js-file-line">        model.train()</td>
+      </tr>
+      <tr>
+        <td id="file-torch101_train_step-py-L6" class="blob-num js-line-number" data-line-number="6"></td>
+        <td id="file-torch101_train_step-py-LC6" class="blob-code blob-code-inner js-file-line">        <span class="pl-c"><span class="pl-c">#</span> Makes predictions</span></td>
+      </tr>
+      <tr>
+        <td id="file-torch101_train_step-py-L7" class="blob-num js-line-number" data-line-number="7"></td>
+        <td id="file-torch101_train_step-py-LC7" class="blob-code blob-code-inner js-file-line">        yhat <span class="pl-k">=</span> model(x)</td>
+      </tr>
+      <tr>
+        <td id="file-torch101_train_step-py-L8" class="blob-num js-line-number" data-line-number="8"></td>
+        <td id="file-torch101_train_step-py-LC8" class="blob-code blob-code-inner js-file-line">        <span class="pl-c"><span class="pl-c">#</span> Computes loss</span></td>
+      </tr>
+      <tr>
+        <td id="file-torch101_train_step-py-L9" class="blob-num js-line-number" data-line-number="9"></td>
+        <td id="file-torch101_train_step-py-LC9" class="blob-code blob-code-inner js-file-line">        loss <span class="pl-k">=</span> loss_fn(y, yhat)</td>
+      </tr>
+      <tr>
+        <td id="file-torch101_train_step-py-L10" class="blob-num js-line-number" data-line-number="10"></td>
+        <td id="file-torch101_train_step-py-LC10" class="blob-code blob-code-inner js-file-line">        <span class="pl-c"><span class="pl-c">#</span> Computes gradients</span></td>
+      </tr>
+      <tr>
+        <td id="file-torch101_train_step-py-L11" class="blob-num js-line-number" data-line-number="11"></td>
+        <td id="file-torch101_train_step-py-LC11" class="blob-code blob-code-inner js-file-line">        loss.backward()</td>
+      </tr>
+      <tr>
+        <td id="file-torch101_train_step-py-L12" class="blob-num js-line-number" data-line-number="12"></td>
+        <td id="file-torch101_train_step-py-LC12" class="blob-code blob-code-inner js-file-line">        <span class="pl-c"><span class="pl-c">#</span> Updates parameters and zeroes gradients</span></td>
+      </tr>
+      <tr>
+        <td id="file-torch101_train_step-py-L13" class="blob-num js-line-number" data-line-number="13"></td>
+        <td id="file-torch101_train_step-py-LC13" class="blob-code blob-code-inner js-file-line">        optimizer.step()</td>
+      </tr>
+      <tr>
+        <td id="file-torch101_train_step-py-L14" class="blob-num js-line-number" data-line-number="14"></td>
+        <td id="file-torch101_train_step-py-LC14" class="blob-code blob-code-inner js-file-line">        optimizer.zero_grad()</td>
+      </tr>
+      <tr>
+        <td id="file-torch101_train_step-py-L15" class="blob-num js-line-number" data-line-number="15"></td>
+        <td id="file-torch101_train_step-py-LC15" class="blob-code blob-code-inner js-file-line">        <span class="pl-c"><span class="pl-c">#</span> Returns the loss</span></td>
+      </tr>
+      <tr>
+        <td id="file-torch101_train_step-py-L16" class="blob-num js-line-number" data-line-number="16"></td>
+        <td id="file-torch101_train_step-py-LC16" class="blob-code blob-code-inner js-file-line">        <span class="pl-k">return</span> loss.item()</td>
+      </tr>
+      <tr>
+        <td id="file-torch101_train_step-py-L17" class="blob-num js-line-number" data-line-number="17"></td>
+        <td id="file-torch101_train_step-py-LC17" class="blob-code blob-code-inner js-file-line">    </td>
+      </tr>
+      <tr>
+        <td id="file-torch101_train_step-py-L18" class="blob-num js-line-number" data-line-number="18"></td>
+        <td id="file-torch101_train_step-py-LC18" class="blob-code blob-code-inner js-file-line">    <span class="pl-c"><span class="pl-c">#</span> Returns the function that will be called inside the train loop</span></td>
+      </tr>
+      <tr>
+        <td id="file-torch101_train_step-py-L19" class="blob-num js-line-number" data-line-number="19"></td>
+        <td id="file-torch101_train_step-py-LC19" class="blob-code blob-code-inner js-file-line">    <span class="pl-k">return</span> train_step</td>
+      </tr>
+      <tr>
+        <td id="file-torch101_train_step-py-L20" class="blob-num js-line-number" data-line-number="20"></td>
+        <td id="file-torch101_train_step-py-LC20" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="file-torch101_train_step-py-L21" class="blob-num js-line-number" data-line-number="21"></td>
+        <td id="file-torch101_train_step-py-LC21" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span> Creates the train_step function for our model, loss function and optimizer</span></td>
+      </tr>
+      <tr>
+        <td id="file-torch101_train_step-py-L22" class="blob-num js-line-number" data-line-number="22"></td>
+        <td id="file-torch101_train_step-py-LC22" class="blob-code blob-code-inner js-file-line">train_step <span class="pl-k">=</span> make_train_step(model, loss_fn, optimizer)</td>
+      </tr>
+      <tr>
+        <td id="file-torch101_train_step-py-L23" class="blob-num js-line-number" data-line-number="23"></td>
+        <td id="file-torch101_train_step-py-LC23" class="blob-code blob-code-inner js-file-line">losses <span class="pl-k">=</span> []</td>
+      </tr>
+      <tr>
+        <td id="file-torch101_train_step-py-L24" class="blob-num js-line-number" data-line-number="24"></td>
+        <td id="file-torch101_train_step-py-LC24" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="file-torch101_train_step-py-L25" class="blob-num js-line-number" data-line-number="25"></td>
+        <td id="file-torch101_train_step-py-LC25" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span> For each epoch...</span></td>
+      </tr>
+      <tr>
+        <td id="file-torch101_train_step-py-L26" class="blob-num js-line-number" data-line-number="26"></td>
+        <td id="file-torch101_train_step-py-LC26" class="blob-code blob-code-inner js-file-line"><span class="pl-k">for</span> epoch <span class="pl-k">in</span> <span class="pl-c1">range</span>(n_epochs):</td>
+      </tr>
+      <tr>
+        <td id="file-torch101_train_step-py-L27" class="blob-num js-line-number" data-line-number="27"></td>
+        <td id="file-torch101_train_step-py-LC27" class="blob-code blob-code-inner js-file-line">    <span class="pl-c"><span class="pl-c">#</span> Performs one train step and returns the corresponding loss</span></td>
+      </tr>
+      <tr>
+        <td id="file-torch101_train_step-py-L28" class="blob-num js-line-number" data-line-number="28"></td>
+        <td id="file-torch101_train_step-py-LC28" class="blob-code blob-code-inner js-file-line">    loss <span class="pl-k">=</span> train_step(x_train_tensor, y_train_tensor)</td>
+      </tr>
+      <tr>
+        <td id="file-torch101_train_step-py-L29" class="blob-num js-line-number" data-line-number="29"></td>
+        <td id="file-torch101_train_step-py-LC29" class="blob-code blob-code-inner js-file-line">    losses.append(loss)</td>
+      </tr>
+      <tr>
+        <td id="file-torch101_train_step-py-L30" class="blob-num js-line-number" data-line-number="30"></td>
+        <td id="file-torch101_train_step-py-LC30" class="blob-code blob-code-inner js-file-line">    </td>
+      </tr>
+      <tr>
+        <td id="file-torch101_train_step-py-L31" class="blob-num js-line-number" data-line-number="31"></td>
+        <td id="file-torch101_train_step-py-LC31" class="blob-code blob-code-inner js-file-line"><span class="pl-c"><span class="pl-c">#</span> Checks model's parameters</span></td>
+      </tr>
+      <tr>
+        <td id="file-torch101_train_step-py-L32" class="blob-num js-line-number" data-line-number="32"></td>
+        <td id="file-torch101_train_step-py-LC32" class="blob-code blob-code-inner js-file-line"><span class="pl-c1">print</span>(model.state_dict())</td>
+      </tr>
+</tbody></table>
+
+
+  </div>
+
+  </div>
+</div>
+
+      </div>
+      <div class="gist-meta">
+        <a href="https://gist.github.com/dvgodoy/69b703868a862fdf4fc9d05dccad5476/raw/c6102e7cddd8f1d4008335b09fdd32f1b47c0f1b/torch101_train_step.py" style="float:right">view raw</a>
+        <a href="https://gist.github.com/dvgodoy/69b703868a862fdf4fc9d05dccad5476#file-torch101_train_step-py">torch101_train_step.py</a>
+        hosted with ❤ by <a href="https://github.com/">GitHub</a>
+      </div>
+    </div>
+</div>
+<script>var height = -1; var delayMs = 200;function notifyResize(height) {height = height ? height : document.documentElement.offsetHeight; var resized = false; if (window.donkey && donkey.resize) {donkey.resize(height); resized = true;}if (parent && parent._resizeIframe) {var obj = {iframe: window.frameElement, height: height}; parent._resizeIframe(obj); resized = true;}if (window.location && window.location.hash === "#amp=1" && window.parent && window.parent.postMessage) {window.parent.postMessage({sentinel: "amp", type: "embed-size", height: height}, "*");}if (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.resize) {window.webkit.messageHandlers.resize.postMessage(height); resized = true;}return resized;}function maybeResize() {if (document.documentElement.offsetHeight != height && notifyResize()) {height = document.documentElement.offsetHeight;}delayMs = Math.min(delayMs * 2, 1000000); setTimeout(maybeResize, delayMs);}maybeResize();</script></body></html>
