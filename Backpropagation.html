@@ -1,0 +1,123 @@
+
+<!-- saved from url=(0056)http://home.agh.edu.pl/~vlsi/AI/backp_t_en/backprop.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-2">
+  <title>Backpropagation</title>
+  <link href="./Backpropagation_files/style.css" type="text/css" rel="StyleSheet">
+  
+</head>
+
+<body bgcolor="#FFFFFF" leftmargin="30" topmargin="20" marginwidth="10" marginheight="20">
+  <h2 align="center">Principles of training multi-layer neural network using backpropagation</h2>
+  <hr width="15%">
+
+<table border="0" cellspacing="0" cellpadding="0" width="90%" align="center">
+  <tbody><tr>
+    <td>
+      <br>
+      <p style="text-align: justify;">
+     The project describes teaching process of multi-layer neural network employing <i>backpropagation</i> algorithm. To illustrate this 
+process the three layer neural network with two inputs and one output,which is shown in the picture below, is used:
+<br><br>
+</p><div class="img"><center><img src="./Backpropagation_files/img01.gif"></center></div><br><br>
+Each neuron is composed of two units. First unit adds products of weights coefficients and input signals. The second unit realise nonlinear
+ function, called neuron activation function. Signal <i>e</i> is adder output signal, and <i>y = f(e)</i> is output signal of nonlinear 
+element. Signal <i>y</i> is also output signal of neuron.
+<br><br>
+<div class="img"><center><img src="./Backpropagation_files/img01b.gif"></center></div><br><br>
+To teach the neural network we need training data set. The training data set consists of input signals (<i>x<sub>1</sub></i> and 
+<i>x<sub>2</sub></i> ) assigned with corresponding target (desired output) <i>z</i>. The network training is an iterative process. In each 
+iteration weights coefficients of nodes are modified using new data from training data set. Modification is calculated using algorithm 
+described below:
+Each teaching step starts with forcing both input signals from training set. After this stage we can determine output signals values for 
+each neuron in each network layer. Pictures below illustrate how signal is propagating through the network, Symbols <i>w<sub>(xm)n</sub></i>
+ represent weights of connections between network input <i>x<sub>m</sub></i> and neuron <i>n</i> in input layer. Symbols <i>y<sub>n</sub></i>
+ represents output signal of neuron <i>n</i>.
+<br><br>
+<div class="img"><center><img src="./Backpropagation_files/img02.gif"></center></div><br><br>
+<div class="img"><center><img src="./Backpropagation_files/img03.gif"></center></div><br><br>
+<div class="img"><center><img src="./Backpropagation_files/img04.gif"></center></div><br><br>
+Propagation of signals through the hidden layer. Symbols <i>w<sub>mn</sub></i> represent weights of connections between output of neuron
+ <i>m</i> and input of neuron <i>n</i> in the next layer.
+<br><br>
+<div class="img"><center><img src="./Backpropagation_files/img05.gif"></center></div><br><br>
+<div class="img"><center><img src="./Backpropagation_files/img06.gif"></center></div><br><br>
+Propagation of signals through the output layer.
+<br><br>
+<div class="img"><center><img src="./Backpropagation_files/img07.gif"></center></div><br><br>
+In the next algorithm step the output signal of the network <i>y</i> is compared with the desired output value (the target), which is found
+ in training data set. The difference is called error signal <font face="symbol"><span style="font-family: Symbol"><i>d</i></span></font> of
+ output layer neuron. 
+<br><br>
+<div class="img"><center><img src="./Backpropagation_files/img08.gif"></center></div><br><br>
+It is impossible to compute error signal for internal neurons directly, because output values of these neurons are unknown. For many years 
+the effective method for training  multiplayer networks has been unknown. Only in the middle eighties the backpropagation algorithm has been
+ worked out. The idea is to propagate error signal <font face="symbol"><span style="font-family: Symbol"><i>d</i></span></font> (computed in 
+single teaching step) back to all neurons, which output signals were input for discussed neuron.
+<br><br>
+<div class="img"><center><img src="./Backpropagation_files/img09.gif"></center></div><br><br>
+<div class="img"><center><img src="./Backpropagation_files/img10.gif"></center></div><br><br>
+The weights' coefficients <i>w<sub>mn</sub></i> used to propagate errors back are equal to this used during computing output value. Only the 
+direction of data flow is changed (signals are propagated from output to inputs one after the other). This technique is used for all network
+ layers. If propagated errors came from few neurons they are added. The illustration is below:
+<br><br>
+<div class="img"><center><img src="./Backpropagation_files/img11.gif"></center></div><br><br>
+<div class="img"><center><img src="./Backpropagation_files/img12.gif"></center></div><br><br>
+<div class="img"><center><img src="./Backpropagation_files/img13.gif"></center></div><br><br>
+When the error signal for each neuron is computed, the weights coefficients of each neuron input node may be modified. In formulas below 
+<i>df(e)/de</i> represents derivative of neuron activation function (which weights are modified).
+<br><br>
+<div class="img"><center><img src="./Backpropagation_files/img14.gif"></center></div><br><br>
+<div class="img"><center><img src="./Backpropagation_files/img15.gif"></center></div><br><br>
+<div class="img"><center><img src="./Backpropagation_files/img16.gif"></center></div><br><br>
+<div class="img"><center><img src="./Backpropagation_files/img17.gif"></center></div><br><br>
+<div class="img"><center><img src="./Backpropagation_files/img18.gif"></center></div><br><br>
+<div class="img"><center><img src="./Backpropagation_files/img19.gif"></center></div><br><br>
+
+
+Coefficient <font face="symbol"><span style="font-family: Symbol"><i>h</i></span></font> affects network teaching speed. There are a few
+ techniques to select this parameter. The first method is to start teaching process with large value of the parameter. While weights 
+coefficients are being established the parameter is being decreased gradually. The second, more complicated, method starts teaching with 
+small parameter value. During the teaching process the parameter is being increased when the teaching is advanced and then decreased again in 
+the final stage. Starting teaching process with low parameter value enables to determine weights coefficients signs.
+
+<br><br>
+<small> <b>References</b><br>
+      Ryszard Tadeusiewcz "Sieci neuronowe", Kraków 1992<br>
+</small>
+      <br>
+
+    </td>
+    <td width="30">
+    </td>
+    <td bgcolor="#000000" width="1">
+    </td></tr>
+<tr>
+    <td bgcolor="#000000" height="1" colspan="3">
+    </td>
+  </tr>
+  <tr>
+    <td align="right" colspan="3">
+      <small>
+     <div class="fullname"><a href="mailto:bernacek@o2.pl">Mariusz Bernacki</a></div>
+     <div class="fullname"><a href="mailto:pwl16@o2.pl">Przemysław Włodarczyk</a></div>
+      mgr inż. Adam Gołda (2005)<br>
+      Katedra Elektroniki AGH
+      </small>
+    </td>
+  </tr>
+<tr>
+<td align="right" colspan="3">
+<p>
+
+  <span style="FONT-SIZE:XX-SMALL;">Last modified: 06.09.2004</span>
+  <span style="FONT-SIZE:XX-SMALL;">
+    <br><a href="mailto:golda@agh.edu.pl">Webmaster</a>
+  </span>
+</p>
+</td>
+</tr>
+
+</tbody></table>
+
+
+</body></html>
