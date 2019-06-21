@@ -1,6 +1,4 @@
-# 机器学习简介
-
-> 上海交通大学国际与公共事务学院第五届“暑期社会科学方法论培训班”机器学习部分课程安排
+# Machine Learning for Social Scientist
 
 王成军
 
@@ -56,4 +54,5 @@ https://github.com/computational-class/machine-learning
 
 - 南京大学《大数据挖掘与分析》课程  https://github.com/computational-class/bigdata
 - 用Python玩转数据_中国大学MOOC(慕课) http://www.icourse163.org/course/nju-1001571005
-- Advanced Machine Learning with scikit-learn, Andreas Müller http://bit.ly/advanced_machine_learning_scikit-learn & https://github.com/computational-class/PythonMachineLearning & **https://www.bilibili.com
+- Advanced Machine Learning with scikit-learn, Andreas Müller http://bit.ly/advanced_machine_learning_scikit-learn & https://github.com/computational-class/PythonMachineLearning 
+
