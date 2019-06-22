@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<!-- saved from url=(0077)http://jalammar.github.io/gentle-visual-intro-to-data-analysis-python-pandas/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>A Gentle Visual Intro to Data Analysis in Python Using Pandas – Jay Alammar – Visualizing machine learning one concept at a time</title>
+
+        
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+    
+    <meta name="description" content="Discussions:
+Hacker News (195 points, 51 comments), Reddit r/Python (140 points, 18 comments)
+
+
+If you’re planning to learn data analysis, machine learning, or data science tools in python, you’re most likely going to be using the wonderful pandas library. Pandas is an open source library for data manipulation and analysis in python.
+
+Loading Data
+One of the easiest ways to think about that, is that you can load tables (and excel files) and then slice and dice them in multiple ways:
+
+
+
+">
+    <meta property="og:description" content="Discussions:
+Hacker News (195 points, 51 comments), Reddit r/Python (140 points, 18 comments)
+
+
+If you’re planning to learn data analysis, machine learning, or data science tools in python, you’re most likely going to be using the wonderful pandas library. Pandas is an open source library for data manipulation and analysis in python.
+
+Loading Data
+One of the easiest ways to think about that, is that you can load tables (and excel files) and then slice and dice them in multiple ways:
+
+
+
+">
+    
+    <meta name="author" content="Jay Alammar">
+
+    
+    <meta property="og:title" content="A Gentle Visual Intro to Data Analysis in Python Using Pandas">
+    <meta property="twitter:title" content="A Gentle Visual Intro to Data Analysis in Python Using Pandas">
+    
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <script async="" src="./A Gentle Visual Intro to Data Analysis in Python Using Pandas – Jay Alammar – Visualizing machine learning one concept at a time_files/analytics.js"></script><script src="./A Gentle Visual Intro to Data Analysis in Python Using Pandas – Jay Alammar – Visualizing machine learning one concept at a time_files/jquery-3.1.1.slim.min.js"></script>
+    <script type="text/javascript" src="./A Gentle Visual Intro to Data Analysis in Python Using Pandas – Jay Alammar – Visualizing machine learning one concept at a time_files/d3.min.js"></script>
+    <script type="text/javascript" src="./A Gentle Visual Intro to Data Analysis in Python Using Pandas – Jay Alammar – Visualizing machine learning one concept at a time_files/d3-selection-multi.v0.4.min.js"></script>
+    <script type="text/javascript" src="./A Gentle Visual Intro to Data Analysis in Python Using Pandas – Jay Alammar – Visualizing machine learning one concept at a time_files/d3-jetpack.js"></script>
+
+    <link rel="stylesheet" href="./A Gentle Visual Intro to Data Analysis in Python Using Pandas – Jay Alammar – Visualizing machine learning one concept at a time_files/bootstrap.min.css">
+    <link rel="stylesheet" href="./A Gentle Visual Intro to Data Analysis in Python Using Pandas – Jay Alammar – Visualizing machine learning one concept at a time_files/bootstrap-theme.min.css">
+    <script src="./A Gentle Visual Intro to Data Analysis in Python Using Pandas – Jay Alammar – Visualizing machine learning one concept at a time_files/bootstrap.min.js"> </script>
+
+    <link rel="stylesheet" type="text/css" href="./A Gentle Visual Intro to Data Analysis in Python Using Pandas – Jay Alammar – Visualizing machine learning one concept at a time_files/gifplayer.css">
+    <script type="text/javascript" src="./A Gentle Visual Intro to Data Analysis in Python Using Pandas – Jay Alammar – Visualizing machine learning one concept at a time_files/jquery.gifplayer.js"></script>
+
+    <!--
+    <script data-main="scripts/main" src="scripts/require.js"></script>
+    -->
+    <link rel="stylesheet" href="./A Gentle Visual Intro to Data Analysis in Python Using Pandas – Jay Alammar – Visualizing machine learning one concept at a time_files/katex.min.css" integrity="sha384-wE+lCONuEo/QSfLb4AfrSk7HjWJtc4Xc1OiB2/aDBzHzjnlBP4SX7vjErTcwlA8C" crossorigin="anonymous">
+    <script src="./A Gentle Visual Intro to Data Analysis in Python Using Pandas – Jay Alammar – Visualizing machine learning one concept at a time_files/katex.min.js" integrity="sha384-tdtuPw3yx/rnUGmnLNWXtfjb9fpmwexsd+lr6HUYnUY4B7JhB5Ty7a1mYd+kto/s" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" type="text/css" href="./A Gentle Visual Intro to Data Analysis in Python Using Pandas – Jay Alammar – Visualizing machine learning one concept at a time_files/style.css">
+    <link rel="alternate" type="application/rss+xml" title="Jay Alammar - Visualizing machine learning one concept at a time" href="http://jalammar.github.io/feed.xml">
+
+    <meta name="viewport" content="width=device-width">
+    <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
+
+    <!-- Piwik -->
+    <!-- Piwik
+    <script type="text/javascript">
+        var _paq = _paq || [];
+        _paq.push(["setDomains", ["*.example.org"]]);
+        _paq.push(['trackPageView']);
+        _paq.push(['enableLinkTracking']);
+        (function() {
+            var u="https://a.jalammar.com/";
+            _paq.push(['setTrackerUrl', u+'piwik.php']);
+            _paq.push(['setSiteId', '1']);
+            var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+            g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+        })();
+    </script>
+    <noscript><p><img src="https://a.jalammar.com/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>-->
+    <!-- End Piwik Code -->
+
+    <!-- End Piwik Code -->
+  <style type="text/css">#mc_embed_signup input.mce_inline_error { border-color:#6B0505; } #mc_embed_signup div.mce_inline_error { margin: 0 0 1em 0; padding: 5px 10px; background-color:#6B0505; font-weight: bold; z-index: 1; color:#fff; }</style></head>
+
+  <body style="zoom: 1;">
+    <div class="wrapper-masthead">
+      <div class="container">
+        <header class="masthead clearfix">
+          <a href="http://jalammar.github.io/" class="site-avatar"><img src="./A Gentle Visual Intro to Data Analysis in Python Using Pandas – Jay Alammar – Visualizing machine learning one concept at a time_files/1007956"></a>
+
+          <div class="site-info">
+            <h1 class="site-name"><a href="http://jalammar.github.io/">Jay Alammar</a></h1>
+            <p class="site-description">Visualizing machine learning one concept at a time</p>
+          </div>
+
+          <nav>
+            <a href="http://jalammar.github.io/">Blog</a>
+            <a href="http://jalammar.github.io/about">About</a>
+          </nav>
+        </header>
+      </div>
+    </div>
+
+    <div id="main" role="main" class="container">
+      <article class="post">
+  <h1>A Gentle Visual Intro to Data Analysis in Python Using Pandas</h1>
+
+  <div class="entry prediction">
+    <p><span class="discussion">Discussions:
+<a href="https://news.ycombinator.com/item?id=18351685" class="hn-link">Hacker News (195 points, 51 comments)</a>, <a href="https://www.reddit.com/r/Python/comments/9scznd/a_gentle_visual_intro_to_data_analysis_in_python/" class="">Reddit r/Python (140 points, 18 comments)</a>
+</span></p>
+
+<p>If you’re planning to learn data analysis, machine learning, or data science tools in python, you’re most likely going to be using the wonderful <a href="https://pandas.pydata.org/">pandas</a> library. Pandas is an open source library for data manipulation and analysis in python.</p>
+
+<h2 id="loading-data">Loading Data</h2>
+<p>One of the easiest ways to think about that, is that you can load tables (and excel files) and then slice and dice them in multiple ways:</p>
+
+<p><img src="./A Gentle Visual Intro to Data Analysis in Python Using Pandas – Jay Alammar – Visualizing machine learning one concept at a time_files/0 excel-to-pandas.png"></p>
+
+<!--more-->
+
+<p>Pandas allows us to load a spreadsheet and manipulate it programmatically in python. The central concept in pandas is the type of object called a <em>DataFrame</em> – basically a table of values which has a label for each row and column. Let’s load this basic CSV file containing data from a music streaming service:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>df = pandas.read_csv('music.csv')
+</code></pre></div></div>
+
+<p>Now the variable <code class="highlighter-rouge">df</code> is a pandas DataFrame:</p>
+
+<p><img src="./A Gentle Visual Intro to Data Analysis in Python Using Pandas – Jay Alammar – Visualizing machine learning one concept at a time_files/1 view_pandas_dataframe.png"></p>
+
+<h2 id="selection">Selection</h2>
+<p>We can select any column using its label:</p>
+
+<p><img src="./A Gentle Visual Intro to Data Analysis in Python Using Pandas – Jay Alammar – Visualizing machine learning one concept at a time_files/2 select-column.png"></p>
+
+<p>We can select one or multiple rows using their numbers:</p>
+
+<p><img src="./A Gentle Visual Intro to Data Analysis in Python Using Pandas – Jay Alammar – Visualizing machine learning one concept at a time_files/3 select-rows.png"></p>
+
+<p>We can select any slice of the table using a both column label and row numbers using <code class="highlighter-rouge">loc</code> (but here it would be inclusive of both bounding row numbers):</p>
+
+<p><img src="./A Gentle Visual Intro to Data Analysis in Python Using Pandas – Jay Alammar – Visualizing machine learning one concept at a time_files/4 select_column-and-rows.png"></p>
+
+<h2 id="filtering">Filtering</h2>
+
+<p>Now it gets more interesting. We can easily filter rows using the values of a specific row. For example, here are our jazz musicians:</p>
+
+<p><img src="./A Gentle Visual Intro to Data Analysis in Python Using Pandas – Jay Alammar – Visualizing machine learning one concept at a time_files/pandas-filter-1.png"></p>
+
+<p>Here are the artists who have more than 1,800,000 listeners:</p>
+
+<p><img src="./A Gentle Visual Intro to Data Analysis in Python Using Pandas – Jay Alammar – Visualizing machine learning one concept at a time_files/5 filter.png"></p>
+
+<h2 id="dealing-with-missing-values">Dealing with Missing Values</h2>
+
+<p>Many datasets you’ll deal with in your data science journey will have missing values. Let’s say our data frame has a missing value:</p>
+
+<p><img src="./A Gentle Visual Intro to Data Analysis in Python Using Pandas – Jay Alammar – Visualizing machine learning one concept at a time_files/6 set missing value.png"></p>
+
+<p>Pandas provides multiple ways to deal with this. The easiest is to just drop rows with missing values:</p>
+
+<p><img src="./A Gentle Visual Intro to Data Analysis in Python Using Pandas – Jay Alammar – Visualizing machine learning one concept at a time_files/7 filter missing values.png"></p>
+
+<p>Another way would be to fill-in the missing value using <a href="https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.fillna.html"><code class="highlighter-rouge">fillna()</code></a> (with 0, for example).</p>
+
+<h2 id="grouping">Grouping</h2>
+
+<p>Things start to get really interesting when you start grouping rows with certain criteria and aggregating their data. For example, let’s group our dataset by genre and see how many listeners and plays each genre has:</p>
+
+<p><img src="./A Gentle Visual Intro to Data Analysis in Python Using Pandas – Jay Alammar – Visualizing machine learning one concept at a time_files/8 group-by.png"></p>
+
+<p>Pandas grouped the the two “Jazz” rows into one, and since we used <code class="highlighter-rouge">sum()</code> for aggregation, it added together the listeners and plays for the two Jazz artists and shows the sums in the combined Jazz column.</p>
+
+<p>This is not only nifty, but is an extremely powerful data analysis method. Now that you know <code class="highlighter-rouge">groupby()</code>, you wield immense power to fold datasets and uncover insights from them. Aggregation is the first <a href="https://www.amazon.com/Seven-Pillars-Statistical-Wisdom/dp/0674088913">pillar of statistical wisdom</a>, and so is one of the foundational tools of statistics.</p>
+
+<p>In addition to <code class="highlighter-rouge">sum()</code>, pandas provides multiple aggregation functions including <code class="highlighter-rouge">mean()</code> to compute the average value, <code class="highlighter-rouge">min()</code>, <code class="highlighter-rouge">max()</code>, and multiple other functions. More on <code class="highlighter-rouge">groupyby()</code> in the <a href="https://pandas.pydata.org/pandas-docs/stable/groupby.html">Group By User Guide</a>.</p>
+
+<p>If you use <code class="highlighter-rouge">groupby()</code> to its full potential, and use nothing else in pandas, then you’d be putting pandas to great use. But the library can still offer you much, much more.</p>
+
+<h2 id="creating-new-columns-from-existing-columns">Creating New Columns from Existing Columns</h2>
+
+<p>Often in the data analysis process, we find ourselves needing to create new columns from existing ones. Pandas makes this a breeze.</p>
+
+<p><img src="./A Gentle Visual Intro to Data Analysis in Python Using Pandas – Jay Alammar – Visualizing machine learning one concept at a time_files/9 create-new-column.png"></p>
+
+<p>By telling Pandas to divide a column by another column, it realizes that we want to do is divide the individual values respectively (i.e. each row’s “Plays” value by that row’s “Listeners” value).</p>
+
+<h2 id="get-hands-on">Get Hands On!</h2>
+<p>You can get started playing with Pandas in your browser right now through this basic <a href="https://colab.research.google.com/github/jalammar/pandas-intro/blob/master/Pandas_Intro.ipynb">notebook hosted in Google Colab</a>. The notebook is also <a href="https://github.com/jalammar/pandas-intro/blob/master/Pandas_Intro.ipynb">available on Github</a> if you have your local environment set up.</p>
+
+<h2 id="learn-more-pandas">Learn More Pandas</h2>
+<p>Want to learn more? Be sure to check out the <a href="https://pandas.pydata.org/pandas-docs/stable/10min.html">10 Minutes to pandas</a> tutorial in the official Pandas docs. Thanks to <a href="https://twitter.com/datapythonista">Marc Garcia</a> for initiating the thoughts for these visualizations and continuing to improve the pandas documentation.</p>
+
+<h2 id="your-feedback-is-appreciated">Your feedback is appreciated!</h2>
+<p>Did you find this tutorial helpful? Any suggestions for improvement? Please let me know (<a href="https://twitter.com/jalammar">@jalammar</a>) know on Twitter. Thanks!</p>
+
+  </div>
+
+  <div class="date">
+    Written on October 29, 2018
+  </div>
+
+  
+</article>
+
+    </div>
+
+
+
+    <!-- Begin Mailchimp Signup Form -->
+    <link href="./A Gentle Visual Intro to Data Analysis in Python Using Pandas – Jay Alammar – Visualizing machine learning one concept at a time_files/classic-10_7.css" rel="stylesheet" type="text/css">
+    <style type="text/css">
+    	#mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; }
+    	/* Add your own Mailchimp form style overrides in your site stylesheet or in this style block.
+    	   We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
+    </style>
+    <div id="mc_embed_signup">
+    <form action="https://github.us19.list-manage.com/subscribe/post?u=2a4ade7dafcdbbf2eb4aae3cf&amp;id=f1f8c03f13" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate="novalidate">
+        <div id="mc_embed_signup_scroll">
+    	<h2>Subscribe to get notified about upcoming posts by email</h2>
+    <div class="mc-field-group">
+    	<label for="mce-EMAIL">Email Address </label>
+    	<input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" aria-required="true">
+    </div>
+    	<div id="mce-responses" class="clear">
+    		<div class="response" id="mce-error-response" style="display:none"></div>
+    		<div class="response" id="mce-success-response" style="display:none"></div>
+    	</div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+        <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_2a4ade7dafcdbbf2eb4aae3cf_f1f8c03f13" tabindex="-1" value=""></div>
+        <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+        </div>
+    </form>
+    </div>
+    <script type="text/javascript" src="./A Gentle Visual Intro to Data Analysis in Python Using Pandas – Jay Alammar – Visualizing machine learning one concept at a time_files/mc-validate.js"></script><script type="text/javascript">(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[3]='ADDRESS';ftypes[3]='address';fnames[4]='PHONE';ftypes[4]='phone';fnames[5]='BIRTHDAY';ftypes[5]='birthday';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
+    <!--End mc_embed_signup-->
+
+<div style="padding: 10px 0 10px 3%; color: #555; font-size:85%">
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="./A Gentle Visual Intro to Data Analysis in Python Using Pandas – Jay Alammar – Visualizing machine learning one concept at a time_files/88x31.png"></a><br>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
+
+<br>
+Attribution example:
+<br>
+<i>Alammar, Jay (2018). The Illustrated Transformer [Blog post]. Retrieved from <a href="https://jalammar.github.io/illustrated-transformer/">https://jalammar.github.io/illustrated-transformer/</a></i>
+
+<br><br>
+Note: If you translate any of the posts, let me know so I can link your translation to the original post. My email is in the <a href="http://jalammar.github.io/about">about page</a>.
+</div>
+
+
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+          
+
+
+
+<a href="https://github.com/jalammar"><i class="svg-icon github"></i></a>
+
+<a href="https://www.linkedin.com/in/jalammar"><i class="svg-icon linkedin"></i></a>
+
+
+<a href="https://www.twitter.com/jalammar"><i class="svg-icon twitter"></i></a>
+
+
+
+        </footer>
+      </div>
+    </div>
+
+    
+	<!-- Google Analytics -->
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		ga('create', 'UA-71956058-1', 'auto');
+		ga('send', 'pageview', {
+		  'page': '/gentle-visual-intro-to-data-analysis-python-pandas/',
+		  'title': 'A Gentle Visual Intro to Data Analysis in Python Using Pandas'
+		});
+	</script>
+	<!-- End Google Analytics -->
+
+
+  
+
+</body></html>
