@@ -1,0 +1,492 @@
+@charset "UTF-8";
+body {
+  margin: 0; }
+
+#db-global-nav {
+  font: 12px Helvetica,Arial,sans-serif;
+  line-height: 1.62;
+  font-size: 12px; }
+  #db-global-nav em {
+    font-style: normal;
+    font-weight: normal; }
+  #db-global-nav ul {
+    margin: 0;
+    padding: 0; }
+  #db-global-nav table, #db-global-nav td, #db-global-nav th {
+    font-size: 12px; }
+  #db-global-nav a {
+    cursor: pointer;
+    text-decoration: none; }
+  #db-global-nav .bn-more span {
+    display: inline-block;
+    *display: inline;
+    zoom: 1;
+    vertical-align: baseline; }
+  #db-global-nav .arrow {
+    position: relative;
+    top: -2px;
+    left: 2px;
+    border-width: 3px 3px 0;
+    border-color: #d5d5d5 transparent transparent transparent;
+    border-style: solid dashed dashed dashed;
+    width: 0;
+    height: 0;
+    font-size: 0;
+    line-height: 0; }
+  #db-global-nav a:hover .arrow {
+    *top: 0;
+    border-color: #fff transparent transparent transparent; }
+  #db-global-nav .more-active {
+    position: relative;
+    z-index: 10; }
+    #db-global-nav .more-active a:link, #db-global-nav .more-active a:visited {
+      color: #369; }
+    #db-global-nav .more-active .arrow {
+      border-color: #fff transparent transparent transparent; }
+    #db-global-nav .more-active .bn-more span {
+      color: #fff; }
+    #db-global-nav .more-active .more-items {
+      display: block;
+      padding: 10px 0;
+      _width: 0;
+      border: 1px solid #e6e6e6;
+      background: #fff;
+      white-space: nowrap;
+      top: 28px; }
+      #db-global-nav .more-active .more-items table, #db-global-nav .more-active .more-items td {
+        width: 100%;
+        white-space: nowrap;
+        border-collapse: collapse; }
+      #db-global-nav .more-active .more-items li {
+        display: block; }
+      #db-global-nav .more-active .more-items a {
+        display: block;
+        padding: 0 20px;
+        line-height: 28px; }
+        #db-global-nav .more-active .more-items a:link, #db-global-nav .more-active .more-items a:visited {
+          color: #3d3d3d; }
+        #db-global-nav .more-active .more-items a:hover {
+          color: #3d3d3d;
+          background-color: #f6f6f6; }
+  #db-global-nav .more-items {
+    display: none;
+    position: absolute;
+    left: 0; }
+
+#db-global-nav {
+  height: 28px;
+  color: #d5d5d5;
+  background-color: #545652;
+  min-width: 950px; }
+  #db-global-nav a:link, #db-global-nav a:visited, #db-global-nav a:hover, #db-global-nav a:active {
+    color: #d5d5d5; }
+  #db-global-nav a:hover, #db-global-nav a:active {
+    color: #fff;
+    background-color: transparent; }
+  #db-global-nav .global-nav-items {
+    font-size: 0; }
+    #db-global-nav .global-nav-items li {
+      display: inline-block;
+      *display: inline;
+      zoom: 1;
+      line-height: 28px;
+      font-size: 12px;
+      vertical-align: baseline; }
+    #db-global-nav .global-nav-items a {
+      display: inline-block;
+      *display: inline;
+      zoom: 1;
+      padding: 0 12px;
+      height: 28px; }
+  #db-global-nav li.market-tip {
+    padding-right: 20px; }
+    #db-global-nav li.market-tip a {
+      position: relative;
+      z-index: 1; }
+      #db-global-nav li.market-tip a img {
+        position: absolute;
+        left: 39px;
+        width: 18px;
+        height: 19px; }
+  #db-global-nav .top-nav-info {
+    float: right;
+    margin: 0 12px 0 0;
+    line-height: 28px; }
+    #db-global-nav .top-nav-info ul, #db-global-nav .top-nav-info li {
+      display: inline-block;
+      *display: inline;
+      zoom: 1; }
+    #db-global-nav .top-nav-info a {
+      display: inline-block;
+      *display: inline;
+      zoom: 1;
+      margin: 0;
+      padding: 0 12px;
+      height: 28px; }
+  #db-global-nav .nav-user-account .more-items {
+    left: auto;
+    right: 6px; }
+  #db-global-nav .more-active .lnk-remind:link, #db-global-nav .more-active .lnk-remind:visited, #db-global-nav .more-active .lnk-remind:hover, #db-global-nav .more-active .lnk-remind:active {
+    color: #fff; }
+
+.global-nav-a .bd {
+  max-width: 1600px;
+  margin: 0 auto; }
+
+.global-nav-b .bd {
+  max-width: 1440px;
+  margin: 0 auto; }
+
+#db-global-nav .top-nav-reminder {
+  position: relative;
+  float: right;
+  margin-right: 5px;
+  line-height: 28px; }
+  #db-global-nav .top-nav-reminder a {
+    position: relative; }
+  #db-global-nav .top-nav-reminder .lnk-remind {
+    display: inline-block;
+    *display: inline;
+    zoom: 1;
+    padding: 0 12px;
+    height: 28px; }
+  #db-global-nav .top-nav-reminder .num {
+    position: absolute;
+    top: 4px;
+    *top: 0;
+    left: 3em;
+    padding: 0 3px;
+    margin-left: 5px;
+    color: #fff;
+    line-height: 1.5;
+    background-color: #f7996d;
+    *margin-top: 4px; }
+    #db-global-nav .top-nav-reminder .num i {
+      position: absolute;
+      width: 0;
+      height: 0;
+      left: -9px;
+      top: 50%;
+      margin-top: -6px;
+      line-height: 0;
+      border-color: transparent #f7996d transparent transparent;
+      border-style: dashed solid dashed dashed;
+      border-width: 6px 6px 3px 5px;
+      pointer-events: none; }
+  #db-global-nav .top-nav-reminder .more-items {
+    position: absolute;
+    z-index: 999;
+    padding: 0;
+    width: 280px;
+    left: -125px;
+    top: 28px;
+    border: 1px solid #e6e6e6;
+    background: #fff;
+    white-space: normal;
+    word-wrap: break-word; }
+    #db-global-nav .top-nav-reminder .more-items a {
+      display: inline;
+      padding: 0;
+      line-height: inherit; }
+    #db-global-nav .top-nav-reminder .more-items a:link {
+      color: #369; }
+    #db-global-nav .top-nav-reminder .more-items a:visited {
+      color: #669; }
+    #db-global-nav .top-nav-reminder .more-items a:hover {
+      color: #fff;
+      background-color: #039; }
+    #db-global-nav .top-nav-reminder .more-items a:active {
+      color: #fff;
+      background-color: #f93; }
+    #db-global-nav .top-nav-reminder .more-items .bd {
+      padding-top: 16px;
+      color: #3e3e3e;
+      line-height: 1.5; }
+      #db-global-nav .top-nav-reminder .more-items .bd p {
+        padding: 0 15px 13px 15px;
+        border-bottom: 1px solid #f0f0f0; }
+    #db-global-nav .top-nav-reminder .more-items .ft a {
+      display: block;
+      width: 100%;
+      padding: 4px 0;
+      text-align: center;
+      background-color: #fafafa; }
+      #db-global-nav .top-nav-reminder .more-items .ft a:hover, #db-global-nav .top-nav-reminder .more-items .ft a:active {
+        background-color: #f5f5f5;
+        color: #369; }
+    #db-global-nav .top-nav-reminder .more-items p {
+      margin: 0;
+      color: #999; }
+    #db-global-nav .top-nav-reminder .more-items li {
+      overflow: hidden;
+      zoom: 1;
+      padding: 13px 15px;
+      border-bottom: 1px solid #f0f0f0; }
+      #db-global-nav .top-nav-reminder .more-items li .pic {
+        float: left;
+        margin-right: 8px; }
+      #db-global-nav .top-nav-reminder .more-items li .content {
+        width: auto;
+        overflow: hidden;
+        zoom: 1; }
+        #db-global-nav .top-nav-reminder .more-items li .content a {
+          line-height: 1.4; }
+      #db-global-nav .top-nav-reminder .more-items li .item-req {
+        padding: 0;
+        border: none; }
+        #db-global-nav .top-nav-reminder .more-items li .item-req .ops {
+          width: 49px;
+          float: right;
+          *display: inline;
+          position: static;
+          overflow: hidden;
+          color: #aaa; }
+          #db-global-nav .top-nav-reminder .more-items li .item-req .ops a:link, #db-global-nav .top-nav-reminder .more-items li .item-req .ops a:visited, #db-global-nav .top-nav-reminder .more-items li .item-req .ops a:hover, #db-global-nav .top-nav-reminder .more-items li .item-req .ops a:active {
+            color: #aaa; }
+          #db-global-nav .top-nav-reminder .more-items li .item-req .ops a:hover, #db-global-nav .top-nav-reminder .more-items li .item-req .ops a:active {
+            background-color: #aaa;
+            color: #fff; }
+      #db-global-nav .top-nav-reminder .more-items li .unread {
+        background-color: transparent; }
+      #db-global-nav .top-nav-reminder .more-items li .new-reply-item {
+        overflow: hidden; }
+        #db-global-nav .top-nav-reminder .more-items li .new-reply-item .content {
+          float: left;
+          width: 186px; }
+
+.top-nav-reminder.more-active {
+  color: #fff; }
+  .top-nav-reminder.more-active .num {
+    z-index: 1000; }
+  .top-nav-reminder.more-active .more-items {
+    display: block;
+    z-index: 999; }
+
+body #db-pay-tips {
+  top: 136px; }
+
+.perf-metric {
+  position: absolute;
+  margin-left: -240px; }
+
+#db-global-nav .top-nav-doubanapp {
+  position: relative;
+  float: right;
+  margin-right: 5px;
+  line-height: 28px; }
+  #db-global-nav .top-nav-doubanapp .lnk-doubanapp {
+    display: inline-block;
+    *display: inline;
+    zoom: 1;
+    padding: 0 8px;
+    height: 28px; }
+  #db-global-nav .top-nav-doubanapp .more-items {
+    padding: 10px 20px 30px;
+    left: -76px;
+    width: 211px;
+    border-top: none;
+    color: #111;
+    font-size: 15px;
+    line-height: 1.62;
+    font-weight: bold;
+    text-align: center;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizelegibility; }
+    #db-global-nav .top-nav-doubanapp .more-items .appintro-title {
+      padding-top: 170px;
+      margin-top: 0;
+      margin-bottom: 0;
+      font-size: 24px;
+      font-weight: 400;
+      background: url(//img3.doubanio.com/dae/accounts/resources/4bf727f/shire/assets/nav_doubanapp_6.png) no-repeat center; }
+      @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx), (min-resolution: 192dpi) {
+        #db-global-nav .top-nav-doubanapp .more-items .appintro-title {
+          background-image: url(//img3.doubanio.com/dae/accounts/resources/4bf727f/shire/assets/nav_doubanapp_6@2x.png);
+          background-size: 100px; } }
+      #db-global-nav .top-nav-doubanapp .more-items .appintro-title span {
+        margin-left: 10px;
+        font-weight: 100; }
+    #db-global-nav .top-nav-doubanapp .more-items .slogan {
+      margin: 0;
+      font-size: 13px;
+      letter-spacing: 3px;
+      font-weight: 400; }
+    #db-global-nav .top-nav-doubanapp .more-items .qrcode {
+      padding-top: 160px;
+      margin-top: 30px;
+      font-size: 0;
+      background: url(//img3.doubanio.com/dae/accounts/resources/4bf727f/shire/assets/nav_doubanapp_6_qrcode.png) no-repeat center; }
+      @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx), (min-resolution: 192dpi) {
+        #db-global-nav .top-nav-doubanapp .more-items .qrcode {
+          background-image: url(//img3.doubanio.com/dae/accounts/resources/4bf727f/shire/assets/nav_doubanapp_6_qrcode@2x.png);
+          background-size: 160px 160px; } }
+  #db-global-nav .top-nav-doubanapp .download {
+    margin-top: 10px; }
+    #db-global-nav .top-nav-doubanapp .download a {
+      display: inline;
+      font-weight: normal;
+      font-size: 12px;
+      background: none;
+      padding: 0; }
+      #db-global-nav .top-nav-doubanapp .download a:link, #db-global-nav .top-nav-doubanapp .download a:visited {
+        color: #37a; }
+      #db-global-nav .top-nav-doubanapp .download a:hover {
+        background: none; }
+    #db-global-nav .top-nav-doubanapp .download .download-android {
+      margin-top: 8px;
+      background-position: 0 -130px; }
+      #db-global-nav .top-nav-doubanapp .download .download-android:before {
+        content: ""; }
+
+#db-global-nav #doubanapp-tip {
+  display: none;
+  position: absolute;
+  top: 28px;
+  border: 1px solid;
+  padding: 0 30px 0 10px;
+  color: #13bc39;
+  background: #fff;
+  z-index: 10;
+  white-space: nowrap; }
+  #db-global-nav #doubanapp-tip:after {
+    display: none\9;
+    content: "";
+    position: absolute;
+    top: -5px;
+    left: 35px;
+    height: 7px;
+    width: 7px;
+    border: 1px solid #13bc39;
+    border-width: 1px 1px 0 0;
+    background: #fff;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotate(-45deg); }
+  #db-global-nav #doubanapp-tip .tip-link:link, #db-global-nav #doubanapp-tip .tip-link:visited, #db-global-nav #doubanapp-tip .tip-link:hover, #db-global-nav #doubanapp-tip .tip-link:active {
+    color: #13bc39;
+    background: #fff; }
+  #db-global-nav #doubanapp-tip .tip-close {
+    position: absolute;
+    right: 6px;
+    width: 15px;
+    height: 15px;
+    line-height: 26px;
+    text-align: center; }
+    #db-global-nav #doubanapp-tip .tip-close:hover {
+      color: #999; }
+
+#db-global-nav .top-nav-doubanapp.more-active .lnk-doubanapp:link, #db-global-nav .top-nav-doubanapp.more-active .lnk-doubanapp:visited, #db-global-nav .top-nav-doubanapp.more-active .lnk-doubanapp:hover, #db-global-nav .top-nav-doubanapp.more-active .lnk-doubanapp:active {
+  color: #fff; }
+
+#db-global-nav {
+  /* ie7 filter后面的rules失效, 应该是引号造成的所以应该加转义 */ }
+  #db-global-nav .tips-overly, #db-global-nav .tips-common {
+    position: absolute;
+    z-index: 99;
+    width: 320px;
+    top: 0;
+    left: 0;
+    background: #fff;
+    border: 1px solid #bfddb7; }
+  #db-global-nav .tips-overly .tips-bd, #db-global-nav .tips-common .tips-bd {
+    padding: 12px 15px;
+    color: #333;
+    line-height: 1.62; }
+  #db-global-nav .tips-overly h2, #db-global-nav .tips-common h2 {
+    margin-bottom: 6px;
+    font-size: 12px;
+    font-weight: 800;
+    color: #333; }
+  #db-global-nav .tips-overly p, #db-global-nav .tips-common p {
+    margin: 0 0 12px 0; }
+  #db-global-nav .tips-overly .lnk-bn, #db-global-nav .tips-common .lnk-bn {
+    display: inline-block;
+    *display: inline;
+    zoom: 1;
+    padding: 2px 8px;
+    line-height: 1.4;
+    font-size: 12px; }
+  #db-global-nav .tips-overly a.lnk-bn:link, #db-global-nav .tips-common a.lnk-bn:link,
+  #db-global-nav .tips-overly a.lnk-bn:visited,
+  #db-global-nav .tips-common a.lnk-bn:visited {
+    color: #fff;
+    background-color: #4aac66;
+    font-size: 12px; }
+  #db-global-nav .tips-overly a.lnk-bn:hover, #db-global-nav .tips-common a.lnk-bn:hover,
+  #db-global-nav .tips-overly a.lnk-bn:active,
+  #db-global-nav .tips-common a.lnk-bn:active {
+    color: #fff;
+    background-color: #4dc36f;
+    font-size: 12px; }
+  #db-global-nav .back-old {
+    padding-bottom: 5px;
+    text-align: right;
+    margin-top: -20px;
+    zoom: 1;
+    _margin-top: 0; }
+  #db-global-nav .tips-overly .tips-hd, #db-global-nav .tips-common .tips-hd {
+    position: absolute;
+    top: -6px;
+    top: -8px\9;
+    left: 8px;
+    background: #fff;
+    width: 10px;
+    height: 10px;
+    overflow: hidden;
+    line-height: 10em;
+    border-left: 1px solid #bfddb7;
+    border-top: 1px solid #bfddb7;
+    zoom: 1;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+    filter: progid:DXImageTransform.Microsoft.Matrix "M11=0.707,M12=-0.707,M21=0.707,M22=0.707,sizingMethod='auto expand'"; }
+  #db-global-nav .tips-common {
+    top: 100%;
+    z-index: 100;
+    left: 50%;
+    width: 157px;
+    margin-left: -100px;
+    margin-top: 7px;
+    background-color: #fffde9;
+    border-color: #c3c3c3; }
+    #db-global-nav .tips-common .tips-hd {
+      left: 51%;
+      margin-left: 13px;
+      background-color: #fffde9;
+      border-color: #c3c3c3; }
+    #db-global-nav .tips-common .tips-bd {
+      padding: 10px 15px 20px; }
+    #db-global-nav .tips-common .tips-content {
+      margin-bottom: 6px; }
+    #db-global-nav .tips-common .lnk-close {
+      position: absolute;
+      right: 15px;
+      bottom: 5px; }
+    #db-global-nav .tips-common a.lnk-bn:link, #db-global-nav .tips-common a.lnk-bn:visited,
+    #db-global-nav .tips-common a.lnk-bn:hover, #db-global-nav .tips-common a.lnk-bn:active {
+      display: inline;
+      padding: 0;
+      height: auto;
+      background-color: transparent;
+      color: #999; }
+    #db-global-nav .tips-common a.lnk-bn:hover, #db-global-nav .tips-common a.lnk-bn:active {
+      background: #999;
+      color: #fff; }
+  #db-global-nav .nav-user-account {
+    position: relative; }
+    #db-global-nav .nav-user-account .tips-common {
+      width: 200px;
+      margin-left: -140px; }
+      #db-global-nav .nav-user-account .tips-common a {
+        display: inline;
+        padding: 0; }
+      #db-global-nav .nav-user-account .tips-common a:link {
+        color: #37a; }
+      #db-global-nav .nav-user-account .tips-common a:hover {
+        color: #fff;
+        background-color: #37a; }

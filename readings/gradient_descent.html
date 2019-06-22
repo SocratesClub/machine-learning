@@ -1,0 +1,1694 @@
+<!DOCTYPE html>
+<!-- saved from url=(0038)https://www.douban.com/note/713353797/ -->
+<html lang="zh-cmn-Hans" class="ua-mac ua-webkit"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script src="./gradient_descent_files/get_token_with_ts" async=""></script><script src="./gradient_descent_files/num" async=""></script><script src="./gradient_descent_files/num(1)" async=""></script><style class="vjs-styles-defaults">
+      .video-js {
+        width: 300px;
+        height: 150px;
+      }
+
+      .vjs-fluid {
+        padding-top: 56.25%
+      }
+    </style>
+    
+    <meta name="renderer" content="webkit">
+    <meta name="referrer" content="always">
+    <meta name="google-site-verification" content="ok0wCgT20tBBgo9_zat2iAcimtN4Ftf5ccsh092Xeyw">
+    <title>
+    读懂梯度下降的数学原理
+</title>
+    
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="Sun, 6 Mar 2005 01:00:00 GMT">
+    
+    <link type="text/css" rel="stylesheet" href="./gradient_descent_files/setting_standalone.css"><script type="text/javascript" src="./gradient_descent_files/setting_standalone.js" async="true"></script><script type="text/javascript" src="./gradient_descent_files/editor_libs.js" async="true"></script><script type="text/javascript" defer="" async="" src="./gradient_descent_files/piwik.js"></script><script async="" src="./gradient_descent_files/gtm.js"></script><script type="text/javascript" src="./gradient_descent_files/ad.release.js" async="true"></script><script type="text/javascript" src="./gradient_descent_files/render_gif.js" async="true"></script><script>var _head_start = new Date();</script>
+    <script src="./gradient_descent_files/jquery.min.js"></script>
+    <script src="./gradient_descent_files/douban.js"></script>
+    <link href="./gradient_descent_files/douban.css" rel="stylesheet" type="text/css">
+    <style type="text/css">
+    
+        a:link { color: #259; }
+        a:visited { color: #769; }
+        a:hover { color: #fff; }
+        a:active { color: #fff; }
+        
+    .ui-tooltip {
+      width: 270px;
+    }
+    .note {
+      margin-bottom: 20px;
+    }
+    .note img {
+      max-width:590px;
+    }
+    .mod-tags {
+      margin-bottom: 20px;
+    }
+    .tabs{font-size:0;letter-spacing:-0.31em;*letter-spacing:normal;word-spacing:-0.43em}.tabs a{display:inline-block;*display:inline;zoom:1;padding:1px 8px;margin-right:5px}.tabs a:link,.tabs a:visited,.tabs a:hover,.tabs a:active{font-size:13px;line-height:1.2;letter-spacing:normal;word-spacing:normal}.tabs a:hover,.tabs a:active{-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px}.tabs a.on:link,.tabs a.on:visited,.tabs a.on:hover,.tabs a.on:active{color:#fff;background:#83bf73;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px}.tabs{margin:40px 0 10px;padding-bottom:8px;border-bottom:1px solid #e6e6e6}.tabs a:first-child{padding-left:0}.tabs a:link,.tabs a:visited,.tabs a:hover,.tabs a:active{font-size:14px;color:#37a;background:none}.tabs a.on:link,.tabs a.on:visited,.tabs a.on:hover,.tabs a.on:active{color:#000;background:none}.list,.list .content{overflow:hidden;zoom:1}.list .pic{float:left;margin-right:12px}.list p{margin:8px 0 0 0;background:#f9f9f9;padding:8px}.list .pubtime{position:absolute;top:10px;right:0;color:#999}.list .pic img{width:24px;height:24px}.list ul{margin-top:-15px}.list li{position:relative;padding-top:10px;margin-top:10px;border-top:1px dashed #e6e6e6;overflow:hidden;color:#666}.topic-fav-list .content,.collect-list .content{margin-top:4px;width:70%}.topic-fav-list .pubtime,.collect-list .pubtime{top:14px}.topic-rec-list .pubtime a:link,.topic-rec-list .pubtime a:visited,.topic-fav-list .pubtime a:link,.topic-fav-list .pubtime a:visited,.topic-donate-list .pubtime a:link,.topic-donate-list .pubtime a:visited{color:#666}.topic-rec-list .pubtime a:hover,.topic-rec-list .pubtime a:active,.topic-fav-list .pubtime a:hover,.topic-fav-list .pubtime a:active,.topic-donate-list .pubtime a:hover,.topic-donate-list .pubtime a:active{color:#fff}.topic-rec-list p{padding:0}.topic-rec-list p a{display:block;background:#f9f9f9;padding:8px}.topic-rec-list p a:link,.topic-rec-list p a:visited{color:#666}.topic-rec-list p a:hover,.topic-rec-list p a:active{background-color:#f6f6f6;color:#666}.donation-total{padding:7px 0 15px;line-height:1;border-bottom:1px dashed #e6e6e6;color:#666}.donation-total+.list ul{margin-top:-11px}
+
+    .copyright-claim.repost {
+      color: #999;
+      font-size: 13px;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      position: relative;
+    }
+    .copyright-claim.repost .rating_helper_wrap {
+      display: none;
+      position: absolute;
+      margin-top: -2px;
+    }
+    .copyright-claim.repost:hover .rating_helper_wrap {
+      display: inline-block;
+    }
+    .copyright-claim.repost .rating_helper_wrap a {
+      background: none;
+    }
+    .copyright-claim.repost .rating_helper_wrap .rating_helper_content {
+      width: 235px;
+    }
+    #link-report_note .report a {
+      font-size: 13px;
+      visibility: visible;
+    }
+    #link-report_note .report {
+      float: right;
+      white-space: normal;
+    }
+    #link-report_note {
+      overflow: hidden;
+    }
+    .via {
+      float: left;
+      font-size: 13px;
+      color: #bbb;
+    }
+    .via a {
+      color: #bbb;
+      font-size: 13px;
+    }
+    .via a:hover {
+      color: #fff;
+    }
+    #dale_personal_note_bottom_super_banner {
+      padding-top: 20px;
+    }
+    .video-player {
+        margin: 10px 0;
+        text-align: center;
+    }
+    .video-title {
+        color: #999;
+    }
+    .comment-item .comment-report { position: static !important; display: inline-block; }
+    .comment-item .op-lnks > a { margin-right: 10px; }
+    .remind p { font-size: 13px; line-height: 18px;margin: 20px auto 10px; color: #9B9B9B;}
+
+    </style>
+    
+    <link rel="stylesheet" media="only print" href="./gradient_descent_files/print.css">
+    <meta name="mobile-agent" content="format=html5; url=https://m.douban.com/note/713353797">
+
+    
+
+
+    <meta property="og:title" content="读懂梯度下降的数学原理">
+    <meta property="og:site_name" content="豆瓣">
+    <meta property="og:url" content="https://www.douban.com/note/713353797/">
+    <meta property="og:type" content="article">
+    <meta property="og:description" content="机器之心 选自towardsdatascience 作者：Parul Pandey 机器之心编译 参与：Panda https://mp.weixin.qq.com/s/VvdbyvUDIGUiIct8k0trvQ 「过早优化是罪恶之源。」 ——计算机科学家和数学家 Donald Ervin Knuth 敏...">
+        <meta property="og:image" content="https://img3.doubanio.com/view/note/large/public/p59669745.jpg">
+    <link type="text/css" href="./gradient_descent_files/jquery.ui.tooltip.css" rel="stylesheet">
+    <link type="text/css" href="./gradient_descent_files/tooltip.css" rel="stylesheet">
+    <link type="text/css" href="./gradient_descent_files/tag.css" rel="stylesheet">
+    <script type="text/javascript" src="./gradient_descent_files/do.js" data-cfg-autoload="false"></script>
+    <script type="text/javascript" src="./gradient_descent_files/jquery.ui.min.js"></script>
+    <script type="text/javascript" src="./gradient_descent_files/jquery.ui.tooltip.js"></script>
+    <style>
+      .note .cc table, .note .ll table, .note .rr table { width: auto }
+    </style>
+    
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org/",
+    "@type": "SocialMediaPosting",
+    "@id": "https://www.douban.com/note/713353797/",
+    "datePublished": "2019-04-07T22:52:00",
+    "author":{
+      "@type": "Person",
+      "name": "黠之大者",
+      "url": "https://www.douban.com/people/frankwang/"
+    },
+    "sharedContent":{
+      "@type": "ImageObject",
+      "headline": "读懂梯度下降的数学原理",
+      "url": "https://img3.doubanio.com/view/note/l/public/p59669745.webp",
+      "author": {
+        "@type": "Person",
+        "name": "黠之大者",
+        "url": "https://www.douban.com/people/frankwang/"
+      }
+    },
+    "headline": "读懂梯度下降的数学原理"
+  }
+</script>
+
+
+    <link rel="stylesheet" href="./gradient_descent_files/68c3b2032b1b54f4.css">
+    <script></script>
+
+    <link rel="shortcut icon" href="https://img3.doubanio.com/favicon.ico" type="image/x-icon">
+<style type="text/css">.form-input-wrapper {
+  position: relative; }
+
+.suggest-wrap {
+  position: absolute;
+  top: 30px;
+  min-width: 120px;
+  border: 1px solid #c5c7d2;
+  border-radius: 3px;
+  font-size: 13px;
+  background: #fff;
+  display: none;
+  z-index: 99; }
+  .suggest-wrap.show {
+    display: block; }
+  .suggest-wrap ul {
+    padding: 3px 0; }
+  .suggest-wrap li {
+    padding: 5px 7px;
+    line-height: 20px;
+    cursor: pointer;
+    text-align: left; }
+    .suggest-wrap li a {
+      color: #333; }
+      .suggest-wrap li a:hover {
+        background: transparent; }
+    .suggest-wrap li.on {
+      background: #e9f0f8; }
+    .suggest-wrap li img {
+      height: 20px;
+      width: 20px;
+      float: left;
+      margin-right: 5px;
+      vertical-align: middle; }
+
+.form-pre {
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  left: 0;
+  padding: 10px 8px;
+  margin: 0;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  z-index: -1;
+  font: 13px Helvetica, Arial, sans-serif;
+  color: #f00; }
+  .form-pre code {
+    font: 13px Helvetica, Arial, sans-serif; }
+
+.form-input {
+  border: 0;
+  padding: 0;
+  flex: 1;
+  outline: none;
+  font-size: 13px; }
+</style><style type="text/css">@charset "UTF-8";
+/**
+ * @Desc      回应编辑器
+ *
+ * @Author    wangyanhong
+ * @Date      2019-05-15
+ */
+.reply-editor {
+  display: flex;
+  padding-top: 5px;
+  padding-bottom: 10px; }
+  .reply-editor form {
+    display: flex;
+    flex: 1; }
+  .reply-editor .form-input-wrapper {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    border: 1px solid #d9d9d9;
+    border-radius: 2px;
+    margin-right: 10px;
+    padding: 6px 10px;
+    line-height: 16px; }
+  .reply-editor.show-captcha form {
+    flex-direction: column; }
+  .reply-editor.show-captcha .form-input-wrapper {
+    width: 100%;
+    flex: none;
+    box-sizing: border-box;
+    margin: 0; }
+  .reply-editor.show-captcha .reply-form-foot {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+    padding-bottom: 30px; }
+  .reply-editor.show-captcha .captcha-wrapper {
+    margin-right: 15px; }
+  .reply-editor .mention-user {
+    padding-right: 5px;
+    line-height: 1;
+    font-size: 13px;
+    color: #494949; }
+  .reply-editor .form-input {
+    border: 0;
+    padding: 0;
+    flex: 1;
+    outline: none;
+    font-size: 13px; }
+</style><style type="text/css">@charset "UTF-8";
+/**
+ * @Desc      评论的相关操作动作，包括：回应、删除、举报
+ *
+ * @Author    wangyanhong
+ * @Date      2019-05-15
+ */
+.commetn-action-bar {
+  color: #bbb;
+  font-size: 13px;
+  text-align: right;
+  padding-bottom: 10px; }
+
+.comment-source {
+  float: left; }
+  .comment-source a:link {
+    color: #bbb; }
+  .comment-source a:visited {
+    color: #bbb; }
+  .comment-source a:hover {
+    background: #bbb;
+    color: #fff; }
+
+.action-bar-group {
+  visibility: hidden; }
+  .action-bar-group.hover {
+    visibility: visible; }
+  .action-bar-group a:link {
+    margin-left: 10px;
+    color: #bbb;
+    cursor: pointer; }
+  .action-bar-group a:hover {
+    color: #fff;
+    background: #bbb; }
+</style><style type="text/css">@charset "UTF-8";
+/*
+* @Author: hanjiyun
+* @Date:   2019-05-13 22:55:26
+* @Last Modified by:   wangyanhong
+* @Last Modified time: 2019-06-05 11:39:33
+*/
+/*
+* @Author: hanjiyun
+* @Date:   2019-05-14 21:32:06
+* @Last Modified by:   hanjiyun
+* @Last Modified time: 2019-05-31 15:19:58
+*/
+/* 验证码 */
+.captcha-wrapper {
+  position: relative;
+  display: flex; }
+  .captcha-wrapper img {
+    display: block;
+    height: 30px;
+    cursor: pointer; }
+  .captcha-wrapper .captcha-input {
+    margin-left: 5px;
+    border: 1px solid #d9d9d9;
+    border-radius: 2px;
+    padding: 6px 10px;
+    line-height: 16px;
+    font-size: 13px;
+    outline: none; }
+  .captcha-wrapper .captcha-error-msg {
+    position: absolute;
+    right: 0;
+    top: 35px;
+    color: #c34; }
+
+/* 提交按钮 */
+.comment-form-btn {
+  height: 30px;
+  line-height: 28px;
+  padding: 0;
+  width: 66px;
+  border-radius: 3px;
+  border: 1px solid #c0c0c0;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #fcfcfc), color-stop(1, #e9e9e9));
+  outline: none; }
+  .comment-form-btn:hover {
+    opacity: .8; }
+  .comment-form-btn:active {
+    border: 1px solid #b4b4b4;
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #f6f6f6), color-stop(1, #dfdfdf)); }
+  .comment-form-btn.disabled, .comment-form-btn:disabled {
+    background: #dfdfdf; }
+
+.comment-item .reply-item .avatar-small {
+  height: 24px;
+  width: 24px;
+  margin-right: 10px; }
+
+.comment-item .reply-item .meta-header {
+  background: none;
+  padding: 3px 0; }
+
+.comment-item .reply-item .mention-user {
+  margin-right: 5px; }
+</style><style type="text/css">@charset "UTF-8";
+/*
+* @Author: hanjiyun
+* @Date:   2019-05-14 21:32:06
+* @Last Modified by:   hanjiyun
+* @Last Modified time: 2019-05-31 15:19:58
+*/
+/* 验证码 */
+.captcha-wrapper {
+  position: relative;
+  display: flex; }
+  .captcha-wrapper img {
+    display: block;
+    height: 30px;
+    cursor: pointer; }
+  .captcha-wrapper .captcha-input {
+    margin-left: 5px;
+    border: 1px solid #d9d9d9;
+    border-radius: 2px;
+    padding: 6px 10px;
+    line-height: 16px;
+    font-size: 13px;
+    outline: none; }
+  .captcha-wrapper .captcha-error-msg {
+    position: absolute;
+    right: 0;
+    top: 35px;
+    color: #c34; }
+
+/* 提交按钮 */
+.comment-form-btn {
+  height: 30px;
+  line-height: 28px;
+  padding: 0;
+  width: 66px;
+  border-radius: 3px;
+  border: 1px solid #c0c0c0;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #fcfcfc), color-stop(1, #e9e9e9));
+  outline: none; }
+  .comment-form-btn:hover {
+    opacity: .8; }
+  .comment-form-btn:active {
+    border: 1px solid #b4b4b4;
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #f6f6f6), color-stop(1, #dfdfdf)); }
+  .comment-form-btn.disabled, .comment-form-btn:disabled {
+    background: #dfdfdf; }
+
+.replies-list-control-btn, .replies-list-control .give-me-more, .replies-list-control .fold-btn {
+  height: 20px;
+  padding: 1px 3px 1px 0;
+  line-height: 1;
+  color: #37A;
+  border: 0;
+  outline: none;
+  font-size: 13px;
+  cursor: pointer;
+  background-color: transparent; }
+  .replies-list-control-btn::after, .replies-list-control .give-me-more::after, .replies-list-control .fold-btn::after {
+    border: solid #37a;
+    border-width: 0 1px 1px 0;
+    display: inline-block;
+    padding: 3px;
+    transform: rotate(45deg);
+    content: '';
+    display: inline-block;
+    margin-left: 6px;
+    margin-top: -4px;
+    vertical-align: middle; }
+  .replies-list-control-btn:hover, .replies-list-control .give-me-more:hover, .replies-list-control .fold-btn:hover {
+    color: #fff;
+    background: #37a; }
+  .replies-list-control-btn:hover::after, .replies-list-control .give-me-more:hover::after, .replies-list-control .fold-btn:hover::after {
+    border-color: #fff; }
+
+.reply-list {
+  padding-left: 68px; }
+
+.replies-error-tips {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translate3d(-50%, 0, 0);
+  z-index: 3;
+  text-align: center; }
+  .replies-error-tips .error-tips-inner {
+    background: #c34;
+    background: rgba(204, 51, 68, 0.9);
+    color: #fff;
+    border-radius: 3px;
+    padding: 10px;
+    line-height: 1;
+    font-size: 13px; }
+
+.replies-list-control {
+  display: flex;
+  height: 30px;
+  justify-content: space-between;
+  align-items: center; }
+  .replies-list-control .give-me-more.invisible {
+    visibility: hidden; }
+  .replies-list-control .fold-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+    .replies-list-control .fold-btn::after {
+      border: solid #37a;
+      border-width: 0 1px 1px 0;
+      display: inline-block;
+      padding: 3px;
+      transform: rotate(-135deg);
+      margin-top: 2px; }
+    .replies-list-control .fold-btn.fixed {
+      position: fixed;
+      bottom: 10px;
+      height: 30px;
+      width: 90px;
+      z-index: 2;
+      background: #f7f7f7;
+      border-radius: 3px;
+      border: 1px solid #dfdfdf; }
+      .replies-list-control .fold-btn.fixed:hover {
+        background: #f1f1f1;
+        color: #37a; }
+      .replies-list-control .fold-btn.fixed:hover::after {
+        border-color: #37a; }
+</style><style type="text/css">@charset "UTF-8";
+/*
+* @Author: hanjiyun
+* @Date:   2019-05-13 22:55:26
+* @Last Modified by:   hanjiyun
+* @Last Modified time: 2019-06-05 14:46:05
+*/
+/*
+* @Author: hanjiyun
+* @Date:   2019-05-14 21:32:06
+* @Last Modified by:   hanjiyun
+* @Last Modified time: 2019-05-31 15:19:58
+*/
+/* 验证码 */
+.captcha-wrapper {
+  position: relative;
+  display: flex; }
+  .captcha-wrapper img {
+    display: block;
+    height: 30px;
+    cursor: pointer; }
+  .captcha-wrapper .captcha-input {
+    margin-left: 5px;
+    border: 1px solid #d9d9d9;
+    border-radius: 2px;
+    padding: 6px 10px;
+    line-height: 16px;
+    font-size: 13px;
+    outline: none; }
+  .captcha-wrapper .captcha-error-msg {
+    position: absolute;
+    right: 0;
+    top: 35px;
+    color: #c34; }
+
+/* 提交按钮 */
+.comment-form-btn {
+  height: 30px;
+  line-height: 28px;
+  padding: 0;
+  width: 66px;
+  border-radius: 3px;
+  border: 1px solid #c0c0c0;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #fcfcfc), color-stop(1, #e9e9e9));
+  outline: none; }
+  .comment-form-btn:hover {
+    opacity: .8; }
+  .comment-form-btn:active {
+    border: 1px solid #b4b4b4;
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #f6f6f6), color-stop(1, #dfdfdf)); }
+  .comment-form-btn.disabled, .comment-form-btn:disabled {
+    background: #dfdfdf; }
+
+.comment-item-body {
+  display: flex;
+  min-height: 89px; }
+  .comment-item-body img {
+    display: block;
+    max-width: 100%; }
+  .comment-item-body .comment-content {
+    padding: 10px 0;
+    word-wrap: break-word;
+    word-break: break-all; }
+    .comment-item-body .comment-content .folded-text {
+      padding: 5px 0;
+      color: #c0c0c0; }
+  .comment-item-body .comment-folded {
+    margin-top: 10px; }
+    .comment-item-body .comment-folded a {
+      color: #c0c0c0;
+      float: right; }
+
+.comment-item {
+  margin-bottom: 15px;
+  overflow: visible; }
+  .comment-item .author-avatar {
+    width: 48px;
+    height: 48px;
+    margin-right: 20px; }
+    .comment-item .author-avatar img {
+      display: block;
+      max-width: 100%; }
+
+.comment-main {
+  flex: 1; }
+
+.meta-header {
+  background: #F3F5F7;
+  padding: 3px 5px;
+  color: #999; }
+  .meta-header span,
+  .meta-header time {
+    padding-left: 8px; }
+  .meta-header time {
+    font-size: 12px; }
+</style><style type="text/css">/*
+* @Author: hanjiyun
+* @Date:   2019-05-13 19:19:53
+* @Last Modified by:   hanjiyun
+* @Last Modified time: 2019-05-25 23:05:47
+*/
+</style><style type="text/css">@charset "UTF-8";
+/**
+ * @Desc    添加评论
+ *
+ * @Author  wangyanhong
+ * @Date    2019-05-16
+ */
+textarea {
+  resize: none; }
+
+ul, li {
+  list-style: none; }
+
+.hide {
+  display: none; }
+
+.comment-editor {
+  display: flex; }
+  .comment-editor .form-field {
+    flex: 1;
+    margin-left: 20px;
+    position: relative; }
+  .comment-editor .form-area {
+    display: block;
+    width: 100%;
+    padding: 10px 8px;
+    border: 1px solid #D9D9D9;
+    border-radius: 3px;
+    box-sizing: border-box;
+    outline: none;
+    font-size: 13px; }
+  .comment-editor .form-foot {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px; }
+  .comment-editor .form-foot-item:nth-child(1) {
+    width: 100px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center; }
+    .comment-editor .form-foot-item:nth-child(1) label {
+      cursor: pointer; }
+    .comment-editor .form-foot-item:nth-child(1) input[name='sync_to_mb'] {
+      margin: 0 5px 0 0;
+      cursor: pointer; }
+  .comment-editor .form-foot-item:nth-child(2) {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center; }
+  .comment-editor .form-foot-item:last-child {
+    margin-left: 15px; }
+  .comment-editor textarea {
+    font: 13px Helvetica, Arial, sans-serif; }
+
+.no-add-comment {
+  height: 80px;
+  line-height: 80px;
+  color: #c0c0c0;
+  text-align: center;
+  background: #f7f7f7; }
+</style><style type="text/css">/*
+* @Author: hanjiyun
+* @Date:   2019-05-28 17:02:10
+* @Last Modified by:   hanjiyun
+* @Last Modified time: 2019-05-28 17:03:05
+*/
+.comment-author-avatar img {
+  display: block; }
+</style><style type="text/css">.paginator {
+  color: #aaa;
+  margin: 20px 0;
+  text-align: center;
+  font-size: 14px; }
+  .paginator a {
+    padding: 0 4px;
+    margin: 2px; }
+  .paginator .prev {
+    margin-right: 20px; }
+  .paginator .next {
+    margin-left: 20px; }
+  .paginator .thispage {
+    padding: 0px 4px;
+    margin: 2px;
+    color: #fff;
+    background: #83BF73; }
+</style><style type="text/css">@charset "UTF-8";
+/**
+ * @Desc    举报弹窗
+ * 
+ * @Author  wangyanhong
+ * @Date    2019-05-15
+ */
+.report-dialog {
+  width: 380px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); }
+  .report-dialog-shd {
+    border-radius: 5px;
+    position: absolute;
+    left: -8px;
+    top: -8px;
+    width: 100%;
+    height: 100%;
+    padding: 8px;
+    background: #666;
+    opacity: .4; }
+  .report-dialog-content {
+    position: relative;
+    z-index: 2;
+    background: #fff;
+    border: 1px solid #bbb;
+    border-radius: 4px; }
+  .report-dialog-close {
+    position: absolute;
+    top: 13px;
+    right: 12px;
+    padding: 0 3px;
+    z-index: 1;
+    font: 11px/1.2 "Comic Sans MS", sans-serif; }
+
+.report-hd {
+  padding: 10px 10px 6px;
+  background: #ebf5eb;
+  font-size: 14px;
+  -moz-border-radius: 4px;
+  border-radius: 4px 4px 0 0; }
+  .report-hd h3 {
+    margin: 0;
+    line-height: 1.8;
+    color: #072;
+    font-size: 15px;
+    font-weight: normal;
+    background: none; }
+
+.report-bd {
+  padding: 20px 20px 20px 40px;
+  font-size: 13px;
+  color: #0E0E0E; }
+  .report-bd ul, .report-bd li {
+    padding: 0;
+    margin: 0; }
+  .report-bd a {
+    text-decoration: none; }
+    .report-bd a:hover {
+      background: transparent; }
+  .report-bd .extra-options {
+    border-top: 1px solid #dfdfdf;
+    margin-top: 16px;
+    padding-top: 16px; }
+    .report-bd .extra-options .link {
+      color: #0E0E0E;
+      font-size: 13px;
+      height: 18px;
+      line-height: 18px; }
+      .report-bd .extra-options .link:after {
+        content: '';
+        display: inline-block;
+        vertical-align: middle;
+        width: 18px;
+        height: 18px;
+        margin-top: -1px;
+        margin-left: 4px;
+        background: url("https://img3.doubanio.com/f/shire/c0c3478524c9338ace2ea316b6a74d1dc493d748/pics/icon/more@2x.png") no-repeat center;
+        background-size: contain; }
+    .report-bd .extra-options .desc {
+      font-size: 13px;
+      color: #9B9B9B; }
+
+.report .bn-flat {
+  text-align: center; }
+  .report .bn-flat .btn-report {
+    display: inline-block;
+    height: 25px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #bbb #bbb #999;
+    padding: 0 14px;
+    color: #333;
+    font-size: 12px;
+    line-height: 25px;
+    cursor: pointer;
+    border-radius: 3px;
+    -webkit-appearance: none;
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #fcfcfc), color-stop(1, #e9e9e9)); }
+</style><style type="text/css">.comments-app-wrapper {
+  font: 13px Helvetica, Arial, sans-serif;
+  line-height: 1.62;
+  color: #111; }
+  .comments-app-wrapper textarea {
+    resize: none; }
+  .comments-app-wrapper ul, .comments-app-wrapper li {
+    list-style: none; }
+  .comments-app-wrapper .hide {
+    display: none; }
+
+.comment-tips {
+  margin: 0 0 10px;
+  color: #999;
+  font-size: 12px; }
+
+.comment-notification-bar {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translate3d(-50%, -200px, 0);
+  z-index: 3;
+  text-align: center;
+  transition: transform .3s; }
+  .comment-notification-bar.actived {
+    transform: translate3d(-50%, 20px, 0); }
+    .comment-notification-bar.actived .notification-bar-wrapper {
+      padding: 10px; }
+  .comment-notification-bar .notification-bar-wrapper {
+    background: #c34;
+    background: rgba(204, 51, 68, 0.9);
+    color: #fff;
+    border-radius: 3px;
+    line-height: 1;
+    font-size: 13px; }
+
+.show_login {
+  font-size: 14px; }
+
+.report-dialog {
+  top: 50% !important;
+  left: 50% !important; }
+</style><style type="text/css">.dou-preview-image-zoom-in{cursor:zoom-in}.dou-preview-image-link-open{position:fixed;z-index:12;width:14px;height:14px}.dou-preview-image-link-open:link,.dou-preview-image-link-open:visited{background:transparent url("data:image/svg+xml;charset=utf-8,%3Csvg width='14' height='14' viewBox='-1 -1 15 15' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4.05 0H1.613S1.144.035.796.41C.447.782.454 1.3.454 1.3L.417 11.815s.014.502.33.843c.316.342.747.342.747.342h10.28s.484-.043.748-.417c.264-.373.256-.823.256-.823V8.848m-7.883-.736L12.634.134M7.8 0h4.91v4.867' stroke='%23aaa' fill='none' fill-rule='evenodd'/%3E%3C/svg%3E") no-repeat;opacity:.6}.dou-preview-image-link-open:active,.dou-preview-image-link-open:hover{opacity:1;background-color:transparent}.dou-preview-image-popup{position:absolute;z-index:10;top:0;height:400px;left:0;right:0;background-color:#fff}.dou-preview-image-popup-image{position:absolute;z-index:11;cursor:zoom-out}</style><script src="./gradient_descent_files/ga.js" async="true"></script></head>
+
+<body><div class="ui-overlay-anchor"></div>
+  
+  
+    <script type="text/javascript">var _body_start = new Date();</script>
+    
+  
+
+
+
+    <link href="./gradient_descent_files/bundle.css" rel="stylesheet" type="text/css">
+
+
+
+<div id="db-global-nav" class="global-nav">
+  <div class="bd">
+    
+<div class="top-nav-info">
+  <ul>
+    <li>
+    <a id="top-nav-doumail-link" href="https://www.douban.com/doumail/">豆邮</a>
+    </li>
+    <li class="nav-user-account">
+      <a target="_blank" href="https://accounts.douban.com/passport/setting/" class="bn-more">
+        <span>黠之大者的帐号</span><span class="arrow"></span>
+      </a>
+      <div class="more-items">
+        <table cellpadding="0" cellspacing="0">
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://www.douban.com/mine/">个人主页</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a target="_blank" href="https://www.douban.com/mine/orders/">我的订单</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a target="_blank" href="https://www.douban.com/mine/wallet/">我的钱包</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a target="_blank" href="https://accounts.douban.com/passport/setting/">帐号管理</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="https://www.douban.com/accounts/logout?source=main&amp;ck=lEGR">退出</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </li>
+  </ul>
+</div>
+
+  <div class="top-nav-reminder">
+    <a href="https://www.douban.com/notification/" class="lnk-remind">提醒</a>
+    <div id="top-nav-notimenu" class="more-items">
+      <div class="bd">
+        <p>加载中...</p>
+      </div>
+    </div>
+  </div>
+
+    <div class="top-nav-doubanapp">
+  <a href="https://www.douban.com/doubanapp/app?channel=top-nav" class="lnk-doubanapp">下载豆瓣客户端</a>
+  <div id="doubanapp-tip">
+    <a href="https://www.douban.com/doubanapp/app?channel=qipao" class="tip-link">豆瓣 <span class="version">6.0</span> 全新发布</a>
+    <a href="javascript: void 0;" class="tip-close">×</a>
+  </div>
+  <div id="top-nav-appintro" class="more-items">
+    <p class="appintro-title">豆瓣</p>
+    <p class="qrcode">扫码直接下载</p>
+    <div class="download">
+      <a href="https://www.douban.com/doubanapp/redirect?channel=top-nav&amp;direct_dl=1&amp;download=iOS">iPhone</a>
+      <span>·</span>
+      <a href="https://www.douban.com/doubanapp/redirect?channel=top-nav&amp;direct_dl=1&amp;download=Android" class="download-android">Android</a>
+    </div>
+  </div>
+</div>
+
+    
+
+
+<div class="global-nav-items">
+  <ul>
+    <li class="on">
+      <a href="https://www.douban.com/" data-moreurl-dict="{&quot;from&quot;:&quot;top-nav-click-main&quot;,&quot;uid&quot;:&quot;1558440&quot;}">豆瓣</a>
+    </li>
+    <li class="">
+      <a href="https://book.douban.com/" target="_blank" data-moreurl-dict="{&quot;from&quot;:&quot;top-nav-click-book&quot;,&quot;uid&quot;:&quot;1558440&quot;}">读书</a>
+    </li>
+    <li class="">
+      <a href="https://movie.douban.com/" target="_blank" data-moreurl-dict="{&quot;from&quot;:&quot;top-nav-click-movie&quot;,&quot;uid&quot;:&quot;1558440&quot;}">电影</a>
+    </li>
+    <li class="">
+      <a href="https://music.douban.com/" target="_blank" data-moreurl-dict="{&quot;from&quot;:&quot;top-nav-click-music&quot;,&quot;uid&quot;:&quot;1558440&quot;}">音乐</a>
+    </li>
+    <li class="">
+      <a href="https://www.douban.com/location" target="_blank" data-moreurl-dict="{&quot;from&quot;:&quot;top-nav-click-location&quot;,&quot;uid&quot;:&quot;1558440&quot;}">同城</a>
+    </li>
+    <li class="">
+      <a href="https://www.douban.com/group" target="_blank" data-moreurl-dict="{&quot;from&quot;:&quot;top-nav-click-group&quot;,&quot;uid&quot;:&quot;1558440&quot;}">小组</a>
+    </li>
+    <li class="">
+      <a href="https://read.douban.com/?dcs=top-nav&amp;dcm=douban" target="_blank" data-moreurl-dict="{&quot;from&quot;:&quot;top-nav-click-read&quot;,&quot;uid&quot;:&quot;1558440&quot;}">阅读</a>
+    </li>
+    <li class="">
+      <a href="https://douban.fm/?from_=shire_top_nav" target="_blank" data-moreurl-dict="{&quot;from&quot;:&quot;top-nav-click-fm&quot;,&quot;uid&quot;:&quot;1558440&quot;}">FM</a>
+    </li>
+    <li class="">
+      <a href="https://time.douban.com/?dt_time_source=douban-web_top_nav" target="_blank" data-moreurl-dict="{&quot;from&quot;:&quot;top-nav-click-time&quot;,&quot;uid&quot;:&quot;1558440&quot;}">时间</a>
+    </li>
+    <li class="">
+      <a href="https://market.douban.com/?utm_campaign=douban_top_nav&amp;utm_source=douban&amp;utm_medium=pc_web" target="_blank" data-moreurl-dict="{&quot;from&quot;:&quot;top-nav-click-market&quot;,&quot;uid&quot;:&quot;1558440&quot;}">豆品</a>
+    </li>
+    <li>
+      <a href="https://www.douban.com/note/713353797/#more" class="bn-more"><span>更多</span></a>
+      <div class="more-items">
+        <table cellpadding="0" cellspacing="0">
+          <tbody>
+            <tr>
+              <td>
+                <a href="https://ypy.douban.com/" target="_blank" data-moreurl-dict="{&quot;from&quot;:&quot;top-nav-click-ypy&quot;,&quot;uid&quot;:&quot;1558440&quot;}">豆瓣摄影</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </li>
+  </ul>
+</div>
+
+  </div>
+</div>
+<script>
+  ;window._GLOBAL_NAV = {
+    USER_ID: "1558440",
+    UPLOAD_AUTH_TOKEN: "1558440:e29f2ddd0bf3939073e849114696c4a98d6ad564",
+    SSE_TOKEN: "01da868a8d510c411e687b5d31db30d8547d8727",
+    SSE_TIMESTAMP: "1561117256",
+    DOUBAN_URL: "https://www.douban.com",
+    N_NEW_NOTIS: 0,
+    N_NEW_DOUMAIL: 0
+  };
+</script>
+
+
+
+    <script src="./gradient_descent_files/bundle.js" defer="defer"></script>
+
+
+
+
+  
+
+
+
+    <link href="./gradient_descent_files/bundle(1).css" rel="stylesheet" type="text/css">
+
+
+
+<div id="db-nav-sns" class="nav">
+  <div class="nav-wrap">
+    <div class="nav-primary">
+     
+      <div class="nav-logo">
+        <a href="https://www.douban.com/">豆瓣社区</a>
+      </div>
+
+      <div class="nav-search">
+  <form action="https://www.douban.com/search" method="get">
+	<fieldset>
+      <legend>搜索：</legend>
+	  <label for="inp-query" style="display: none;">搜索你感兴趣的内容和人...</label>
+	  <div class="inp">
+	    <input type="hidden" name="source" value="suggest">
+		<input id="inp-query" name="q" size="22" maxlength="60" autocomplete="off" value="" placeholder="搜索你感兴趣的内容和人...">
+	  </div>
+	  <div class="inp-btn"><input type="submit" value="搜索"></div>
+	</fieldset>
+  </form>
+</div>
+
+      
+
+<div class="nav-items">
+  <ul>
+    <li><a href="https://www.douban.com/">首页</a></li>
+	<li><a href="https://www.douban.com/mine/">我的豆瓣</a></li>
+      <li>
+        <a href="https://www.douban.com/explore">
+          浏览发现
+        </a>
+      </li>
+      <li>
+        <a href="https://www.douban.com/gallery">
+          话题广场
+          <img src="./gradient_descent_files/new_menu.gif" alt="new" style="position: absolute; top: -7px; right: -13px;">
+        </a>
+      </li>
+  </ul>
+</div>
+
+    </div>
+  </div>
+</div>
+
+
+
+    <script src="./gradient_descent_files/bundle(2).js" defer="defer"></script>
+
+
+
+
+
+    <div id="wrapper">
+        
+
+        
+<div id="content">
+    
+
+    <div class="grid-16-8 clearfix">
+        
+        
+        <div class="article">
+               
+    
+        
+        
+
+    
+
+    
+    
+    <div id="note-713353797" class="note-container" data-url="https://www.douban.com/note/713353797/" data-author="黠之大者" data-is-original="0">
+
+        
+        
+        
+    
+
+    
+
+        <div class="note-header note-header-container">
+        <h1>读懂梯度下降的数学原理</h1>
+
+    
+    <div>
+        <a href="https://www.douban.com/people/frankwang/"><img class="note_author_avatar" width="24" height="24" src="./gradient_descent_files/u1558440-45.jpg" alt="黠之大者"></a>
+        <a href="https://www.douban.com/people/frankwang/" class="note-author">黠之大者</a>
+        <span class="pub-date">2019-04-07 22:52:00</span>
+    </div>
+    </div>
+
+
+        
+    <div class="note" id="note_713353797_short" style="display:none;"></div>
+    <div id="note_713353797_full">
+        <div id="link-report">
+                
+                <div class="note"><blockquote>机器之心 选自towardsdatascience 作者：Parul Pandey 机器之心编译 参与：Panda</blockquote><p><a href="https://mp.weixin.qq.com/s/VvdbyvUDIGUiIct8k0trvQ" rel="nofollow" target="_blank">https://mp.weixin.qq.com/s/VvdbyvUDIGUiIct8k0trvQ</a></p><blockquote>「过早优化是罪恶之源。」</blockquote><blockquote>——计算机科学家和数学家 Donald Ervin Knuth</blockquote><p>敏捷（agile）是软件开发过程中的一个广为人知的术语。其背后的基本思想很简单：快速构建出来→发布它→获得反馈→基于反馈进行修改→重复这一过程。这种做法的目标是让产品亲近用户，并让用户通过反馈引导你，以实现错误最少的可能最优的产品。另外，改进的步骤也需要很小，并且也应该让用户能持续地参与进来。在某种程度上讲，敏捷软件开发过程涉及到快速迭代。而梯度下降的基本过程也差不多就是如此——尽快从一个解开始，尽可能频繁地测量和迭代。</p><h2><span style="font-weight: bold;">目标</span></h2><p><a href="https://mp.weixin.qq.com/s/VvdbyvUDIGUiIct8k0trvQ" rel="nofollow" target="_blank">梯度下降</a>算法是一个迭代过程，能让我们得到一个函数的最小值（这里先不提一些额外的注意事项）。下面的公式将整个梯度下降算法汇总成为了一行：</p><p></p><p></p><div class="image-container image-float-center"><div class="image-wrapper"><img src="./gradient_descent_files/p59669745.webp"></div></div><p></p><p></p><p></p><p>但我们是怎么得到这个公式的？实际上很简单，而且仅包含一些高中数学知识（小编：海外高中数学？捂脸）。我们希望能通过这篇文章在线性回归模型的背景中理解和再现这一公式。</p><h2><span style="font-weight: bold;">一个机器学习模型</span></h2><p>设有一些在一个 2D 空间中的数据点。假设这些数据与一组学生的身高和体重有关。我们希望预测这些量之间的某种关系，以使我们可以预测未来某个新学生的体重。这本质上是监督式机器学习技术的一个简单案例。</p><p>现在，让我们在空间中画一条任意的线，并使其穿过某些数据点。那么这条线的方程即为 Y = mX + b，其中 m 是斜率，b 是这条线在 Y 轴上的截距。</p><p></p><div class="image-container image-float-center"><div class="image-wrapper"><img src="./gradient_descent_files/p59669681.webp" class="dou-preview-image dou-preview-image-zoom-in"></div></div><p></p><p></p><p><span style="font-weight: bold;">预测</span></p><p>给定一组已知的输入和它们对应的输出。机器学习模型会尝试基于这些数据预测新输入的输出结果。</p><p></p><div class="image-container image-float-center"><div class="image-wrapper"><img src="./gradient_descent_files/p59669682.webp"></div></div><p></p><p></p><p><span style="font-style: italic;">机器学习过程</span></p><p>误差（Error）即为两个预测结果之间的差异。</p><p></p><div class="image-container image-float-center"><div class="image-wrapper"><img src="./gradient_descent_files/p59669683.webp"></div></div><p></p><p></p><p>与其相关的概念是成本函数或损失函数。</p><h2><span style="font-weight: bold;">成本函数</span></h2><p>成本函数/<a href="https://mp.weixin.qq.com/s/VvdbyvUDIGUiIct8k0trvQ" rel="nofollow" target="_blank">损失函数</a>评估的是我们的机器学习算法的性能表现。损失函数计算的是单个训练样本的误差，成本函数则是损失函数在整个训练集上的平均。因此，我会交替地使用这两个术语。</p><p>基本上而言，成本函数能告诉我们在给定了 m 和 b 的值时模型在预测方面的表现「有多好」。</p><p>比如说，如果数据集中共有 N 个点，而对于所有这 N 个数据点，我们希望最小化其误差。因此成本函数就将是总平方误差，即：</p><p></p><div class="image-container image-float-center"><div class="image-wrapper"><img src="./gradient_descent_files/p59669685.webp"></div></div><p></p><p></p><p><span style="font-style: italic;">N 个数据点的成本函数</span></p><p>为什么我们要用平方差而不直接使用绝对差呢？因为平方差能让我们更轻松地推导出一条回归线。实际上，为了找到那条线，我们需要计算成本函数的一阶导数，而计算绝对值的倒数比计算平方值的导数要难得多。</p><p><span style="font-weight: bold;">最小化成本函数</span> </p><blockquote>任何机器学习算法的目标都是最小化成本函数。</blockquote><p>这是因为实际值和预测值之间的误差越低，就说明算法在学习上的表现就越好。因为我们希望得到最低的误差值，所以我们希望这些m 和 b 值所得到的误差尽可能最小。</p><p><span style="font-weight: bold;">我们究竟如何最小化任意函数？</span></p><p>仔细观察，我们的成本函数是 Y=X² 的形式。在笛卡尔坐标系中，这是一个抛物线方程，可以画成下图形式：</p><p></p><div class="image-container image-float-center"><div class="image-wrapper"><img src="./gradient_descent_files/p59669687.webp"></div></div><p></p><p></p><p><span style="font-style: italic;">抛物线</span></p><p>要最小化上述函数，我们需要找到能得到最低 Y值的 X 值，即红点位置。因为这是一张2D 图，所以定位其最小值很容易，但在更高维度上情况却非如此。在这些情况下，我们需要设计一个能定位最小值的算法，这个算法就是梯度下降。</p><h2><span style="font-weight: bold;">梯度下降</span></h2><p>梯度下降是最常用的优化算法之一，也是目前最常用的优化神经网络的方式。这是一种用于寻找函数最小值的迭代式优化算法。</p><p><span style="font-weight: bold;">直观理解</span></p><p>假设你正沿着下面的图行走，而且目前正位于绿点位置。你的目标是到达最小值，即红点位置；但在你的位置处，你无法看到最小值在哪里。</p><p></p><div class="image-container image-float-center"><div class="image-wrapper"><img src="./gradient_descent_files/p59669686.webp"></div></div><p></p><p></p><p>可能的动作会是这样：</p><ul><li>你可能向上或向下</li><li>如果你决定了要走的方向，为了到达目的地，你可能跨一大步，也可能走一小步。</li></ul><p>本质上讲，为了到达最小值，你应该知道两件事：走哪条路和步子迈多大。</p><p>梯度下降算法可使用导数帮助我们有效且高效地做这些决定。导数是源自微积分的一个术语，可作为图在特定点的斜率而进行计算。所以，如果我们有能力计算这条切线，我们可能就能够算出为到达最小值所应选择的方向。我们将在后文更详细地介绍这一点。</p><p><span style="font-weight: bold;">最小值</span></p><p>在上图中，我们可以在绿点画一条切线，我们知道，如果我们向上移动，我们就将远离最小值或者反过来。另外，这条切线也能让我们了解斜率的陡峭程度。</p><p></p><p></p><div class="image-container image-float-center"><div class="image-wrapper"><img src="./gradient_descent_files/p59669751.webp"></div></div><p></p><p></p><p></p><p>蓝点处的斜率没有绿点处陡，这意味着从蓝点到达最小值所需的步幅比在绿点处要小得多。</p><h2><span style="font-weight: bold;">成本函数的数学解释</span></h2><p>现在，让我们将上面介绍的一切写成数学公式。在等式 y = mX+b 中，m 和 b 是其参数。在训练过程中，它们的值会进行较小的变化。我们将这个小变化表示成δ。参数的值将分别以m=m-δm和 b=b-δb 的方式更新。这里我们的目标是找到y=mx+b 中能使误差最小的 m 和 b 值，即最小化成本函数的值。</p><p>重写成本函数：</p><p></p><p></p><div class="image-container image-float-center"><div class="image-wrapper"><img src="./gradient_descent_files/p59669753.webp" class="dou-preview-image dou-preview-image-zoom-in"></div></div><p></p><p></p><p></p><p>其思想是，通过计算函数的导数和斜率，我们可以找到该函数的导数/斜率。</p><h2><span style="font-weight: bold;">学习率</span></h2><p>到达最小值或底部的步幅大小被称为学习率。更大的步幅/更高的<a href="https://mp.weixin.qq.com/s/VvdbyvUDIGUiIct8k0trvQ" rel="nofollow" target="_blank">学习率</a>可以覆盖更大区域，但却有越过最小值的风险。另一方面，更小的步幅/更低的学习率到达最低点需要消耗大量时间。</p><p>下面的图片展示了学习率的概念。在第三张图中，我们用最少的步骤到达了最小值。这是这一问题的最佳学习率。</p><p></p><p></p><div class="image-container image-float-center"><div class="image-wrapper"><img src="./gradient_descent_files/p59669755.webp" class="dou-preview-image dou-preview-image-zoom-in"></div></div><p></p><p>可以看到，当学习率过低时，需要很多步骤才能收敛。而当学习率过高时，梯度下降将无法到达最小值，如下图所示。</p><p></p><div class="image-container image-float-center image-badge-gif"><div class="image-wrapper"><img data-original-url="https://img1.doubanio.com/view/note/raw/public/p59669689.jpg" data-render-type="gif" src="./gradient_descent_files/p59669689.jpg" data-inited="true" class="dou-preview-image dou-preview-image-zoom-in"></div></div><p></p><p></p><p>不同学习率的实验结果可参考：<a href="https://developers.google.com/machine-learning/crash-course/fitter/graph" rel="nofollow" target="_blank">https://developers.google.com/machine-learning/crash-course/fitter/graph</a>。</p><h2><span style="font-weight: bold;">导数</span></h2><p>机器学习在优化问题中使用导数。梯度下降等优化算法使用导数来实际决定是增大还是减小权重，以增大或减小目标函数。</p><p>如果我们可以计算出一个函数的导数，我们就会知道要继续的方向就是最小化该函数的方向。我们主要是处理两个来自微积分的概念：</p><p><span style="font-weight: bold;">幂规则</span></p><p>幂规则计算的是提升成幂的变量的导数。</p><p></p><div class="image-container image-float-center"><div class="image-wrapper"><img src="./gradient_descent_files/p59669688.webp"></div></div><p></p><p></p><p><span style="font-weight: bold;">链式法则</span></p><p><a href="https://mp.weixin.qq.com/s/VvdbyvUDIGUiIct8k0trvQ" rel="nofollow" target="_blank">链式法则</a>用于计算复合函数的导数。链式法则可以使用莱布尼兹符号表示如下：</p><p>如果变量 z 依赖于变量 y，而变量 y 又依赖于变量 x，则 y 和 z 是因变量，而且 z 也通过中间变量依赖于 x。这被称为链式法则，用数学式可写成：</p><p></p><div class="image-container image-float-center"><div class="image-wrapper"><img src="./gradient_descent_files/p59669691.webp"></div></div><p></p><p></p><p>让我们通过一个例子来理解：</p><p></p><div class="image-container image-float-center"><div class="image-wrapper"><img src="./gradient_descent_files/p59669690.webp"></div></div><p></p><p></p><p>将幂规则和链式法则用于导数，我们可以计算成本函数相对于 m 和 b 的变化方式。这涉及到偏导数的概念，即如果一个函数有两个变量，则寻找该函数相对于一个变量的偏导数的方法是将另一个变量视为常量。用例子解释会更清楚：</p><p></p><div class="image-container image-float-center"><div class="image-wrapper"><img src="./gradient_descent_files/p59669693.webp"></div></div><p></p><p></p><p><span style="font-weight: bold;">计算梯度下降</span></p><p>现在我们将这些微积分规则应用于我们原来的等式，并找到成本函数相对于 m 和 b 的导数。重访成本函数：</p><p></p><div class="image-container image-float-center"><div class="image-wrapper"><img src="./gradient_descent_files/p59669692.webp"></div></div><p></p><p></p><p>为了简单，让我们摆脱其中的求和符号。这个求和部分很重要，尤其是涉及到随机梯度下降（SGD）与批梯度下降的概念时。在批梯度下降的过程中，我们一次性检查所有训练样本的误差；而在 SGD 过程中，我们每次检查每个误差。但是，为了简单起见，我们假设我们每次检查每个误差。</p><p></p><div class="image-container image-float-center"><div class="image-wrapper"><img src="./gradient_descent_files/p59669695.webp"></div></div><p></p><p></p><p>现在，我们来计算与 m 和 b 相关的误差的梯度：</p><p></p><div class="image-container image-float-center"><div class="image-wrapper"><img src="./gradient_descent_files/p59669694.webp"></div></div><p></p><p></p><p>将这些值放回成本函数，并将其与学习率相乘：</p><p></p><div class="image-container image-float-center"><div class="image-wrapper"><img src="./gradient_descent_files/p59669696.webp"></div></div><p></p><p></p><p>现在，这个等式中的 2 并不是那么重要，因为它只是表示我们的学习率有两倍或一半那么大。所以我们直接丢掉它。因此，最终这整篇文章都浓缩成了两个表示梯度下降的简单等式。</p><p></p><div class="image-container image-float-center"><div class="image-wrapper"><img src="./gradient_descent_files/p59669697.webp"></div></div><p></p><p></p><p>m¹,b¹ = 下个位置参数；m⁰,b⁰ = 当前位置参数。</p><p>因此，为了求解梯度，我们使用新的 m 和 b 值迭代我们的数据点并计算偏导数。这个新梯度能指出成本函数在当前位置的斜率以及我们应该移动的方向，以便更新我们的参数。我们的更新的大小受学习率控制。</p><h2><span style="font-weight: bold;">总结</span></h2><p></p><p>这篇文章的目的是展示梯度下降的概念。我们使用了梯度下降作为线性回归的优化策略。通过绘制最佳拟合线来测量学生身高和体重之间的关系。但是，需要重点指出，这个线性回归示例是为了演示简单而选择的，梯度下降也可用于其它机器学习技术。</p><p><span style="font-style: italic;">原文链接：<a href="https://towardsdatascience.com/understanding-the-mathematics-behind-gradient-descent-dde5dc9be06" rel="nofollow" target="_blank">https://towardsdatascience.com/understanding-the-mathematics-behind-gradient-descent-dde5dc9be06</a></span></p></div>
+                
+    
+
+                <div id="link-report_note">
+                <div class="report"><a rel="nofollow" href="javascript:void(0)">举报</a></div></div>
+                
+<script type="text/javascript" src="./gradient_descent_files/report_dialog.js"></script>
+<link rel="stylesheet" type="text/css" href="./gradient_descent_files/report_dialog.css">
+
+
+
+        </div>
+    </div>
+
+    
+
+    
+
+
+                
+    
+    <div id="note_713353797_footer" class="note-ft">
+        
+        
+
+        <div class="note-footer-stat">
+
+                <span class="note-footer-stat-pv">201人浏览</span>
+                <span class="note-footer-stat-modify"><a class="" href="https://www.douban.com/note/713353797/edit">编辑</a></span> |
+                
+                <span class="note-footer-stat-setting">
+                    <a class="a_edit_tag " data-id="713353797" data-tags="" data-privacy="P" data-original="0" data-banned-user="0" data-accept-reward="0" data-open-reward="0" data-reply-limit="0" data-donation-notice="" href="https://www.douban.com/note/713353797/#">设置</a>
+                </span> |
+                <span class="note-footer-stat-del">
+                        <a href="https://www.douban.com/note/713353797/remove" class="j a_post_link " title="删除这篇日记吗?" rel="confirm_direct">删除</a>
+                </span>
+        </div>
+        
+        <div class="sns-bar">
+            
+            &nbsp;
+            <div class="footer-sharing">
+                
+
+
+<div class="action-react">
+    <a href="javascript:;" class="react-add react-btn" data-type="note" data-reaction_type="0" data-object_id="713353797">
+        <span class="react-text">赞</span>
+        <span class="react-num">3</span>
+    </a>
+</div>
+
+
+                
+
+
+
+
+
+<div class="action-collect">
+    <a href="javascript:void(0)" data-id="713353797" data-cate="1015" data-canview="True" data-url="https://www.douban.com/note/713353797/" data-catename="日记" data-link="https://www.douban.com/people/frankwang/doulists/all?add=713353797&amp;cat=1015" data-title="读懂梯度下降的数学原理" data-picture="https://img3.doubanio.com/view/note/small/public/p59669745.webp" class="lnk-doulist-add collect-add" onclick="moreurl(this, { &#39;from&#39;:&#39;doulist-btn-1015-713353797-1558440&#39;})">
+        <span class="react-text">收藏</span>
+        <span class="react-num">2</span>
+    </a>
+</div>
+
+                
+    
+
+    
+
+    
+
+    <div class="sharing" data-target="{&quot;url&quot;: &quot;http://www.douban.com/note/713353797/&quot;, &quot;desc&quot;: &quot;\u673a\u5668\u4e4b\u5fc3 \u9009\u81eatowardsdatascience \u4f5c\u8005\uff1aParul Pandey \u673a\u5668\u4e4b\u5fc3\u7f16\u8bd1 \u53c2\u4e0e\uff1aPanda https://mp.weixin.qq.com/s/VvdbyvUDIGUiIct8k0trvQ \u300c\u8fc7\u65e9\u4f18\u5316\u662f\u7f6a\u6076\u4e4b\u6e90\u3002\u300d \u2014\u2014\u8ba1\u7b97\u673a\u79d1\u5b66\u5bb6\u548c\u6570\u5b66\u5bb6 D...&quot;, &quot;pic&quot;: &quot;https://img3.doubanio.com/view/note/small/public/p59669745.jpg&quot;, &quot;title&quot;: &quot;\u8bfb\u61c2\u68af\u5ea6\u4e0b\u964d\u7684\u6570\u5b66\u539f\u7406&quot;}">
+
+        <div class="sharing-button">
+            <div class="sharing-douban">
+                
+    
+
+        
+            
+        
+
+        <div class="rec-sec">
+
+
+    <span class="rec">
+        
+            <a data-user_id="1558440" href="https://www.douban.com/share/recommend?sanity_key=_896cd&amp;apikey=&amp;object_kind=1015&amp;name=%E8%AF%BB%E6%87%82%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E7%9A%84%E6%95%B0%E5%AD%A6%E5%8E%9F%E7%90%86&amp;image=https%3A%2F%2Fimg3.doubanio.com%2Fview%2Fnote%2Fsmall%2Fpublic%2Fp59669745.jpg&amp;target_action=0&amp;redir=http%3A%2F%2Fwww.douban.com%2Fnote%2F713353797%2F&amp;object_id=713353797&amp;heading=%E8%BD%AC%E5%8F%91%E5%88%B0%E8%B1%86%E7%93%A3&amp;target_type=rec&amp;btn_text=%E8%BD%AC%E5%8F%91&amp;href=http%3A%2F%2Fwww.douban.com%2Fnote%2F713353797%2F&amp;action_props=%7B%22note_url%22%3A%22http%3A%5C%2F%5C%2Fwww.douban.com%5C%2Fnote%5C%2F713353797%5C%2F%22%2C%22note_title%22%3A%22%E8%AF%BB%E6%87%82%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E7%9A%84%E6%95%B0%E5%AD%A6%E5%8E%9F%E7%90%86%22%2C%22author_name%22%3A%22%E9%BB%A0%E4%B9%8B%E5%A4%A7%E8%80%85%22%7D&amp;curl=&amp;type=com.douban.people&amp;properties=%7B%22href%22%3A%22https%3A%5C%2F%5C%2Fwww.douban.com%5C%2Fpeople%5C%2Ffrankwang%5C%2F%22%2C%22name%22%3A%22%E9%BB%A0%E4%B9%8B%E5%A4%A7%E8%80%85%22%2C%22uid%22%3A%221558440%22%7D&amp;desc=%E6%9C%BA%E5%99%A8%E4%B9%8B%E5%BF%83+%E9%80%89%E8%87%AAtowardsdatascience+%E4%BD%9C%E8%80%85%EF%BC%9AParul+Pandey+%E6%9C%BA%E5%99%A8%E4%B9%8B%E5%BF%83%E7%BC%96%E8%AF%91+%E5%8F%82%E4%B8%8E%EF%BC%9APanda+https%3A%2F%2Fmp.weixin.qq.com%2Fs%2FVvdbyvUDIGUiIct8k0trvQ+%E3%80%8C%E8%BF%87%E6%97%A9%E4%BC%98%E5%8C%96%E6%98%AF%E7%BD%AA%E6%81%B6%E4%B9%8B%E6%BA%90%E3%80%82%E3%80%8D+%E2%80%94%E2%80%94%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6%E5%AE%B6%E5%92%8C%E6%95%B0%E5%AD%A6%E5%AE%B6+D..." share-id="713353797" data-mode="plain" data-name="读懂梯度下降的数学原理" data-type="com.douban.people" data-desc="机器之心 选自towardsdatascience 作者：Parul Pandey 机器之心编译 参与：Panda https://mp.weixin.qq.com/s/VvdbyvUDIGUiIct8k0trvQ 「过早优化是罪恶之源。」 ——计算机科学家和数学家 D..." data-href="https://www.douban.com/note/713353797/" data-image="https://img3.doubanio.com/view/note/small/public/p59669745.webp" data-properties="{&quot;href&quot;:&quot;https:\/\/www.douban.com\/people\/frankwang\/&quot;,&quot;name&quot;:&quot;黠之大者&quot;,&quot;uid&quot;:&quot;1558440&quot;}" data-redir="https://www.douban.com/note/713353797/vote?ck=lEGR" data-text="" data-apikey="" data-curl="" data-count="10" data-object_kind="1015" data-object_id="713353797" data-target_type="rec" data-target_action="0" data-action_props="{&quot;note_url&quot;:&quot;http:\/\/www.douban.com\/note\/713353797\/&quot;,&quot;note_title&quot;:&quot;读懂梯度下降的数学原理&quot;,&quot;author_name&quot;:&quot;黠之大者&quot;}" data-btn_text="转发" data-heading="转发到豆瓣" data-sanity_key="_896cd" class="lnk-sharing lnk-douban-sharing">
+                    
+                            转发 <span class="rec-num">1</span>
+                    
+            </a>
+    </span>
+
+
+    </div>
+
+            </div>
+            <span class="sharing-indicator"></span>
+        </div>
+
+            <div class="sharing-layer is-hidden">
+                <div class="sharing-wechat">
+                    <span class="sharing-icon__wechat">微信扫码</span>
+                    <div class="sharing-wechat-qrcode"></div>
+                </div>
+
+                
+                <ul class="sharing-list">
+                    <li class="sharing-icon__weibo" data-share="weibo">新浪微博</li>
+                    <li class="sharing-icon__qq" data-share="qq">QQ好友</li>
+                    <li class="sharing-icon__qzone" data-share="qzone">QQ空间</li>
+                </ul>
+            </div>
+            
+
+        
+    </div>
+
+
+            </div>
+            
+            
+        </div>
+    </div>
+    <!-- douban ad begain -->
+    <div id="dale_note_after_readmore" ad-status="loaded"></div>
+    <!-- douban ad end -->
+
+    </div>
+
+    <div class="clear">
+    </div>
+
+        <div class="tabs" id="sep">
+            <a href="https://www.douban.com/note/713353797/#sep" class="on">回应</a>
+            <a href="https://www.douban.com/note/713353797/?type=rec#sep">转发</a>
+            <a href="https://www.douban.com/note/713353797/?type=like#sep">赞</a>
+            <a href="https://www.douban.com/note/713353797/?type=collect#sep">收藏</a>
+        </div>
+
+    <div class="">
+          
+          
+
+
+<div id="comments" class="comment-list"><div class="comments-app-wrapper"><div class="comment-editor"><div class="comment-author-avatar"><a href="https://www.douban.com/people/1558440"><img src="./gradient_descent_files/u1558440-45.jpg" height="48" width="48"></a></div><form class="form-field"><div class="form-input-wrapper"><pre class="form-pre"><code>&nbsp;</code></pre><textarea class="form-area" placeholder="添加回应" rows="4" cols="64"></textarea><div class="suggest-wrap" style="left: 13px; top: 30px;"><ul></ul></div></div><div class="form-foot"><div class="form-foot-item"><label><input type="checkbox" name="sync_to_mb">转发到广播</label></div><div class="form-foot-item"></div><div class="form-foot-item"><button type="submit" class="comment-form-btn">加上去</button></div></div></form></div><div class="report-dialog hide"><span class="report-dialog-shd"></span><div class="report-dialog-content"><a href="javascript:;" class="report-dialog-close">X</a><div class="report-hd"><h3>选择举报原因</h3></div><div class="report-bd"><form><ul><li><label><input type="radio" name="reason" value="0" checked="">广告或垃圾信息</label></li><li><label><input type="radio" name="reason" value="1">低俗或色情</label></li><li><label><input type="radio" name="reason" value="2">违反相关法律法规或管理规定</label></li><li><label><input type="radio" name="reason" value="3">辱骂或不友善</label></li><li><label><input type="radio" name="reason" value="6">未经授权的下载资源</label></li><li><label><input type="radio" name="reason" value="7">引战或过于偏激的主观判断</label></li><li><label><input type="radio" name="reason" value="9">泄露他人隐私</label></li><li><label><input type="radio" name="reason" value="12">刷屏</label></li><li><label><input type="radio" name="reason" value="other">其他原因</label></li></ul><div class="extra-options"><a href="https://help.douban.com/complaint/" target="_blank" class="link">侵犯我的权益</a><p class="desc">抄袭或未经授权转载我的内容、侵犯我的个人权益、侵犯我的企业权益</p></div><div class="report-btns"><button class="report-btn comment-form-btn">举报</button></div></form></div></div></div><div class="notification-bar comment-notification-bar"><div class="notification-bar-wrapper"><span class="notification-bar-message"></span></div></div></div></div>
+<script>
+  var _COMMENTS_CONFIG = {
+    'service': 'note',
+
+    'app': 'main',
+
+    'api': '/j/note',
+
+    'comments': [],
+
+    'total': 0,
+
+    'start': 0,
+    'count': 100,
+
+    'user': {"intro":"计算传播网：http:\/\/computational-communication.com\n\n通天塔：https:\/\/sci-hub.tw\/\n\nHaggard德国金属乐队：https:\/\/douban.fm\/artist\/15251\n\nA person acts morally when he or she acts as if his or her conduct was establishing a universal law governing others in similar circumstances.\n                                  ——Kant \n\nBefore God we are all equally wise\nand equally foolish. Do not worry about\nyour difficulties in Mathematics.I can\nassure you mine are still greater.\n——Albert Einstein\n\nWe know that people often desire\nsomething but do not really want it.\nDon’t be afraid to really want what you desire.\n——Slavoj Žižek speaks at Occupy Wall Street\n\nA mind all logic is like a knife all blade.\nIt makes the hand bleed that uses it.\n——Stray Birds by Tagore\n\n我是企图用数学来证明哈耶克思想的人。\n                                  ——杨小凯\n\n一个人命中最大的幸运，莫过于在他的人生中途，即在他年富力强之时发现了自己生活的使命。\n                          ——茨威格，《人类群星闪耀时》\n\n\n拉普拉斯曾经考虑过太阳再升起的概率。\n          ——Element of Information Theory ，p278\n\n                       ","is_admin":false,"uid":"frankwang","signature":"I am serious with life.","url":"https:\/\/www.douban.com\/people\/frankwang\/","gender":"","can_delete_all_comments":true,"id":"1558440","avatar":"https://img3.doubanio.com\/icon\/u1558440-45.jpg","name":"黠之大者"},
+
+    'author': {"intro":"计算传播网：http:\/\/computational-communication.com\n\n通天塔：https:\/\/sci-hub.tw\/\n\nHaggard德国金属乐队：https:\/\/douban.fm\/artist\/15251\n\nA person acts morally when he or she acts as if his or her conduct was establishing a universal law governing others in similar circumstances.\n                                  ——Kant \n\nBefore God we are all equally wise\nand equally foolish. Do not worry about\nyour difficulties in Mathematics.I can\nassure you mine are still greater.\n——Albert Einstein\n\nWe know that people often desire\nsomething but do not really want it.\nDon’t be afraid to really want what you desire.\n——Slavoj Žižek speaks at Occupy Wall Street\n\nA mind all logic is like a knife all blade.\nIt makes the hand bleed that uses it.\n——Stray Birds by Tagore\n\n我是企图用数学来证明哈耶克思想的人。\n                                  ——杨小凯\n\n一个人命中最大的幸运，莫过于在他的人生中途，即在他年富力强之时发现了自己生活的使命。\n                          ——茨威格，《人类群星闪耀时》\n\n\n拉普拉斯曾经考虑过太阳再升起的概率。\n          ——Element of Information Theory ，p278\n\n                       ","uid":"frankwang","is_friend":false,"signature":"I am serious with life.","url":"https:\/\/www.douban.com\/people\/frankwang\/","gender":"","id":"1558440","avatar":"https://img3.doubanio.com\/icon\/u1558440-45.jpg","name":"黠之大者"},
+
+    'target': {"kind":1015,"reply_limit":"A","hidden_nonfriend_comments":false,"id":"713353797","can_add_comment":true},
+
+    'options': {
+      'only_comment_at_the_end_of_pages': true,
+      'enable_comment_sync_to_status': true,
+      'only_comment_at_the_end_of_pages': false,
+      'bg_color': '',
+      'can_at_sb': false
+    }
+  }
+</script>
+<script src="./gradient_descent_files/comments.js"></script>
+          
+
+
+
+
+
+    </div>
+
+        
+        
+
+
+
+        </div>
+        <div class="aside">
+                
+    
+
+
+
+
+
+
+<div class="mod mod-usercard">
+  <div class="pic">
+      <a href="https://www.douban.com/people/frankwang/"><img src="./gradient_descent_files/u1558440-45.jpg" alt="黠之大者" width="48" height="48"></a>
+  </div>
+  <div class="content">
+    <a href="https://www.douban.com/people/frankwang/">黠之大者</a>
+        <span class="usercard-loc">(江苏南京)</span>
+    <p>计算传播网：http://computational-communication.com 通天塔：https://...</p>
+    <div class="ft">
+    </div>
+  </div>
+</div>
+
+  
+
+
+
+
+
+
+    <div class="mod">
+        <div id="dale_personal_note_top_right" ad-status="loaded" data-sell-type="RTB" data-type="YoudaoRender" data-version="3.2.7"></div>
+    </div>
+
+    
+    
+    
+        <div class="mod">
+            
+    <h2>
+        我的最新日记
+            &nbsp;·&nbsp;·&nbsp;·&nbsp;·&nbsp;·&nbsp;·
+            <span class="pl">&nbsp;(
+                
+                    <a href="https://www.douban.com/people/frankwang/notes" target="_self">全部</a>
+                ) </span>
+    </h2>
+
+            <ul class="note-list">
+                  <li>
+                    <a title="调查实验设计：Could more civil society involvement increase public support for climate policy-making?" href="https://www.douban.com/note/723072538/">调查实验设计：Could more civil society involvement increase public support for climate policy-making?</a>
+                    
+                  </li>
+                  <li>
+                    <a title="实验室实验：THE IMPACT OF RED TAPE ON CITIZEN SATISFACTION" href="https://www.douban.com/note/723067683/">实验室实验：THE IMPACT OF RED TAPE ON CITIZEN SATISFACTION</a>
+                    
+                  </li>
+                  <li>
+                    <a title="自然实验设计方法：Does Super-department Reform Improve Public Service Performance In China?" href="https://www.douban.com/note/723060603/">自然实验设计方法：Does Super-department Reform Improve Public Service Performance In China?</a>
+                    
+                      <span>&nbsp;(1人喜欢)</span>
+                  </li>
+                  <li>
+                    <a title="苏格拉底格言30条" href="https://www.douban.com/note/722879152/">苏格拉底格言30条</a>
+                    
+                      <span>&nbsp;(3人喜欢)</span>
+                  </li>
+                  <li>
+                    <a title="THE CINDERELLA SYNDROME" href="https://www.douban.com/note/722253684/">THE CINDERELLA SYNDROME</a>
+                    
+                      <span>&nbsp;(1人喜欢)</span>
+                  </li>
+            </ul>
+        </div>
+
+
+      
+      <p class="harbor-link">
+        &gt;&nbsp;<a href="https://www.douban.com/copyright/weixin/" target="_blank">站外侵权投诉通道</a>
+      </p>
+        <p class="donate-apply-link">
+          &gt;&nbsp;<a href="https://www.douban.com/mine/donate_apply/" target="_blank">开通赞赏</a>
+          <img src="./gradient_descent_files/icon_new@2x.png" width="28px" height="16px">
+        </p>
+
+
+<div class="mod">
+
+</div>
+
+
+        </div>
+        <div class="extra">
+            
+
+        </div>
+    </div>
+</div>
+
+        
+<div id="footer">
+    
+<span id="icp" class="fleft gray-link">
+    © 2005－2019 douban.com, all rights reserved 北京豆网科技有限公司
+</span>
+
+<a href="https://www.douban.com/hnypt/variformcyst.py" style="display: none;"></a>
+
+<span class="fright">
+    <a href="https://www.douban.com/about">关于豆瓣</a>
+    · <a href="https://www.douban.com/jobs">在豆瓣工作</a>
+    · <a href="https://www.douban.com/about?topic=contactus">联系我们</a>
+    · <a href="https://www.douban.com/about/legal">法律声明</a>
+    
+    · <a href="https://help.douban.com/?app=main" target="_blank">帮助中心</a>
+    · <a href="https://www.douban.com/doubanapp/">移动应用</a>
+    · <a href="https://www.douban.com/partner/">豆瓣广告</a>
+</span>
+
+</div>
+
+    </div>
+    
+    
+
+    <script type="text/javascript" src="./gradient_descent_files/7d09a0e4c21be57c.js"></script><div class="ui-overlay-mask" style="display:none;"><div class="ui-overlay-x"></div>                   <div class="ui-overlay-container">                   <a href="https://www.douban.com/note/713353797/#" class="ui-overlay-close" style="display:none;">×</a>   <div class="hd"></div>                     <div class="bd"></div>                   </div>                                     </div><div class="doulist-add-tooltip doulist-tooltip-hide"><a class="url-doulist-add"><i></i> 添加到豆列</a><div class="arrow"></div></div><script type="text/javascript">
+	Do = (typeof Do === 'undefined')? $ : Do;
+	Do(function(){
+      var reportDiv = "#link-report".concat("_note");
+      $("body").delegate(reportDiv, 'mouseenter mouseleave', function(e){
+
+        switch (e.type) {
+          case "mouseenter":
+            $(this).find(".report").css('visibility', 'visible');
+            break;
+          case "mouseleave":
+            $(this).find(".report").css('visibility', 'hidden');
+            break;
+        }
+      });
+      $(reportDiv).delegate(".report a", 'click', function(e){
+          e.preventDefault();
+          var auditUrl = "https://www.douban.com/misc/audit_report?url=",
+              opt = "";
+          var obj = $(e.target).closest(reportDiv);
+          var id = obj.length != 0 ? obj.data("id") : undefined;
+          var params = (opt&&id) ? '?'.concat(opt, '=', id) : '';
+          var url = "https://www.douban.com/note/713353797/".concat(params);
+          generate_report_dialog({report_url: url});
+      });
+
+      $(reportDiv).append('<div class="report"><a rel="nofollow" href="javascript:void(0)">举报</a></div>');
+  });
+</script><script type="text/javascript" src="./gradient_descent_files/6bf02780375d0185.js"></script><link type="text/css" rel="stylesheet" href="./gradient_descent_files/dialog.css"><script type="text/javascript" src="./gradient_descent_files/dialog.js" async="true"></script><script type="text/javascript">
+(function(){
+    window.collect_target = {
+        tkind: "1015",
+        tid: "713353797"
+    }
+    window.update_collect_state = function(collected){
+        var ele = document.querySelector('.lnk-doulist-add');
+        var old_num = parseInt(ele.querySelector('.react-num').textContent);
+        ele.className = 'lnk-doulist-add';
+        if(collected){
+            ele.className += ' collect-cancel';
+            ele.querySelector('.react-text').textContent = '已收藏';
+            ele.querySelector('.react-num').textContent = isNaN(old_num) ? 1 : old_num + 1;
+        }else{
+            ele.className += ' collect-add';
+            ele.querySelector('.react-text').textContent = '收藏';
+            ele.querySelector('.react-num').textContent = isNaN(old_num) ? "" : old_num - 1 === 0 ? "" : old_num - 1;
+        }
+    }
+})();
+function deferred(){var e={done:[],fail:[]},t={done:function(o){return e.done.push(o),t},fail:function(o){return e.fail.push(o),t}};return{resolve:function(){for(var t,o=0;t=e.done[o++];)t.apply(this,arguments)},reject:function(){for(var t,o=0;t=e.fail[o++];)t.apply(this,arguments)},promise:t}}var loader=function(e,t,o,r,n,a){if(e){"function"==typeof t&&(r=t,t=""),"function"==typeof o&&(r=o,o="");var i=function(){loader.loaded[e]=1,r&&r(e),r=null,clearTimeout(d)};if(loader.loaded[e])return loader.loading[e]&&(loader.loading[e]=0),void setTimeout(function(){i()},0);if(loader.loading[e])return void setTimeout(function(){loader(e,t,o,r,n,a)},10);loader.loading[e]=1;var l,d=setTimeout(function(){try{a(e)}catch(e){}},n||6e3),s=t||e.toLowerCase().split(/\./).pop().replace(/[\?#].*/,"");"js"===s?(l=document.createElement("script"),l.setAttribute("type","text/javascript"),l.setAttribute("src",e),l.setAttribute("async",!0)):"css"===s&&(l=document.createElement("link"),l.setAttribute("type","text/css"),l.setAttribute("rel","stylesheet"),l.setAttribute("href",e)),o&&(l.charset=o),"css"===s?setTimeout(function(){i()},0):(l.onerror=function(){i(),l.onerror=null},l.onload=l.onreadystatechange=function(){this.readyState&&"loaded"!==this.readyState&&"complete"!==this.readyState||(setTimeout(function(){i()},0),l.onload=l.onreadystatechange=null)});var c=function(){var e=document.getElementsByTagName("script");return e[e.length-1]}();c.parentNode.insertBefore(l,c)}};loader.loaded=window.__external_files_loaded=window.__external_files_loaded||{},loader.loading=window.__external_files_loading=window.__external_files_loading||{},loader.batch=function(){if(0!=arguments.length){var e=Array.prototype.slice.call(arguments);"[object Array]"==Object.prototype.toString.call(e[0])&&(e=e[0]);for(var t,o=deferred(),r=[],n=function(){r.pop(),0===r.length&&o.resolve()},a=0;t=e[a++];)r.push(t),loader(t,n);return o.promise}};
+
+Do(function() {
+  loader.batch([
+    'https://img3.doubanio.com/f/shire/8377b9498330a2e6f056d863987cc7a37eb4d486/css/ui/dialog.css',
+    'https://img3.doubanio.com/f/shire/383a6e43f2108dc69e3ff2681bc4dc6c72a5ffb0/js/ui/dialog.js'
+  ]).done(function() {
+    function deferred(){var e={done:[],fail:[]},t={done:function(i){return e.done.push(i),t},fail:function(i){return e.fail.push(i),t}};return{resolve:function(){for(var t,i=0;t=e.done[i++];)t.apply(this,arguments)},reject:function(){for(var t,i=0;t=e.fail[i++];)t.apply(this,arguments)},promise:t}}function asyncRequest(e,t,i){var n=deferred(),l=null,a=(i||"get").toLowerCase();return l=$.ajax({url:e,type:a,dataType:"json",data:"post"===a?$.extend(t,{ck:get_cookie("ck")}):t,error:function(e){n.reject(e)},success:function(e){n.resolve(e)}}),n.promise.abort=function(){l&&l.abort()},n.promise}function doulistCustomeEvents(e){var t=e.node.find(".bn-cancel");e.node.bind("dialog-error",function(i,n){e.setContent('<div class="doulist-submit-success"><p>'+n+'</p>         <div class="item-submit">           <span class="bn-flat"><input type="button" value="关闭" class="bn-cancel"></span>         </div>       </div>      ').update(),t.click(function(){e.close()}),setTimeout(function(){e.close()},3e3)}),e.node.bind("dialog-success",function(i,n){title=n.__title||"添加成功",action=n.__action||'已经添加到<a href="'+n.url+'" target="_blank"> '+n.name+"</a>",e.setTitle(title).setContent('<div class="doulist-submit-success">         <i></i>'+action+'         <div>           <p>窗口将在<b class="num">3</b>秒后关闭</p>           <span class="bn-flat"><input type="button" value="关闭" class="bn-cancel"></span>         </div>       </div>      '),t=e.node.find(".bn-cancel"),t.click(function(){e.close(),a&&clearTimeout(a)});var l,a,d=e.node.find(".num"),o=d.text();!function(){l=l||arguments.callee,a=setTimeout(function(){d.text(--o),o?l():e.close()},1e3)}()})}var encodeHTML=function(e){return e.replace(/\&/g,"&amp;").replace(/\"/g,"&quot;").replace(/\'/g,"&apos;").replace(/\</g,"&lt;").replace(/\>/g,"&gt;")},DOULIST_ADDITEM="/j/doulist/{doulist_id}/additem",DOULIST_REMOVEITEM="/j/doulist/{doulist_id}/removeitem",DOULIST_EDITITEM="/j/doulist/{doulist_id}/edititem",DOULIST_COMMENT="/j/doulist/{doulist_id}/poke",DOULIST_CREATE="/j/doulist/add",DOULIST_LIST="/j/doulist/cat",DOULIST_SEARCH="/j/doulist/search",DOULIST_SEARCH_SELF="/j/doulist/search_user_doulists",DOULIST_GET_ITEM_INFO="/j/doulist/get_item_info",validateForm=function(e,t){var i,n=!0;for(var l in t)t.hasOwnProperty(l)&&(i=e.find(l),n=t[l](i),n&&validateForm.cleanError(i));return n};validateForm.displayError=function(e,t){if(e){var i=e.closest(".item"),n=i.find(".form-field-error");0===n.length&&(n=$('<div class="form-field-error"></div>').prependTo(i)),n.show().html(t)}},validateForm.cleanError=function(e){e.closest(".item").find(".form-field-error").hide()};var doulistDialogForm="undefined"==typeof doulistDialogForm?{}:doulistDialogForm;!function(){function e(e,t,i){var n=t.find("input[name=dl_id]:checked"),l=n.val(),a=n.next().find("b").text(),d={".dl_exist_select input:checked":function(e){return!!e.length||(validateForm.displayError($(".dl_exist_select"),"请选择一个豆列"),!1)}};if(!l&&window.hasCancelCollectAction===!0){var o={__title:"取消收藏成功",__action:"已经取消了收藏"};return setTimeout(function(){t.trigger("form-submit-success",o)},500),window.update_collect_state&&window.update_collect_state(!1),window.hasCancelCollectAction=null,t}if(validateForm(t,d)){var s={sid:i.subjectId,skind:i.subjectKind,comment:i.comment,sync_to_mb:i.sync};i.subjectIsUrlSubject&&(s.surl=i.subjectId,delete s.sid,delete s.skind),asyncRequest(DOULIST_ADDITEM.replace("{doulist_id}",l),s,"post").done(function(e){return e.r?void t.trigger("form-submit-error",e.err):(e.sid=i.subjectId,e.doulist_id=l,e.name=$.trim(encodeHTML(a)),window.update_collect_state&&window.update_collect_state(!0),void t.trigger("form-submit-success",e))})}return t}var t=function(t){var i=t.node.find("form");i.submit(function(n){n.preventDefault();var l={subjectId:i.find("input[name=subject_id]").val(),subjectKind:i.find("input[name=subject_kind]").val(),subjectUrl:i.find("input[name=subject_url]").val(),subjectIsUrlSubject:"true"==i.find("input[name=subject_is_url_subject]").val(),comment:i.find('textarea[name="comment"]').val(),sync:i.find("#dlg-opt-share").attr("checked")?"1":""};e(t,i,l).bind("form-submit-error",function(e,i){t.node.trigger("dialog-error",i)}).bind("form-submit-success",function(e,i){t.node.trigger("dialog-success",i)})}),i.bind("form-submit-fail",function(e,t){validateForm.displayError(i.find("input[name=dl_title]"),t)}),doulistCustomeEvents(t)};doulistDialogForm.initForm=t}(),function(e){function t(e,t){i(t),e.trigger("dialog:show",r),n(t,e),doulistDialogForm.initForm(r)}function i(e){r&&r.close(),e.picture=e.picture||"/pics/doulist_article.png";var t=r=dui.Dialog({title:"收藏到豆列",width:640,cls:"dialog-doulist",content:("False"===e.canview?'<div class="doulist-ft" style="text-align:left;">啊，该内容你没有权限查看或已被作者删除。</div>':'<form action="" method="post"><div style="display:none;"><input type="hidden" name="ck" value="lEGR"/></div>        <div class="doulist-bd">          <div class="doulist-preview">            <div><img src="{{picture}}" /></div>            <p class="item-title">{{title}}</p>          </div>          <div class="doulist-content">            <div class="item">              <div class="item-hd">                <input type="text" name="search" class="dl_search" autocomplete="off" placeholder="请输入豆列名称" maxlength="40" />                <a href="javascript: void 0;" class="clear_search">×</a>                <h3>选择豆列</h3>                <input type="button" name="dl_choose" id="dl_new" autocomplete="off" class="lnk-flat" value="创建豆列" />              </div>              <div class="dl-bd">                <div class="dl-item">                  <div class="dl_new_title" style="display: none;">                    <div class="dl_title_block">                       <input id="dl_title" type="text" class="basic-input dl-title" placeholder="输入新豆列名称" maxlength="40" />                    </div>                     <div class="dl_action_block">                       <div class="dl_create_option">                        <span>隐私设置：</span>                         <input id="doulist_is_not_secret" type="radio" name="is_private" value="false" checked />                         <label for="doulist_is_not_secret">所有人可见</label>                         <input id="doulist_is_secret" type="radio" name="is_private" value="true" />                         <label for="doulist_is_secret">仅自己可见</label>                       </div>                       <input type="button" class="lnk-flat dl_new_submit" disabled value="创建" />                    </div>                   </div>                </div>                <div class="dl-loading">                  加载中...                </div>              </div>            </div>            <div class="item">              <div class="item-hd">                <h3>推荐语<span>（选填）</span></h3>              </div>              <textarea id="doulist_item_comment" class="basic-textarea" name="comment" placeholder="告诉大家你添加它的理由吧"></textarea>            </div>            <input type="hidden" name="dl_cat" value="{{cate}}">            <input type="hidden" name="subject_id" value="{{id}}">            <input type="hidden" name="subject_kind" value="{{cate}}">            <input type="hidden" name="subject_url" value="{{url}}">            <input type="hidden" name="subject_is_url_subject" value="{{isurlsubject}}">            </div>          </div>          <div class="doulist-ft">            <a target="_blank" href="https://www.douban.com/service/bookmarklet" class="lnk-bookmarklet">小工具：从浏览器直接把网页内容加入豆列</a>            <span class="bn-flat cancel_btn"><input type="button" class="j_close_dialog" value="取消"></span>            <span class="bn-flat"><input type="submit" class="doulist_submit" value="保存"></span>          </div>      </form>      ').replace(/{{[^{}]+}}/g,function(t){return encodeHTML(e[t.replace(/[{}]/g,"")]+"").toString()})},!0).open();t.update(),t.node.bind("dialog:close",function(){t.node.remove()}),t.node.bind("dialog:change",function(){t.update()})}function n(t,i){var n=r,o=window.collect_target||{};asyncRequest(DOULIST_LIST,o).done(function(i){var o=u,c='<div class="dl_exist_select">';e(i.doulist).each(function(e,t){c+=o.replace(/{{[^{}]+}}/g,function(e){var i=t[e.replace(/[{}]/g,"")];return i&&encodeHTML(i.toString())||""})}),c+="</div>",e("<div />",{class:"dl-item dl-item-exist"}).insertAfter(e(".dl-item")).html(c),e(".dl-item-exist :radio").eq(0).attr("checked",!0),e(".dl_new_title").hide(),n.node.find("form #doulist_item_comment").val(i.comment),a(t),d(),s(),l()}).fail(function(){e(".dl-loading").text("+_+ 加载失败，请刷新重试")})}function l(){e(".cancel-collect-btn").bind("click",function(t){t.stopPropagation(),t.preventDefault();var i=e(this).attr("data-name");if(confirm("确定要取消收藏到豆列 "+i+" 吗？")){var n=e(this).attr("data-id"),l=DOULIST_REMOVEITEM.replace("{doulist_id}",n),a=window.collect_target||{},d=e(this);a.ck=get_cookie("ck"),asyncRequest(l,a,"post").done(function(e){if(0===e.r){d.attr("data-is-collected","false");var t=d.closest("label").parent();t.find('input[type="radio"]').get(0).checked=!1,t.removeClass("checked_dl"),window.hasCancelCollectAction=!0}else alert("取消收藏时遇到了一些错误: "+e.r)})}})}function a(t){var i=r,n=e("#dl_new"),l=e(".dl_new_title"),a=e("#dl_title"),d=e(".dl_exist_select");e("#dl_id");n.click(function(){var t=e(".form-field-error");l.is(":hidden")?(t.show()&&n.val("取消创建"),l.slideDown(function(){d.addClass("fold"),a.focus()})):t.hide()&&l.hide()&&n.val("创建豆列")&&d.removeClass("fold")}),i.node.delegate(":radio","change",function(){var n=e(this).val(),l=DOULIST_COMMENT.replace("{doulist_id}",n);e(this).parent().siblings(".checked_dl").removeClass("checked_dl"),e(this).parent().addClass("checked_dl"),asyncRequest(l,{sid:t.id,skind:t.cate}).done(function(e){i.node.find("form #doulist_item_comment").val(e.comment)}).fail(function(){})}),d.bind("DOMMouseScroll mousewheel wheel",function(t){var i=null;"mousewheel"==t.type?i=t.originalEvent.wheelDelta*-1:"wheel"==t.type?i=t.originalEvent.deltaY:"DOMMouseScroll"==t.type&&(i=40*t.originalEvent.detail),i&&(t.preventDefault(),e(this).scrollTop(i+e(this).scrollTop()))})}function d(){var t=r,i=e(".dl_new_title"),n=e("#dl_title"),l=e(".dl_new_submit");n.bind("keyup change",function(){e.trim(n.val()).length?l.removeAttr("disabled"):l.attr("disabled",!0)}),n.bind("keydown",function(e){if(13===e.keyCode)return c(t,i),!1}),l.click(function(){c(t,i)})}function o(t){var i=u,n="";e(t.doulists).each(function(t,l){0===e("#"+l.id).length&&(n+=i.replace(/{{[^{}]+}}/g,function(e){var t=l[e.replace(/[{}]/g,"")];return t&&encodeHTML(t.toString())||""}))}),e(".dl-item-exist .dl_exist_select").append(n)}function s(){function t(){e(".no-match-warning").length?e(".no-match-warning").show():n.before('<p class="no-match-warning">没有找到匹配豆列，可以换个关键词试试</p>')}var i=e(".dl_search"),n=e(".dl_exist_select"),l=e(".dl_new_title"),a=e("#dl_new"),d=e(".clear_search"),s=null,c="";d.click(function(){return i.val("").change(),!1}),i.focus(function(){if(e(this).addClass("expand"),!l.is(":hidden")){var t=e(".form-field-error");t.hide()&&l.hide()&&a.val("创建豆列")&&n.removeClass("fold")}}),i.bind("keyup change",function(){var l=e.trim(i.val());l.length&&c!==l?(e(".no-match-warning").hide(),s&&s.abort(),d.hide(),i.addClass("loading"),c=l,s=asyncRequest(DOULIST_SEARCH_SELF,{q:l}),s.done(function(l){if(i.removeClass("loading"),d.show(),l&&l.doulists){o(l),n.children().hide();for(var a=0;a<l.doulists.length;a++)e("#"+l.doulists[a].id).parent().show();l.doulists.length||t()}}).fail(function(){t(),i.removeClass("loading"),d.show()})):0===l.length&&(e(".no-match-warning").hide(),n.children().show(),d.hide())}),i.bind("keydown",function(t){if(13===t.keyCode)return e(".dl-item-exist label:visible").eq(0).prev().attr("checked",!0),!1})}function c(t,i){var n='<div><input type="radio" value="{{id}}" id="{{id}}" name="dl_id" checked="checked"><label for="{{id}}"><b data-is-private="{{is_private}}">{{name}}</b></label></div>',l=e("#dl_title"),a=e("#dl_new"),d=e(".dl_exist_select"),o={"#dl_title":function(e){return""!==e.val()||(validateForm.displayError(e,"请给你的列表起一个名称"),!1)}};if(validateForm(i,o)){var s=e(".dl_new_submit");s.attr("disabled",!0),asyncRequest(DOULIST_CREATE,{title:e("#dl_title").val(),is_private:e('input[name="is_private"]:checked').val()},"post").done(function(t){if(t.r)return void alert(t.err);t.doulist_id=t.id;var i=n.replace(/{{[^{}]+}}/g,function(e){var i=t[e.replace(/[{}]/g,"")];return i&&encodeHTML(i.toString())||""}),o=e(i);o.prependTo(d),o.siblings().removeClass("checked_dl"),o.addClass("checked_dl"),d.animate({scrollTop:0},100),a.click(),l.val("").change()}).fail(function(){alert("网络问题，请稍后重试"),s.removeAttr("disabled")})}else t.update();return i}var r;window.hasCancelCollectAction=null;var u='  <div>    <input type="radio" value="{{id}}" id="{{id}}" name="dl_id">     <label for="{{id}}">       <span>{{count}}</span>       <b data-is-private="{{is_private}}">         <i data-id="{{id}}" data-name="{{name}}" data-is-collected="{{is_collected}}" class="cancel-collect-btn"></i>         {{name}}       </b>     </label>   </div>';e.fn.doulistDialog=function(i){return new t(e(this),i)}}(jQuery);
+
+    $(document).delegate('.lnk-doulist-add', 'click', function(e) {
+      e.preventDefault();
+      if(window._USER_ABNORMAL) {
+          show_abnormal && show_abnormal()
+          return
+      }
+      var self = $(this);
+      var param = $.extend({'url':''}, $(this).data(), {link: this.href});
+      // 兼容jquery 1.8.x
+      var newParam = {};
+      for (var key in param) {
+        if (typeof param[key] === 'number') {
+          param[key] = self.attr('data-'+key);
+        }
+        if (param.hasOwnProperty(key)) {
+          newParam[$.camelCase(key)] = param[key];
+        }
+      }
+      self.doulistDialog(newParam);
+    });
+
+  });
+});
+</script><script type="text/javascript" src="./gradient_descent_files/417c881ce9792e8a.js"></script><script type="text/javascript">
+            Do.ready(
+            'https://img3.doubanio.com/f/sns/3ce78080d3f4b644f017f04bf1295ffb449b0fc3/css/sns/note/ng/setting_standalone.css',
+            'https://img3.doubanio.com/f/sns/36c92c0355dbc21e05cb0aae13567401ea74267d/js/sns/note/editor_libs.js',
+            'https://img3.doubanio.com/f/sns/fff6f32676de5a1bc10276b05a9d525c62909cda/js/sns/note/ng/setting_standalone.js',
+            function() {
+                var noteId = 713353797;
+                $('.a_edit_tag[data-id="'+noteId+'"]').click(function(e){
+                    e.preventDefault();
+                    if(window._USER_ABNORMAL) {
+                        window.show_abnormal && window.show_abnormal()
+                        return
+                    }
+                    var el = $(this);
+                    var da = el.data()
+                    var tags =  {"mine": ["\u8d25\u5bb6", "Writing", "R", "\u80b2\u513f", "\u79d1\u6280", "\u6210\u957f", "\u8bfb\u4e66", "\u81ea\u6211\u7ba1\u7406", "\u601d\u60f3"], "common": ["\u7535\u5f71", "\u97f3\u4e50", "\u8bfb\u4e66", "\u65f6\u5c1a", "\u827a\u672f", "\u4eba\u6587", "\u5efa\u7b51", "\u8bbe\u8ba1", "\u6444\u5f71", "\u81ea\u7136", "\u5386\u53f2", "\u79d1\u5b66", "\u5065\u5eb7", "\u4f53\u80b2", "\u6559\u80b2", "\u65c5\u884c", "\u5c45\u5bb6", "\u7f8e\u98df", "\u5ba0\u7269", "\u5a31\u4e50", "\u8da3\u5473", "\u8d22\u7ecf", "\u52a8\u6f2b", "\u6210\u957f", "\u60c5\u611f", "\u7f8e\u5973", "\u540c\u6027", "\u521b\u610f", "\u79d1\u6280", "\u661f\u5ea7", "\u65f6\u4e8b", "\u8a00\u8bba", "\u6c7d\u8f66", "\u81ea\u6211\u7ba1\u7406"]};
+                    var setting = {
+                    is_original: da.original,
+                    is_banned_user: da['banned-user'],
+                    is_accept_reward: da['accept-reward'],
+                    is_open_reward: da['open-reward'],
+                    donation_notice: da['donation-notice'],
+                    privacy: da.privacy,
+                    cannot_reply: da['reply-limit'],
+                    tags: da.tags && da.tags.split(',') || [],
+                    mine_tags: tags.mine || [],
+                    common_tags: tags.common || []
+                    };
+                    globalNoteSetting.open({
+                    id: noteId,
+                    setting: setting,
+                    onSubmit: function(e) {
+                        var params = {
+                        note_id: noteId,
+                        author_tags: e.tags.join(','),
+                        note_privacy: e.privacy,
+                        is_original: e.is_original ? 'on' : '',
+                        cannot_reply: e.cannot_reply ? 'on' : '',
+                        accept_donation: e.is_accept_reward ? 'on' : '',
+                        donation_notice: e.donation_notice
+                        };
+                        $.post_withck('/j/note/settings', params, function(res) {
+                        self.location.reload();
+                        });
+                        globalNoteSetting.close();
+                    }
+                    });
+                });
+            });
+        </script><script type="text/javascript">
+Do(function() {
+    $(document).delegate('.mod-usercard .lnk-contact-add', 'click', function(e) {
+        e.preventDefault();
+        var el = $(this);
+        if(window._USER_ABNORMAL) {
+          window.show_abnormal && window.show_abnormal()
+          return
+        }
+        if (el.hasClass('processing')) {
+            return;
+        }
+        el.addClass('processing');
+        $.post_withck('/j/contact/addcontact', {
+        people: el.data('id'),
+        from: el.data('source')
+        }, function(r) {
+            el.removeClass('processing');
+            if (!r.result) {
+                return;
+            }
+            el.replaceWith('<span class="usercard-followed">已关注</span>');
+        }, 'json');
+    });
+});
+</script>
+    
+    <script src="./gradient_descent_files/copy.js" type="text/javascript"></script>
+    
+
+
+
+
+    
+<script type="text/javascript">
+    (function (global) {
+        var newNode = global.document.createElement('script'),
+            existingNode = global.document.getElementsByTagName('script')[0],
+            adSource = '//erebor.douban.com/',
+            userId = '1558440',
+            browserId = '-n0SJDzOCOU',
+            criteria = '3:/note/713353797/',
+            preview = '',
+            debug = false,
+            adSlots = ['dale_personal_note_middle_right', 'dale_personal_note_inner_bottom', 'dale_personal_note_download_bottom', 'dale_personal_note_top_right', 'dale_note_after_readmore'];
+
+        global.DoubanAdRequest = {src: adSource, uid: userId, bid: browserId, crtr: criteria, prv: preview, debug: debug};
+        global.DoubanAdSlots = (global.DoubanAdSlots || []).concat(adSlots);
+
+        newNode.setAttribute('type', 'text/javascript');
+        newNode.setAttribute('src', 'https://img3.doubanio.com/f/adjs/b2a623018cd76036bb32ad74c28ea231fb2aa462/ad.release.js');
+        newNode.setAttribute('async', true);
+        existingNode.parentNode.insertBefore(newNode, existingNode);
+    })(this);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+
+
+
+
+
+
+
+
+
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-5WP579" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5WP579');</script>
+<!-- End Google Tag Manager -->
+
+
+<script type="text/javascript">
+var _paq = _paq || [];
+_paq.push(['trackPageView']);
+_paq.push(['enableLinkTracking']);
+(function() {
+    var p=(('https:' == document.location.protocol) ? 'https' : 'http'), u=p+'://fundin.douban.com/';
+    _paq.push(['setTrackerUrl', u+'piwik']);
+    _paq.push(['setSiteId', '100001']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript';
+    g.defer=true;
+    g.async=true;
+    g.src=p+'://img3.doubanio.com/dae/fundin/piwik.js';
+    s.parentNode.insertBefore(g,s);
+})();
+</script>
+
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-7019765-1']);
+_gaq.push(['_setCampNameKey', 'dcn']);
+_gaq.push(['_setCampSourceKey', 'dcs']);
+_gaq.push(['_setCampMediumKey', 'dcm']);
+_gaq.push(['_setCampTermKey', 'dct']);
+_gaq.push(['_setCampContentKey', 'dcc']);
+_gaq.push(['_addOrganic', 'baidu', 'word']);
+_gaq.push(['_addOrganic', 'soso', 'w']);
+_gaq.push(['_addOrganic', '3721', 'name']);
+_gaq.push(['_addOrganic', 'youdao', 'q']);
+_gaq.push(['_addOrganic', 'so.360.cn', 'q']);
+_gaq.push(['_addOrganic', 'vnet', 'kw']);
+_gaq.push(['_addOrganic', 'sogou', 'query']);
+_gaq.push(['_addIgnoredOrganic', '豆瓣']);
+_gaq.push(['_addIgnoredOrganic', 'douban']);
+_gaq.push(['_addIgnoredOrganic', '豆瓣网']);
+_gaq.push(['_addIgnoredOrganic', 'www.douban.com']);
+_gaq.push(['_setDomainName', '.douban.com']);
+
+
+    _gaq.push(['_setCustomVar', 1, 'responsive_view_mode', 'desktop', 3]);
+
+_gaq.push(['_trackPageview']);
+_gaq.push(['_trackPageLoadTime']);
+    _gaq.push(['_setVar', '155']);
+
+window._ga_init = function() {
+    var ga = document.createElement('script');
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    ga.setAttribute('async', 'true');
+    document.documentElement.firstChild.appendChild(ga);
+};
+if (window.addEventListener) {
+    window.addEventListener('load', _ga_init, false);
+} else {
+    window.attachEvent('onload', _ga_init);
+}
+</script>
+
+
+
+
+
+    <!-- anson36-docker-->
+
+  
+
+  <script>_SPLITTEST=''</script>
+
+
+
+
+
+<div id="db-tagsug-list" class="suggest-overlay"></div><div class="dou-preview-image-popup" style="display: none;"></div><a href="https://www.douban.com/note/713353797/#" class="dou-preview-image-link-open" target="_preview_img" style="display: none;"></a><div></div></body></html>

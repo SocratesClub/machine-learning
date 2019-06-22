@@ -1,0 +1,437 @@
+.note-editor-popup-setting-submit button {
+  display: inline-block;
+  padding: 5px 20px;
+  line-height: 1.2;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  touch-action: manipulation;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  outline: none;
+  background-color: #3aa253;
+  border-color: #51873e;
+  font-size: 12px;
+  font-weight: normal;
+  color: #fff; }
+  .note-editor-popup-setting-submit button:link, .note-editor-popup-setting-submit button:visited, .note-editor-popup-setting-submit button:hover, .note-editor-popup-setting-submit button:active {
+    font-size: 12px;
+    font-weight: normal;
+    color: #fff; }
+  .note-editor-popup-setting-submit button:hover {
+    background-color: #4fc06a;
+    border-color: #66aa4e; }
+  .note-editor-popup-setting-submit button:active {
+    background-color: #2d7c40;
+    border-color: #3c642e; }
+
+.note-setting-dialog-container {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.3); }
+
+.note-setting-dialog-container .note-setting-dialog-panel-wrapper {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: auto;
+  padding: 40px 0;
+  text-align: center; }
+  .note-setting-dialog-container .note-setting-dialog-panel-wrapper:before {
+    content: "";
+    display: inline-block;
+    width: 1px;
+    height: 100%;
+    margin-left: -1px;
+    vertical-align: middle; }
+
+.note-setting-dialog-container .note-setting-dialog-panel {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  max-width: 640px;
+  min-width: 240px;
+  background: #fff;
+  text-align: left;
+  border: 1px solid #ccc;
+  box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.2);
+  border-radius: 5px; }
+
+.note-setting-dialog-container .note-setting-dialog-hd {
+  padding: 25px 40px 0;
+  margin: 0;
+  font-size: 15px;
+  color: #072; }
+
+.note-setting-dialog-container .note-setting-dialog-bd {
+  padding: 15px 40px 30px; }
+
+.note-setting-dialog-container .note-setting-dialog-close {
+  position: absolute;
+  padding: 20px;
+  right: 18px;
+  top: 6px;
+  font-weight: lighter;
+  line-height: 1;
+  font-size: 24px; }
+  .note-setting-dialog-container .note-setting-dialog-close:link, .note-setting-dialog-container .note-setting-dialog-close:visited {
+    color: #ccc; }
+  .note-setting-dialog-container .note-setting-dialog-close:hover {
+    background-color: transparent;
+    color: #072; }
+  .note-setting-dialog-container .note-setting-dialog-close:active {
+    color: #005e1b; }
+
+.note-setting-dialog-container {
+  z-index: 20; }
+  .note-setting-dialog-container .note-setting-dialog-close {
+    padding: 15px 20px; }
+
+.note-editor-popup-setting-tag {
+  margin-bottom: 30px; }
+  .note-editor-popup-setting-tag .tag-input-fieldset {
+    font-size: 0; }
+  .note-editor-popup-setting-tag .tag-input-x {
+    font-size: 12px; }
+  .note-editor-popup-setting-tag .tag-input-tag {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+    margin-bottom: 8px; }
+    .note-editor-popup-setting-tag .tag-input-tag a {
+      position: absolute;
+      line-height: 14px;
+      right: 8px;
+      top: 4px;
+      width: 14px;
+      text-align: center;
+      font-size: 15px;
+      font-weight: lighter; }
+      .note-editor-popup-setting-tag .tag-input-tag a:link, .note-editor-popup-setting-tag .tag-input-tag a:visited {
+        color: #aaa; }
+      .note-editor-popup-setting-tag .tag-input-tag a:hover {
+        background: transparent;
+        color: #37a; }
+    .note-editor-popup-setting-tag .tag-input-tag input {
+      -webkit-appearance: none;
+         -moz-appearance: none;
+              appearance: none;
+      line-height: 24px;
+      border: 0;
+      font-size: 12px;
+      outline: none;
+      background-color: #f1f3f5;
+      color: #999;
+      margin: 0;
+      padding: 0 0px 0 10px; }
+      .note-editor-popup-setting-tag .tag-input-tag input:focus + a {
+        display: none; }
+  .note-editor-popup-setting-tag .tag-input-field {
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+    border: 0;
+    padding: 5px 0;
+    font-size: 12px;
+    outline: none;
+    vertical-align: middle;
+    color: #444;
+    margin-bottom: 8px; }
+  .note-editor-popup-setting-tag .tag-input-container {
+    position: relative;
+    padding: 8px 0 0 8px;
+    margin-bottom: 8px;
+    cursor: text;
+    border: 1px solid #e5e5e5;
+    border-radius: 3px; }
+  .note-editor-popup-setting-tag .tag-input-focus {
+    border-color: #ccc; }
+    .note-editor-popup-setting-tag .tag-input-focus input:focus {
+      background-color: #fff; }
+  .note-editor-popup-setting-tag .tag-error-msg {
+    font-size: 12px;
+    color: #fe2617; }
+  .note-editor-popup-setting-tag .tag-list-group {
+    position: relative;
+    margin-right: 30px; }
+    .note-editor-popup-setting-tag .tag-list-group li {
+      display: inline-block;
+      margin-bottom: 4px;
+      margin-right: 20px;
+      white-space: nowrap; }
+  .note-editor-popup-setting-tag .tag-list-label {
+    float: left;
+    margin-right: 10px;
+    color: #999; }
+  .note-editor-popup-setting-tag .tag-list-content {
+    overflow: hidden; }
+  .note-editor-popup-setting-tag .tag-list-tag-on a:link, .note-editor-popup-setting-tag .tag-list-tag-on a:visited, .note-editor-popup-setting-tag .tag-list-tag-on a:hover, .note-editor-popup-setting-tag .tag-list-tag-on a:active {
+    color: #aaa;
+    background-color: transparent; }
+  .note-editor-popup-setting-tag .tag-list-button-fold {
+    position: absolute;
+    top: 0;
+    right: -30px; }
+    .note-editor-popup-setting-tag .tag-list-button-fold:link, .note-editor-popup-setting-tag .tag-list-button-fold:visited, .note-editor-popup-setting-tag .tag-list-button-fold:hover, .note-editor-popup-setting-tag .tag-list-button-fold:active {
+      color: #999;
+      background-color: transparent; }
+  .note-editor-popup-setting-tag .tag-list-button-fold:after {
+    content: "";
+    display: inline-block;
+    margin-left: 2px;
+    width: 14px;
+    height: 14px;
+    vertical-align: middle;
+    background-image: url(/f/sns/f20f2ff3c2886ff3a3ed3fa64ee513f630dd05a9/pics/sns/note/editor_icons/svg_arrow_down.svg);
+    background-repeat: no-repeat;
+    background-position: 50%; }
+  .note-editor-popup-setting-tag .tag-list-button-fold-open:after {
+    -webkit-transform: rotate(-180deg);
+            transform: rotate(-180deg); }
+  .note-editor-popup-setting-tag .tag-list {
+    width: 100%;
+    height: 240px;
+    overflow: scroll;
+    border-bottom: 1px solid #e5e5e5; }
+    .note-editor-popup-setting-tag .tag-list li {
+      border: none;
+      padding: 10px 12px;
+      font-size: 12px;
+      line-height: 1;
+      cursor: pointer; }
+      .note-editor-popup-setting-tag .tag-list li span {
+        float: none; }
+      .note-editor-popup-setting-tag .tag-list li .name {
+        color: #3377aa;
+        margin-right: 10px; }
+      .note-editor-popup-setting-tag .tag-list li .desc {
+        color: #999999; }
+  .note-editor-popup-setting-tag ::-webkit-input-placeholder {
+    font-size: 12px; }
+  .note-editor-popup-setting-tag ::-moz-placeholder {
+    font-size: 12px; }
+  .note-editor-popup-setting-tag :-ms-input-placeholder {
+    font-size: 12px; }
+  .note-editor-popup-setting-tag :-moz-placeholder {
+    font-size: 12px; }
+
+.note-editor-popup-setting-setting-msg {
+  margin-bottom: 10px;
+  font-size: 12px;
+  color: #494949; }
+
+.note-editor-popup-setting-label {
+  float: left;
+  color: #999; }
+
+.note-editor-popup-setting-fieldset {
+  margin-bottom: 10px; }
+
+.note-editor-popup-setting-fieldset, .note-editor-popup-setting-fields {
+  overflow: hidden; }
+
+.note-editor-popup-setting-fields {
+  padding-left: 20px; }
+  .note-editor-popup-setting-fields label {
+    margin-left: 2px; }
+
+.note-editor-popup-setting-field {
+  display: inline-block;
+  margin-right: 5px; }
+
+.note-editor-popup-setting-form {
+  display: block;
+  width: 560px; }
+
+.note-editor-popup-setting-submit {
+  padding: 20px;
+  text-align: center; }
+  .note-editor-popup-setting-submit button {
+    margin-left: 30px; }
+
+.note-editor-popup-setting-error {
+  color: #ff213c;
+  font-size: 12px; }
+
+.note-editor-popup-setting-tag .note-editor-popup-setting-error {
+  margin-top: -15px;
+  margin-bottom: 15px; }
+
+.note-editor-popup-setting-donate .note-editor-popup-setting-error {
+  display: inline-block;
+  margin-left: 10px; }
+
+.note-editor-popup-setting-donate-notice {
+  padding-top: 8px; }
+  .note-editor-popup-setting-donate-notice input {
+    padding: 0 10px;
+    box-sizing: border-box;
+    font-size: .928em;
+    border: 1px solid #eee;
+    background: #fff;
+    -webkit-appearance: none;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px; }
+    .note-editor-popup-setting-donate-notice input:focus {
+      border-color: #ccc;
+      outline: none; }
+
+.note-editor-popup-setting-permission-container {
+  margin-top: 30px;
+  margin-bottom: 30px; }
+
+.note-editor-popup-setting-permission-bar {
+  position: relative;
+  text-align: center;
+  margin-bottom: 20px; }
+  .note-editor-popup-setting-permission-bar:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    margin-top: -1px;
+    border-top: 1px solid #e5e5e5; }
+  .note-editor-popup-setting-permission-bar a {
+    display: inline-block;
+    position: relative;
+    background: #fff;
+    padding: 0 20px; }
+    .note-editor-popup-setting-permission-bar a:link, .note-editor-popup-setting-permission-bar a:visited, .note-editor-popup-setting-permission-bar a:hover, .note-editor-popup-setting-permission-bar a:active {
+      color: #999;
+      background-color: #fff; }
+
+.note-editor-popup-setting-permission-close a:after {
+  content: "";
+  display: inline-block;
+  margin-left: 10px;
+  vertical-align: middle;
+  width: 14px;
+  height: 6px;
+  background-image: url(/f/sns/f20f2ff3c2886ff3a3ed3fa64ee513f630dd05a9/pics/sns/note/editor_icons/svg_arrow_down.svg);
+  background-repeat: no-repeat; }
+
+.note-editor-popup-setting-permission-open a:after {
+  content: "";
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 10px;
+  width: 14px;
+  height: 6px;
+  background-image: url(/f/sns/364d4e5dfb03be7243861bd81a90562ca6041e31/pics/sns/note/editor_icons/svg_arrow_up.svg);
+  background-repeat: no-repeat; }
+
+.note-editor-popup-setting-permission-container .note-editor-popup-setting-fieldset {
+  display: table-cell;
+  padding: 0 30px 0 0;
+  vertical-align: top; }
+  .note-editor-popup-setting-permission-container .note-editor-popup-setting-fieldset .note-editor-popup-setting-label {
+    float: none;
+    display: table-cell;
+    line-height: 30px; }
+  .note-editor-popup-setting-permission-container .note-editor-popup-setting-fieldset .note-editor-popup-setting-fields {
+    display: table-cell; }
+  .note-editor-popup-setting-permission-container .note-editor-popup-setting-fieldset select {
+    padding: 5px 30px 5px 10px;
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+    vertical-align: middle;
+    border: 1px solid #eee;
+    border-radius: 2px;
+    background: #fff;
+    outline: none;
+    cursor: pointer;
+    background-image: url(/f/sns/6183881ddf59912dd7e329dde6bb15526a9c3f67/pics/sns/note/editor_icons/svg_arrow_down1.svg);
+    background-repeat: no-repeat;
+    background-position: 90% 50%; }
+    .note-editor-popup-setting-permission-container .note-editor-popup-setting-fieldset select:hover {
+      border-color: #ccc; }
+
+.note-editor-popup-setting-captcha-container {
+  font-size: 0; }
+  .note-editor-popup-setting-captcha-container .note-editor-captcha-field img {
+    width: auto;
+    height: 26px;
+    vertical-align: middle; }
+  .note-editor-popup-setting-captcha-container .note-editor-captcha-field input[type=text] {
+    padding: 0 10px;
+    height: 26px;
+    width: auto;
+    font-size: 12px;
+    vertical-align: middle; }
+
+.note-editor-popup-setting-statement-container {
+  padding-bottom: 15px;
+  color: #666;
+  background-color: #f8f8f8;
+  text-align: center; }
+
+.note-editor-popup-setting-button-fold-up:after {
+  content: "";
+  display: inline-block;
+  width: 14px;
+  height: 8px;
+  vertical-align: middle;
+  margin-left: 4px;
+  margin-bottom: 2px;
+  background-image: url(/f/sns/364d4e5dfb03be7243861bd81a90562ca6041e31/pics/sns/note/editor_icons/svg_arrow_up.svg);
+  background-repeat: no-repeat;
+  background-position: 50%; }
+
+.note-editor-popup-setting-button-fold-up:link, .note-editor-popup-setting-button-fold-up:visited, .note-editor-popup-setting-button-fold-up:hover, .note-editor-popup-setting-button-fold-up:active {
+  color: #999;
+  background-color: transparent; }
+
+.note-editor-statement {
+  padding: 20px;
+  margin-top: 10px;
+  text-align: left; }
+  .note-editor-statement-label {
+    margin-bottom: 1em;
+    font-size: 14px; }
+  .note-editor-statement p {
+    margin: 0 0 1em 0; }
+  .note-editor-statement p:last-child {
+    margin: 0; }
+
+.note-setting-dialog-container .note-setting-dialog-panel {
+  overflow: hidden; }
+
+.note-setting-dialog-container .note-setting-dialog-bd {
+  padding: 20px 0 0; }
+
+.note-editor-popup-setting-tag {
+  padding: 0 40px; }
+
+.note-editor-popup-setting-terms {
+  padding: 0 40px; }
+
+.note-editor-popup-setting-permission-container {
+  padding: 0 40px; }
+
+.note-editor-popup-setting-submit {
+  background: #f8f8f8; }
+  .note-editor-popup-setting-submit a:link,
+  .note-editor-popup-setting-submit a:visited {
+    color: #333; }
+  .note-editor-popup-setting-submit a:hover,
+  .note-editor-popup-setting-submit a:active {
+    color: #fff; }
+  .note-editor-popup-setting-submit button {
+    padding: 9px 35px; }
+
+

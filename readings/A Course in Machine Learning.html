@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0021)http://www.ciml.info/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="http://www.ciml.info/cover-head.png" type="image/vnd.microsoft.icon" rel="icon">
+<link href="http://www.ciml.info/cover-head.png" rel="SHORTCUT ICON"> 
+<link href="./A Course in Machine Learning_files/ciml.css" media="screen,projection" type="text/css" rel="stylesheet">
+<title>
+A Course in Machine Learning
+</title>
+<script type="text/javascript" async="" src="./A Course in Machine Learning_files/ga.js"></script><script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-34401066-1']);
+  _gaq.push(['_setDomainName', 'ciml.info']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+
+<body>
+
+<table height="650" cellpadding="0" cellspacing="0" border="0"><tbody><tr><td width="470"></td><td valign="top" width="530">
+
+<h2>A Course in Machine Learning</h2>
+<h5>by <a href="http://hal3.name/">Hal Daumé III</a></h5>
+<hr>
+
+Machine learning is the study of algorithms that learn from data and
+experience.  It is applied in a vast variety of application areas,
+from medicine to advertising, from military to pedestrian. Any area in
+which you need to make sense of data is a potential consumer of
+machine learning.<br><br>
+
+CIML is a set of introductory materials that covers most major aspects
+of modern machine learning (supervised learning, unsupervised
+learning, large margin methods, probabilistic modeling, learning
+theory, etc.).  It's focus is on broad applications with a rigorous
+backbone.  A subset can be used for an undergraduate course; a
+graduate course could probably cover the entire material and then
+some.<br><br>
+
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" name="donate">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----
+">
+You may obtain the written materials by <a href="http://www.ciml.info/">purchasing a
+($55) print copy</a>, by <a href="http://www.ciml.info/dl/v0_99/ciml-v0_99-all.pdf">downloading
+the entire book</a>, or by downloading <a href="http://www.ciml.info/#chapters">individual chapters</a> below.  If
+you find the electronic version of the book useful and would like
+to 
+<a href="http://paypal.com/" onclick="document[&#39;donate&#39;].submit(); return false">donate a small amount</a> 
+to support further development,
+that's always appreciated!
+You can get the source code for the book, labs and other teaching
+materials on <a href="https://github.com/hal3/ciml/">GitHub</a>.
+The current version is 0.99 (the "beta" pre-release).
+[You can view <a href="http://www.ciml.info/index_0_9.html">v0.9</a> if you prefer.
+<br><br>
+</form>
+
+<h5>Support and Mailing Lists:</h5>
+
+If you would like to be informed when new versions of CIML materials
+are released, please join the <a href="https://mailman.umiacs.umd.edu/mailman/listinfo/ciml">CIML mailing list</a>.  If
+you find errors in the book, please fill out
+a <a href="https://github.com/hal3/ciml/issues">bug report</a>.  If you're the first to
+submit an error, you'll get listed in the acknowledgments!  <br><br>
+
+<!--
+
+<h5>Code and Datasets:</h5>
+
+Coming soon...<br/><br/>
+
+<h5>Videos:</h5>
+
+Coming soon...<br/><br/>
+
+<h5>Courses Using CIML:</h5>
+
+<ul>
+<li> <a href="">Machine Learning</a> @ Bar-Ilan University </li>
+<li> <a href="http://www.umiacs.umd.edu/~hal/courses/2011F_ML/">Machine Learning</a> @ University of Maryland </li>
+<li> <a href="http://www.cs.utah.edu/~piyush/teaching/cs5350.html">Machine Learning</a> @ University of Utah </li>
+<li> <a href="http://stp.ling.uu.se/~nivre/master/ml.html">Machine Learning for NLP</a> @ Uppsala Universitet </li>
+<li> <a href="http://www.cse.wustl.edu/~kilian/cse517a2010">Machine Learning</a> @ Washington University in St. Louis </li>
+</ul>
+
+Using CIML and not listed here?  <a href="mailto:me AT hal3 DOT name">Email Hal</a>!
+<br/><br/>
+-->
+
+
+<a name="chapters"></a><h5>Individual Chapters:</h5>
+<ol start="0">
+<li> <a href="http://www.ciml.info/dl/v0_99/ciml-v0_99-ch00.pdf">Front Matter</a> </li>
+<li> <a href="http://www.ciml.info/dl/v0_99/ciml-v0_99-ch01.pdf">Decision Trees</a> </li>
+<li> <a href="http://www.ciml.info/dl/v0_99/ciml-v0_99-ch02.pdf">Limits of Learning</a> </li>
+<li> <a href="http://www.ciml.info/dl/v0_99/ciml-v0_99-ch03.pdf">Geometry and Nearest Neighbors</a> </li>
+<li> <a href="http://www.ciml.info/dl/v0_99/ciml-v0_99-ch04.pdf">The Perceptron</a> </li>
+<li> <a href="http://www.ciml.info/dl/v0_99/ciml-v0_99-ch05.pdf">Practical Issues</a> </li>
+<li> <a href="http://www.ciml.info/dl/v0_99/ciml-v0_99-ch06.pdf">Beyond Binary Classification</a> </li>
+<li> <a href="http://www.ciml.info/dl/v0_99/ciml-v0_99-ch07.pdf">Linear Models</a> </li>
+<li> <a href="http://www.ciml.info/dl/v0_99/ciml-v0_99-ch08.pdf">Bias and Fairness</a> </li>
+<li> <a href="http://www.ciml.info/dl/v0_99/ciml-v0_99-ch09.pdf">Probabilistic Modeling</a> </li>
+<li> <a href="http://www.ciml.info/dl/v0_99/ciml-v0_99-ch10.pdf">Neural Networks</a> </li>
+<li> <a href="http://www.ciml.info/dl/v0_99/ciml-v0_99-ch11.pdf">Kernel Methods</a> </li>
+<li> <a href="http://www.ciml.info/dl/v0_99/ciml-v0_99-ch12.pdf">Learning Theory</a> </li>
+<li> <a href="http://www.ciml.info/dl/v0_99/ciml-v0_99-ch13.pdf">Ensemble Methods</a> </li>
+<li> <a href="http://www.ciml.info/dl/v0_99/ciml-v0_99-ch14.pdf">Efficient Learning</a> </li>
+<li> <a href="http://www.ciml.info/dl/v0_99/ciml-v0_99-ch15.pdf">Unsupervised Learning</a> </li>
+<li> <a href="http://www.ciml.info/dl/v0_99/ciml-v0_99-ch16.pdf">Expectation Maximization</a> </li>
+<li> <a href="http://www.ciml.info/dl/v0_99/ciml-v0_99-ch17.pdf">Structured Prediction</a> </li>
+<li> <a href="http://www.ciml.info/dl/v0_99/ciml-v0_99-ch18.pdf">Imitation Learning</a> </li>
+<li> <a href="http://www.ciml.info/dl/v0_99/ciml-v0_99-ch19.pdf">Back Matter</a> </li>
+</ol><br>
+
+<h5>Acknowledgments</h5>
+
+Thanks to everyone who was ever a teacher or student of mine, to those
+who provided feedback on drafts, and to colleagues for encouragement
+to get this done!  Special thanks to: TODO...
+<br><br>
+
+
+</td></tr></tbody></table>
+
+
+
+<!-- last updated on twenty eight february, two thousand eleven; contact <a href="mailto:me AT hal3 DOT name"><img border=0 height=12 valign=bottom src="email.png" ALT="me AT hal3 DOT name"></a> -->
+
+
+
+</body></html>

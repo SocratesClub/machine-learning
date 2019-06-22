@@ -1,0 +1,286 @@
+/* copy from /css/core/css3.scss */
+/* end copy */
+/* copy from /css/nav/base.scss */
+.nav {
+  width: 100%;
+  min-width: 1040px;
+  overflow: hidden;
+  zoom: 1;
+  margin-bottom: 50px; }
+  .nav .nav-wrap {
+    border-bottom: 1px solid #e5ebe4; }
+  .nav .nav-primary,
+  .nav .nav-secondary {
+    width: 1040px;
+    margin: 0 auto;
+    padding-bottom: 0;
+    overflow: hidden;
+    zoom: 1; }
+  .nav .nav-primary {
+    position: relative;
+    padding: 10px 0 5px;
+    overflow: hidden;
+    zoom: 1; }
+  .nav .nav-logo {
+    float: left;
+    height: 56px;
+    width: 145px;
+    margin: 0 13px 0 0;
+    background: url(//img3.doubanio.com/dae/accounts/resources/4bf727f/sns/assets/lg_main_a11_1.png) no-repeat 0 12px;
+    background-image: -webkit-image-set(url(//img3.doubanio.com/dae/accounts/resources/4bf727f/sns/assets/lg_main_a11_1.png) 1x, url(//img3.doubanio.com/dae/accounts/resources/4bf727f/sns/assets/lg_main@2x.png) 2x);
+    background-image: -moz-image-set(url(//img3.doubanio.com/dae/accounts/resources/4bf727f/sns/assets/lg_main_a11_1.png) 1x, url(//img3.doubanio.com/dae/accounts/resources/4bf727f/sns/assets/lg_main@2x.png) 2x);
+    background-image: -ms-image-set(url(//img3.doubanio.com/dae/accounts/resources/4bf727f/sns/assets/lg_main_a11_1.png) 1x, url(//img3.doubanio.com/dae/accounts/resources/4bf727f/sns/assets/lg_main@2x.png) 2x);
+    background-image: -o-image-set(url(//img3.doubanio.com/dae/accounts/resources/4bf727f/sns/assets/lg_main_a11_1.png) 1x, url(//img3.doubanio.com/dae/accounts/resources/4bf727f/sns/assets/lg_main@2x.png) 2x); }
+    .nav .nav-logo a {
+      display: block;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      line-height: 100em; }
+      .nav .nav-logo a:hover, .nav .nav-logo a:active {
+        background: none !important; }
+
+.ua-iphone .nav {
+  -webkit-text-size-adjust: none; }
+
+.nav-search {
+  position: relative;
+  overflow: hidden;
+  zoom: 1;
+  padding: 10px 0 15px 0; }
+  .nav-search input {
+    -webkit-appearance: none;
+    border: none;
+    background: transparent; }
+  .nav-search label {
+    position: absolute;
+    left: 11px;
+    top: 10px;
+    line-height: 30px;
+    cursor: text;
+    color: #bbb;
+    width: auto; }
+  .nav-search ::-webkit-input-placeholder {
+    /* WebKit browsers */
+    color: #bbb; }
+  .nav-search :-moz-placeholder {
+    /* Mozilla Firefox 4 to 18 */
+    color: #bbb; }
+  .nav-search ::-moz-placeholder {
+    /* Mozilla Firefox 19+ */
+    color: #bbb; }
+  .nav-search :-ms-input-placeholder {
+    /* Internet Explorer 10+ */
+    color: #bbb; }
+  .nav-search .inp {
+    float: left;
+    width: 470px;
+    height: 34px;
+    text-align: center;
+    _margin-right: -3px;
+    cursor: text;
+    background: url("/__nav/sns/assets/nav_bg_a1.png") no-repeat 0 0; }
+    .nav-search .inp input {
+      background: #fff;
+      width: 96%;
+      margin: 0;
+      text-align: left;
+      height: 30px;
+      padding-left: 10px;
+      height: 28px\9;
+      line-height: 28px\9;
+      outline: none; }
+  .nav-search legend {
+    display: none; }
+  .nav-search fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+    position: static; }
+
+.nav-search .inp-btn {
+  position: relative;
+  left: -1px;
+  *top: -1px;
+  width: 37px;
+  height: 34px;
+  zoom: 1;
+  overflow: hidden; }
+  .nav-search .inp-btn input {
+    width: 100%;
+    height: 100%;
+    font-size: 0;
+    padding: 35px 0 0 0;
+    overflow: hidden;
+    background: url("/__nav/sns/assets/nav_bg_a1.png") no-repeat 0 -40px;
+    color: transparent;
+    cursor: pointer; }
+    .nav-search .inp-btn input:hover {
+      background-position: -40px -40px; }
+    .nav-search .inp-btn input:active {
+      background-position: 0 -40px; }
+
+/* end copy */
+/* copy from css/nav/sns.scss */
+#db-nav-sns {
+  position: relative;
+  zoom: 1;
+  background: #edf4ed; }
+  #db-nav-sns a:link,
+  #db-nav-sns a:visited {
+    color: #072; }
+  #db-nav-sns a:hover,
+  #db-nav-sns a:active {
+    background-color: #072;
+    color: #fff; }
+  #db-nav-sns li {
+    display: inline; }
+  #db-nav-sns .nav-wrap {
+    border: none; }
+  #db-nav-sns .nav-primary {
+    overflow: hidden;
+    padding-top: 12px;
+    zoom: 1; }
+  #db-nav-sns .nav-search {
+    position: absolute;
+    right: 0;
+    *width: 282px; }
+  #db-nav-sns .nav-logo {
+    width: 184px;
+    height: 57px;
+    background-position: 0 10px; }
+  #db-nav-sns label {
+    line-height: 28px; }
+  #db-nav-sns .inp {
+    width: 278px;
+    height: 28px;
+    background: #fff;
+    border: 1px solid #e1e9e1;
+    text-align: left;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    -ms-border-radius: 0;
+    border-radius: 0; }
+    #db-nav-sns .inp input {
+      margin: 0;
+      width: 242px;
+      height: 28px;
+      line-height: "26px	"; }
+  #db-nav-sns .inp-btn {
+    position: absolute;
+    left: auto;
+    top: 10px;
+    right: 0;
+    width: 30px;
+    height: 28px;
+    *height: 30px;
+    border: 1px solid #e1e9e1;
+    border-left: none;
+    background-color: #fff;
+    font-size: 0;
+    overflow: hidden; }
+    #db-nav-sns .inp-btn input {
+      width: 30px;
+      height: 28px;
+      *height: 30px;
+      padding: 0;
+      margin: 0;
+      line-height: 100px;
+      background: transparent url(//img3.doubanio.com/dae/accounts/resources/4bf727f/sns/assets/bn_srh_1.png) no-repeat 50% 50%; }
+  #db-nav-sns .inp-btn {
+    position: absolute;
+    left: auto;
+    top: 10px;
+    right: 0;
+    width: 30px;
+    height: 28px;
+    *height: 30px;
+    border: 1px solid #e1e9e1;
+    border-left: none;
+    background-color: #fff;
+    font-size: 0;
+    overflow: hidden; }
+    #db-nav-sns .inp-btn input {
+      width: 30px;
+      height: 28px;
+      *height: 30px;
+      padding: 0;
+      margin: 0;
+      line-height: 100px;
+      background: transparent url(//img3.doubanio.com/dae/accounts/resources/4bf727f/sns/assets/bn_srh_1.png) no-repeat 50% 50%; }
+  #db-nav-sns .nav-items {
+    float: left;
+    margin-top: 15px; }
+    #db-nav-sns .nav-items li {
+      margin-right: 20px;
+      font-size: 16px; }
+      #db-nav-sns .nav-items li a {
+        position: relative; }
+
+/* end copy */
+/* copy from /css/lib/tagsug.css */
+.suggest-overlay {
+  font-size: 13px;
+  position: absolute;
+  z-index: 10001;
+  width: auto;
+  background: #fff;
+  border: 1px solid #c5c7d2; }
+  .suggest-overlay ul {
+    color: #999;
+    min-width: 214px;
+    list-style: none;
+    margin: 0; }
+  .suggest-overlay .sug-kind-search {
+    padding: 0;
+    width: 278px; }
+  .suggest-overlay .sug-item, .suggest-overlay .sug-placeholder {
+    margin: 0;
+    padding: 0; }
+    .suggest-overlay .sug-item.on, .suggest-overlay .sug-placeholder.on {
+      background-color: #eee; }
+    .suggest-overlay .sug-item p, .suggest-overlay .sug-placeholder p {
+      margin: 0;
+      padding: 0; }
+  .suggest-overlay .sug-item a, .suggest-overlay .sug-placeholder {
+    display: block;
+    text-decoration: none;
+    color: #999;
+    padding: 6px;
+    line-height: 18px; }
+    .suggest-overlay .sug-item a:hover, .suggest-overlay .sug-item a:active, .suggest-overlay .sug-item a:focus, .suggest-overlay .sug-placeholder:hover, .suggest-overlay .sug-placeholder:active, .suggest-overlay .sug-placeholder:focus {
+      outline: none;
+      color: #999;
+      background: none;
+      background-color: #eee; }
+  .suggest-overlay .sug-card {
+    overflow: hidden;
+    padding-top: 7px;
+    padding-bottom: 7px; }
+  .suggest-overlay .sug-card-info {
+    margin: 0px 0px 0px 50px; }
+  .suggest-overlay .sug-card-title {
+    font-weight: bold;
+    color: #369;
+    margin-right: 3px; }
+  .suggest-overlay .sug-card-subtitle {
+    font-size: 12px; }
+  .suggest-overlay .sug-card-cover {
+    float: left;
+    width: 40px; }
+  .suggest-overlay .sug-people {
+    display: block;
+    padding: 6px;
+    color: #999; }
+    .suggest-overlay .sug-people img {
+      margin-right: 5px;
+      width: 20px;
+      height: 20px;
+      vertical-align: middle; }
+    .suggest-overlay .sug-people .username {
+      color: #333;
+      margin-right: 3px; }
+    .suggest-overlay .sug-people em {
+      font-style: normal; }
+    .suggest-overlay .sug-people b {
+      font-weight: bold; }
