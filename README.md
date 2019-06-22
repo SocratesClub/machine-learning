@@ -3,9 +3,9 @@
 王成军
 
 
-> Note: 本部分基于python介绍机器学习的基本逻辑和算法，需要学员提前安装anaconda）。
+> Note: 本部分基于python介绍机器学习的基本逻辑和算法，需要学员提前安装Anaconda、熟悉Jupyter notebook的使用、安装pytorch）。
 
-
+
 | 序号          |  日期         |    时间   |内容        | 课时数量   |
 | -------------|:-------------:|:-------------:|:-------------:|-----:|
 | 1 | 6月19日 周三|	9:00-12:00 新建楼319多功能厅| **机器学习简介**：从泰坦尼克号讲起|3|
@@ -16,19 +16,19 @@
 
 https://github.com/computational-class/machine-learning
 
-### Table of content
+### Slides
 
-- [What Is Machine Learning?](http://nbviewer.jupyter.org/github/computational-class/machine-learning/blob/master/09.01-What-Is-Machine-Learning.ipynb)
-- [Introducing Scikit-Learn](http://nbviewer.jupyter.org/github/computational-class/machine-learning/blob/master/09.02-machine-learning-with-sklearn.ipynb)
-- [Hyperparameters and Model Validation](http://nbviewer.jupyter.org/github/computational-class/machine-learning/blob/master/09.03-Hyperparameters-and-Model-Validation.ipynb)
-- [Feature Engineering](http://nbviewer.jupyter.org/github/computational-class/machine-learning/blob/master/09.04-Feature-Engineering.ipynb)
-- [In Depth: Naive Bayes Classification](http://nbviewer.jupyter.org/github/computational-class/machine-learning/blob/master/09.05-Naive-Bayes.ipynb)
-- [In Depth: Linear Regression](http://nbviewer.jupyter.org/github/computational-class/machine-learning/blob/master/09.06-Linear-Regression.ipynb)
-- [In-Depth: Support Vector Machines](http://nbviewer.jupyter.org/github/computational-class/machine-learning/blob/master/09.07-Support-Vector-Machines.ipynb)
-- [In-Depth: Decision Trees and Random Forests](http://nbviewer.jupyter.org/github/computational-class/machine-learning/blob/master/09.08-Random-Forests.ipynb)
-- [In Depth: Neural Networks](http://nbviewer.jupyter.org/github/computational-class/machine-learning/blob/master/09.09.neural_network.ipynb)
-- [In Depth: Neural Networks Advanced](http://nbviewer.jupyter.org/github/computational-class/machine-learning/blob/master/09.10.neural_network_advanced.ipynb)
-
+- [What Is Machine Learning?](https://nbviewer.jupyter.org/format/slides/github/computational-class/machine-learning/blob/master/09.01-What-Is-Machine-Learning.ipynb#/)
+- [Introducing Scikit-Learn](https://nbviewer.jupyter.org/format/slides/github/computational-class/machine-learning/blob/master/09.02-machine-learning-with-sklearn.ipynb#/)
+- [Hyperparameters and Model Validation](https://nbviewer.jupyter.org/format/slides/github/computational-class/machine-learning/blob/master/09.03-Hyperparameters-and-Model-Validation.ipynb#/)
+- [Feature Engineering](https://nbviewer.jupyter.org/format/slides/github/computational-class/machine-learning/blob/master/09.04-Feature-Engineering.ipynb#/)
+- [In Depth: Naive Bayes Classification](https://nbviewer.jupyter.org/format/slides/github/computational-class/machine-learning/blob/master/09.05-Naive-Bayes.ipynb#/)
+- [In Depth: Linear Regression](https://nbviewer.jupyter.org/format/slides/github/computational-class/machine-learning/blob/master/09.06-Linear-Regression.ipynb#/)
+- [In-Depth: Support Vector Machines](https://nbviewer.jupyter.org/format/slides/github/computational-class/machine-learning/blob/master/09.07-Support-Vector-Machines.ipynb#/)
+- [In-Depth: Decision Trees and Random Forests](https://nbviewer.jupyter.org/format/slides/github/computational-class/machine-learning/blob/master/09.08-Random-Forests.ipynb#/)
+- [In Depth: Neural Networks 1](https://nbviewer.jupyter.org/format/slides/github/computational-class/machine-learning/blob/master/09.09.neural_network_1.ipynb#/)
+- [In Depth: Neural Networks 2](https://nbviewer.jupyter.org/format/slides/github/computational-class/machine-learning/blob/master/09.09.neural_network_2.ipynb#/)
+- [In Depth: Neural Networks 3](https://nbviewer.jupyter.org/format/slides/github/computational-class/machine-learning/blob/master/09.09.neural_network_pytorch.ipynb#/)
 
 ## 案例
 - 房价预测 https://www.kaggle.com/c/house-prices-advanced-regression-techniques/
@@ -54,5 +54,4 @@ https://github.com/computational-class/machine-learning
 
 - 南京大学《大数据挖掘与分析》课程  https://github.com/computational-class/bigdata
 - 用Python玩转数据_中国大学MOOC(慕课) http://www.icourse163.org/course/nju-1001571005
-- Advanced Machine Learning with scikit-learn, Andreas Müller http://bit.ly/advanced_machine_learning_scikit-learn & https://github.com/computational-class/PythonMachineLearning 
-
+- Advanced Machine Learning with scikit-learn, Andreas Müller http://bit.ly/advanced_machine_learning_scikit-learn & https://github.com/computational-class/PythonMachineLearning
