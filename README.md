@@ -1,4 +1,4 @@
-# Machine Learning for Social Scientist
+# Machine Learning for the Social Scientist
 
 王成军
 
