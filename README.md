@@ -2,7 +2,7 @@
 
 王成军
 
-**社会科学家的机器学习（Machine Learning for the Social Scientist** 工作坊简介
+**社会科学家的机器学习（Machine Learning for the Social Scientist)** 工作坊简介
 
 本工作坊面向社会科学研究者，采用Python介绍机器学习（和深度学习）的基本逻辑（需要学员提前安装Anaconda），主要内容包括三（或四）个部分：1. 机器学习简介：从泰坦尼克号讲起；2. 机器学习初步: 朴素贝叶斯与线性回归；3. 机器学习进阶：支持向量机与随机森林；4. 机器学习扩展：基于Pytorch的神经网络模型（备选）。本工作坊所使用到的Slides、Python代码、阅读文献、案例见 https://github.com/computational-class/machine-learning
 
