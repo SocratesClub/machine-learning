@@ -22,18 +22,18 @@ https://github.com/computational-class/machine-learning
 
 ### Slides
 
-- [What Is Machine Learning?](https://nbviewer.jupyter.org/format/slides/github/computational-class/machine-learning/blob/master/06.01-What-Is-Machine-Learning.ipynb#/)
-- [Introducing Scikit-Learn](https://nbviewer.jupyter.org/format/slides/github/computational-class/machine-learning/blob/master/06.02-machine-learning-with-sklearn.ipynb#/)
-- [Hyperparameters and Model Validation](https://nbviewer.jupyter.org/format/slides/github/computational-class/machine-learning/blob/master/06.03-Hyperparameters-and-Model-Validation.ipynb#/)
-- [Feature Engineering](https://nbviewer.jupyter.org/format/slides/github/computational-class/machine-learning/blob/master/06.04-Feature-Engineering.ipynb#/)
-- [In Depth: Naive Bayes Classification](https://nbviewer.jupyter.org/format/slides/github/computational-class/machine-learning/blob/master/06.05-Naive-Bayes.ipynb#/)
-- [In Depth: Linear Regression](https://nbviewer.jupyter.org/format/slides/github/computational-class/machine-learning/blob/master/06.06-Linear-Regression.ipynb#/)
-- [In-Depth: Support Vector Machines](https://nbviewer.jupyter.org/format/slides/github/computational-class/machine-learning/blob/master/06.07-Support-Vector-Machines.ipynb#/)
-- [In-Depth: Decision Trees and Random Forests](https://nbviewer.jupyter.org/format/slides/github/computational-class/machine-learning/blob/master/06.08-Random-Forests.ipynb#/)
-- [In Depth: Neural Networks: An introduction](https://nbviewer.jupyter.org/format/slides/github/computational-class/machine-learning/blob/master/07.01-neural-network-intro.ipynb#/)
-- [In Depth: Neural Networks: Hand-written Digits](https://nbviewer.jupyter.org/format/slides/github/computational-class/machine-learning/blob/master/07.02-hand-written-digits.ipynb#/)
-- [In Depth: Neural Networks: CNN](https://nbviewer.jupyter.org/format/slides/github/computational-class/machine-learning/blob/master/07.03-CNN.ipynb#/)
-- [In Depth: Neural Networks: RNN](https://nbviewer.jupyter.org/format/slides/github/computational-class/machine-learning/blob/master/07.03-RNN.ipynb#/)
+- [What Is Machine Learning?](https://nbviewer.jupyter.org/github/computational-class/machine-learning/blob/master/06.01-What-Is-Machine-Learning.ipynb#/)
+- [Introducing Scikit-Learn](https://nbviewer.jupyter.org/github/computational-class/machine-learning/blob/master/06.02-machine-learning-with-sklearn.ipynb#/)
+- [Hyperparameters and Model Validation](https://nbviewer.jupyter.org/github/computational-class/machine-learning/blob/master/06.03-Hyperparameters-and-Model-Validation.ipynb#/)
+- [Feature Engineering](https://nbviewer.jupyter.org/github/computational-class/machine-learning/blob/master/06.04-Feature-Engineering.ipynb#/)
+- [In Depth: Naive Bayes Classification](https://nbviewer.jupyter.org/github/computational-class/machine-learning/blob/master/06.05-Naive-Bayes.ipynb#/)
+- [In Depth: Linear Regression](https://nbviewer.jupyter.org/github/computational-class/machine-learning/blob/master/06.06-Linear-Regression.ipynb#/)
+- [In-Depth: Support Vector Machines](https://nbviewer.jupyter.org/github/computational-class/machine-learning/blob/master/06.07-Support-Vector-Machines.ipynb#/)
+- [In-Depth: Decision Trees and Random Forests](https://nbviewer.jupyter.org/github/computational-class/machine-learning/blob/master/06.08-Random-Forests.ipynb#/)
+- [In Depth: Neural Networks: An introduction](https://nbviewer.jupyter.org/github/computational-class/machine-learning/blob/master/07.01-neural-network-intro.ipynb#/)
+- [In Depth: Neural Networks: Hand-written Digits](https://nbviewer.jupyter.org/github/computational-class/machine-learning/blob/master/07.02-hand-written-digits.ipynb#/)
+- [In Depth: Neural Networks: CNN](https://nbviewer.jupyter.org/github/computational-class/machine-learning/blob/master/07.03-CNN.ipynb#/)
+- [In Depth: Neural Networks: RNN](https://nbviewer.jupyter.org/github/computational-class/machine-learning/blob/master/07.03-RNN.ipynb#/)
 
 ## 案例
 - 房价预测 https://www.kaggle.com/c/house-prices-advanced-regression-techniques/
