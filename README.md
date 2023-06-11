@@ -2,7 +2,7 @@
 
 王成军
 
-**社会科学家的机器学习（Machine Learning for Social Scientists)** 工作坊简介
+**社会科学家的机器学习（Machine Learning for Social Scientists)** 暑期课程简介
 
 本工作坊面向社会科学研究者，采用Python介绍机器学习（和深度学习）的基本逻辑（需要学员提前安装Anaconda），主要内容包括三（或四）个部分：1. 机器学习简介：从泰坦尼克号讲起；2. 机器学习初步: 朴素贝叶斯与线性回归；3. 机器学习进阶：支持向量机与随机森林；4. 机器学习扩展：基于Pytorch的神经网络模型（备选）。本工作坊所使用到的Slides、Python代码、阅读文献、案例见 https://github.com/computational-class/machine-learning
 
@@ -12,10 +12,18 @@
 
 | 序号          |  日期         |    时间   |内容        | 课时数量   |
 | -------------|:-------------:|:-------------:|:-------------:|-----:|
-| 1 | 6月19日 周三|	9:00-12:00 新建楼319多功能厅| **机器学习简介**：从泰坦尼克号讲起|3|
-| 2| 6月20日 周四|	9:00-12:00 新建楼319多功能厅| **机器学习初步**: 朴素贝叶斯与线性回归|3|
-| 3 | 6月20日 周四|	13:30-16:30 新建楼319多功能厅| **机器学习进阶**: 支持向量机与随机森林|3|
-| 4 | 6月21日 周五|	9:00-12:00 新建楼319多功能厅| **机器学习扩展**: 基于Pytorch的神经网络模型|3|
+| 1 | 7月1日 周六|	9:00-11:00 | **机器学习简介**：从泰坦尼克号讲起|2|
+| 1 | 7月1日 周六|	11:00-12:00 | 课堂练习&答疑|1|
+| 1 | 7月1日 周六|	14:00-16:00 | **机器学习简介**： 模型校验 & 特征工程|2|
+| 1 | 7月1日 周六|	16:00-17:00 | 课堂练习&答疑|1|
+| 2 | 7月1日 周日|	9:00-11:00 | **机器学习进阶**：朴素贝叶斯 & 线性回归|2|
+| 2 | 7月1日 周日|	11:00-12:00 | 课堂练习&答疑|1|
+| 2 | 7月1日 周日|	14:00-16:00 | **机器学习简介**： 支持向量机 & 随机森林|2|
+| 2 | 7月1日 周日|	16:00-17:00 | 课堂练习&答疑|1|
+| 3 | 7月1日 周一|	9:00-11:00 | **机器学习拓展**：基于Pytorch的神经网络模型|2|
+| 3 | 7月1日 周一|	11:00-12:00 | 课堂练习&答疑|1|
+| 3 | 7月1日 周一|	14:00-16:00 | **机器学习拓展**：结课|2|
+| 3 | 7月1日 周一|	16:00-17:00 | 课堂练习&答疑|1|
 
 
 https://github.com/computational-class/machine-learning
@@ -44,15 +52,19 @@ https://github.com/computational-class/machine-learning
 ## 推荐教材
 
 - **Whirlwind Tour Of Python** https://jakevdp.github.io/WhirlwindTourOfPython/
+- **Beiginning Python** 
 - **Python Data Science Handbook** https://jakevdp.github.io/PythonDataScienceHandbook/
+- **动手学深度学习PyTorch版** http://d2l.ai/
+- **Python Data Science Handbook** https://jakevdp.github.io/PythonDataScienceHandbook/
+ 
 
 ## 参考书
-- **Python for Data Analysis** by Wes McKinney, published by O'Reilly Media https://github.com/data-science-lab/pydata-book
 - **Introduction to Machine Learning with Python: A Guide for Data Scientist** https://github.com/amueller/introduction_to_ml_with_python.
+- **Hands-on machine learning with scikit-learn, keras & tensorflow** https://github.com/ageron/handson-ml3
 - **Machine Learning in Action** https://github.com/pbharrin/machinelearninginaction & https://github.com/RedstoneWill/MachineLearningInAction-Camp & https://github.com/TingNie/Machine-learning-in-action
 - 周志华《机器学习》,北京:清华大学出版社,2016. (ISBN 978-7-302-42328-7)
-- Easley, David and [Jon Kleinberg](http://www.cs.cornell.edu/home/kleinber/). 2011.[Networks, Crowds, and Markets: Reasoning About a Highly Connected World](http://www.cs.cornell.edu/home/kleinber/networks-book/). New York: Cambridge University. 大卫・伊斯利, & 乔恩・克莱因伯格. (2011). [网络、群体与市场](https://www.baidu.com/s?wd=%E7%BD%91%E7%BB%9C%E3%80%81%E7%BE%A4%E4%BD%93%E4%B8%8E%E5%B8%82%E5%9C%BA):揭示高度互联世界的行为原理与效应机制. 清华大学出版社.
-- Jure Leskovec, Anand Rajaraman, Jeffrey David Ullman.2011. Mining massive datasets (2nd)http://www.mmds.org/
+- 黄佳《零基础学机器学习》，北京:人民邮电出版社,2020. (ISBN 978-7-115-54599-2)
+- 邱锡鹏《神经网络与深度学习》，北京：机械工业出版社，2020. （ISBN 978-7-111-64968-7）
 
 
 ## 相关课程
