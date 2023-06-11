@@ -55,7 +55,6 @@ https://github.com/computational-class/machine-learning
 - **Beiginning Python** https://github.com/SocratesAcademy/beginning-python-3ed
 - **Python Data Science Handbook** https://jakevdp.github.io/PythonDataScienceHandbook/
 - **动手学深度学习PyTorch版** http://d2l.ai/
-- **Python Data Science Handbook** https://jakevdp.github.io/PythonDataScienceHandbook/
  
 
 ## 参考书
