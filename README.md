@@ -26,7 +26,7 @@
 | 3 | 7月3日 周一|	16:00-17:00 | 课堂练习&答疑|1|
 
 
-https://github.com/computational-class/machine-learning
+https://github.com/SocratesAcademy/machine-learning
 
 ### Slides
 
