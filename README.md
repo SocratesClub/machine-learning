@@ -55,6 +55,9 @@ https://github.com/SocratesAcademy/machine-learning
 - **Beiginning Python** https://github.com/SocratesAcademy/beginning-python-3ed
 - **Python Data Science Handbook** https://jakevdp.github.io/PythonDataScienceHandbook/
 - **动手学深度学习PyTorch版** http://d2l.ai/
+
+![image](https://github.com/SocratesAcademy/machine-learning/assets/543384/277c4f0c-f347-4910-abce-bc525ba441e5)
+
  
 
 ## 参考书
